@@ -1,0 +1,101 @@
+<!--
+    1. Have a form that accepts user inputs
+        - City
+        - Min
+        - Max
+    2. Have a table with 3 columns - city, min,max
+    3. When user clicks on the button within the form, add the details in a row
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            table,
+            tr,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <form>
+
+            <div>
+                <label for="city">City</label>
+                <input type=text id="city" name="cityname" value="">
+            </div>
+
+            <div>
+                <label for="minTemp">Min</label>
+                <input type=text id="minTemp" name="minTemp" value="">
+            </div>
+
+            <div>
+                <label for="maxTemp">Max</label>
+                <input type=text id="maxTemp" name="maxTemp" value="">
+            </div>
+
+            <input type="button" id="btn-add-city" value="Add city details">
+
+        </form>
+
+        <table id="city-table">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Min</th>
+                    <th>Max</th>
+                </tr>
+            </thead>
+        </table>
+
+        <script>
+
+            (function(){
+                const cityTableEl = document.querySelector('#city-table');
+                const btnAddCell = document.querySelector('#btn-add-city');
+                const tableBody = document.createElement('tbody');
+                cityTableEl.appendChild(tableBody);
+
+                function appendTableCell(text, tr){
+                    const cardElCell = document.createElement('td');
+                    const cityNameText = document.createTextNode(text);
+                    cardElCell.appendChild(cityNameText);
+                    tr.appendChild(cardElCell);
+                }
+
+                btnAddCell.onclick = function(){
+                     const cityEl = document.querySelector('#city').value;
+                     const minEl = document.querySelector('#minTemp').value;
+                     const maxEl = document.querySelector('#maxTemp').value;
+
+                     const cityRow = document.createElement('tr');
+      
+                     appendTableCell(cityEl, cityRow);
+                     appendTableCell(minEl, cityRow);
+                     appendTableCell(maxEl, cityRow);
+
+                     tableBody.appendChild(cityRow);
+
+ 
+                }
+
+            })();
+            
+
+            
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include( 'partials/header', { title: title } ); -%>
+    <body>
+        <%- include( 'partials/navbar', { activeLink: '/workshops' } ); -%>
+        <div class="container my-4">
+            <div class="jumbotron">
+                <h1>Add a new workshop</h1>
+                <hr />
+                <form action="/workshops/save" method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Add workshop" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

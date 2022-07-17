@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="ajax-final.js"></script>
+
+        <script>
+            function printWorkshopNames( responseText ) {
+                const createdWorkshop = JSON.parse( responseText );
+
+                console.log( createdWorkshop );
+            }
+
+            function onError( error ) {
+                console.log( error );
+            }
+
+            ajax(
+                {
+                    url: 'https://workshops-server.herokuapp.com/workshops',
+                    method: 'POST',
+                    onSuccess: printWorkshopNames,
+                    onError: onError,
+                    data: {
+                        "name": "Rules of Tennis",
+                        "description": "Learn the rules of tennis",
+                        "startDate": "2020-03-01T04:00:00.000Z",
+                        "endDate": "2020-03-03T08:00:00.000Z",
+                        "time": "9:30 am - 1:30 pm",
+                        "location": {
+                            "address": "Hyderabad",
+                            "city": "Hyderabad",
+                            "state": "Telangana"
+                        },
+                        "modes": {
+                            "inPerson": true,
+                            "online": false
+                        },
+                        "imageUrl": "https://images.pexels.com/photos/1432039/pexels-photo-1432039.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    }
+                }
+            );
+        </script>
+    </body>
+</html>

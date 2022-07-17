@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .ads-container {
+                height: 200px;
+                padding: 10px;
+                border: 1px dashed olive;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>w3schools.com</h1>
+            <hr />
+        </header>
+        <div class="ads-container"></div>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam dicta atque sequi at ad, dolor hic animi, ipsa, veniam quasi consequuntur omnis. Error, eos iusto. Dolorem eveniet soluta totam incidunt!
+        </p>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi voluptate, ut nobis beatae aliquam laudantium dicta doloremque architecto cum libero! Eius distinctio quasi fuga pariatur iusto hic fugit soluta consectetur!
+        </p>
+
+        <script src="./external/jquery-3.5.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+           
+                 var counter=0;
+                setInterval(function(){ 
+                    
+                   counter===3 ? counter=1:counter++;
+                     showAd(counter);
+
+                }, 3000);
+    
+                function showAd(counter){
+                    console.log(`./ads/ad-${counter}.html .ad`);
+                    $( '.ads-container' ).load( `./ads/ad-${counter}.html .ad` );
+                }
+
+            });
+        </script>
+    </body>
+</html>

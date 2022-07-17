@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            class Invoice extends React.Component {
+                state = {
+                    currentProducts: [ ...this.props.products ]
+                };
+
+                deleteItem = ( idx ) => {
+                    this.setState( state => {
+                        // always make a copy of arrays and objects in the state
+                        const newCurrentProducts = [ ...state.currentProducts ];
+
+                        // for( let i = 0; i < state.currentProducts.length; i++ ) {
+                        //     if( state.currentProducts[i].name == productName ) {
+                                
+                        //     }
+                        // }
+                        newCurrentProducts.splice( idx, 1 );
+
+                        return {
+                            currentProducts: newCurrentProducts
+                        };
+                    });
+                }
+
+                render() {
+                    const { customer } = this.props;
+                    const { currentProducts : products } = this.state;
+
+                    return (
+                        <div className="container my-5">
+                            <h1 className="h3">
+                                Invoice
+                                <div>
+                                    <small>Customer: {customer}</small>
+                                </div>
+                            </h1>
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total Price</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        products.map( ( { name, quantity, price }, idx ) => (
+                                            <tr key={name}>
+                                                <td>{name}</td>
+                                                <td>{quantity}</td>
+                                                <td>{price}</td>
+                                                <td>{quantity * price}</td>
+                                                <td><button onClick={() => this.deleteItem( idx )}>Delete</button></td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    {
+
+                                    }
+                                </tfoot>
+                            </table>
+                        </div>
+                    );
+                }
+            }
+
+            const products = [
+                { name: 'Natraj Pencil', quantity: 10, price: 5 },
+                { name: 'Reynolds Pen', quantity: 5, price: 10 },
+                { name: 'Camel Eraser', quantity: 15, price: 12 }
+            ];
+
+            ReactDOM.render(
+                <Invoice products={products} customer="John Doe" />,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

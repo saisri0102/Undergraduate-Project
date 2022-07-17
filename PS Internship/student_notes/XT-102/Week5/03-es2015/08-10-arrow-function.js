@@ -1,0 +1,3 @@
+//old syntax
+
+//new syntax

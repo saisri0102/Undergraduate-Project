@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>History API</title>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="/" style="color: initial; text-decoration: none;">ABC Consulting</a>
+                <a href="/contact" style="float: right; font-size: 0.5em;">Contact</a>
+            </h1>
+        </header>
+        <hr />
+        <div id="page"></div>
+        <script src="js/index.js"></script>
+    </body>
+
+    <script type="text/template" id="home">
+        <h2>About us</h2>
+        <p>
+            Amet consequat mollit ipsum veniam exercitation Lorem id eiusmod quis adipisicing proident. Et ad elit deserunt est non est voluptate dolore do ipsum velit. Minim nulla eiusmod aute do enim ullamco eiusmod eu aute id minim consequat. Sit officia dolore Lorem veniam. Nostrud ullamco adipisicing eiusmod consectetur mollit irure.
+        </p>
+        <p>
+            Cillum eiusmod mollit minim aute Lorem proident nisi eu pariatur sit et duis consequat. Elit id ea et aliqua velit labore tempor incididunt. Exercitation aliqua excepteur qui occaecat dolore aute ipsum ut cupidatat. Reprehenderit dolor et non cillum do nostrud amet proident elit consectetur velit Lorem et adipisicing. Aliquip mollit fugiat do labore do id qui occaecat culpa qui Lorem eu irure veniam.
+        </p>
+    </script>
+
+    <script type="text/template" id="contact">
+        <h2>Contact us</h2>
+        <form>
+            <label>Name <input type="text" name="name" /></label>
+            <label>Phone <input type="tel" name="phone" /></label>
+            <label>Message <textarea name="message"></textarea></label>
+            <input type="submit" value="Send message" />
+        </form>
+    </script>
+
+    <script type="text/template" id="404">
+        Oops! Sorry, we couldn't find the page you were looking for. Go <a href="/home">home</a>.
+    </script>
+</html>

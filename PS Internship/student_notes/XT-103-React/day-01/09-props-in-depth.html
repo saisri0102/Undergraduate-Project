@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .meeting-card {
+                padding: 2em;
+                border: 1px solid lightgray;
+                border-radius: 20px;
+                margin: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            /**
+            * Within {} in JSX we can have
+            * string
+            * number
+            * boolean
+            * React element
+            * array of the above
+            * null and undefined
+            */
+            function MeetingCard( { name, date, startTime, endTime, attendees, meetingRoom } ) {
+                const heading = <h2>{name}</h2>;
+
+                return (
+                    <div className="meeting-card">
+                        {heading}
+                        <hr />
+                        <div>{date.toDateString()}, {startTime} - {endTime}</div>
+                        <div>
+                            Attendees: {attendees}
+                        </div>
+                        <div>Location: {meetingRoom}</div>
+                    </div>
+                );
+            }
+
+            // props spread
+            const propsCard1 = {
+                name: "Project Presentation",
+                date: new Date( 2021, 2, 16 ),
+                startTime: 12,
+                endTime: 13,
+                attendees: [
+                    'aravind@example.com',
+                    'piyush@example.com'
+                ],
+                key: 1
+            };
+
+            const propsCard2 = {
+                name: "Assessment 1",
+                date: new Date( 2021, 2, 20 ),
+                startTime: 1,
+                endTime: 2,
+                attendees: [
+                    'aravind@example.com',
+                    'piyush@example.com'
+                ],
+                key: 2
+            };
+
+            // we are suing props spread operator {...obj} to construct props from properties in obj
+            const cards = (
+                <React.Fragment>
+                    <MeetingCard {...propsCard1} meetingRoom="Conf room 101" />
+                    <MeetingCard {...propsCard2} />
+                </React.Fragment>
+            );
+
+            // called the MeetingCard function, passed the props, and the returned UI was rendered
+            ReactDOM.render( cards, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

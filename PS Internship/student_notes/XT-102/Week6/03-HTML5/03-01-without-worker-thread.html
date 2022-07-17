@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker Demo</title>
+</head>
+<body>
+  
+    <button>Click me</button>
+    <!--
+        JS is single thread by default
+        If we have CPU-bound tasks (Takes long time to execute) then we need to divide it into small small tasks and need to give some breathing time between them
+    -->
+    <script>
+
+      
+        // So to handle this keep long running function in another file (worker thread)
+
+        document.querySelector('button').addEventListener('click', function(){
+              // this gets excuted only after it prints the fibonacci
+            alert('I am clicked');
+        });
+
+        function nthfibonacci(n){
+
+            if(n===1){
+                return 0;
+            }
+            if(n===2){
+                return 1;
+            }
+            else{
+            return nthfibonacci(n-1)+nthfibonacci(n-2);
+            }
+        }
+
+       console.log(nthfibonacci(45)) ; // takes long time
+    </script>
+</body>
+
+</html>

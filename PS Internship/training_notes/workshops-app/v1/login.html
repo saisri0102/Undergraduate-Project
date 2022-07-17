@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login | Workshops App</title>
+        
+        <!-- reset stylesheet - removes default styling by browser -->
+        <link rel="stylesheet" href="css/external/reset.css">
+        <link rel="stylesheet" href="libs/fontawesome-free-5.15.2-web/css/all.min.css">
+        <link rel="stylesheet" href="libs/notifications-center/css/notifications.css">
+        <link rel="stylesheet" href="css/utils.css">
+        <link rel="stylesheet" href="dist/css/app.min.css">
+        <style>
+            .form-group-inline {
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <header class="my-5">
+                    <h1>Login</h1>
+                    <hr />
+                </header>
+                <form action="http://localhost:8001/login" method="post">
+                    <div class="form-group-inline">
+                        <div>
+                            <input type="email" placeholder="email" name="email" value="john.doe@example.com" />
+                        </div>
+                        <small class="text-italic">john.doe@example.com</small>
+                    </div>
+                    <div class="form-group-inline">
+                        <div>
+                            <input type="password" placeholder="password" name="password" value="password" />
+                        </div>
+                        <small class="text-italic">password</small>
+                    </div>
+                    <div class="form-group-inline" style="vertical-align: top;">
+                        <button id="btn-login" type="submit">Submit</button>
+                    </div>
+                </form>
+
+                <p>
+                    Make sure to be running the server that requires authentication. For this run <strong><code>npm run auth</code></strong> from within the <strong>workshops-server/</strong> folder.
+                </p>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <div class="text-center">&copy; <a href="http://www.digdeeper.in">www.digdeeper.in</a></div>
+        </footer>
+        
+        <script src="libs/notifications-center/js/notifications.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/utils/ajax.js"></script>
+        <script src="js/services/auth.js"></script>
+        <script src="js/pages/login.js"></script>
+    </body>
+</html>

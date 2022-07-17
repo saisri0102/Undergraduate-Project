@@ -1,0 +1,11 @@
+# References
+- [Oracle Java](https://www.oracle.com/java/technologies/javase-downloads.html)  - Install Java 8 / 11 (JDK), or [AdoptOpenJDK - Download and install](https://adoptopenjdk.net/) - Install Java 8 / 11 (JDK)
+- [Jenkins download and deployment ](https://www.jenkins.io/download/) - Requires Java 8 / 11
+- [Installing Jenkins](https://www.jenkins.io/doc/book/installing/)
+- [Running Jenkins using the official Docker image](https://www.jenkins.io/doc/book/installing/docker/)
+- [Getting Started With Jenkins: The Ultimate Guide, by Rodrigo Moutinho, on DZone](https://dzone.com/articles/getting-started-with-jenkins-the-ultimate-guide)
+- [Tutorial: Jenkins Pipeline file with Apache Groovy, by Sandeep Kinayath, on Eficode](https://www.eficode.com/blog/jenkins-groovy-tutorial)
+- [Pipeline - Documentation](https://www.jenkins.io/doc/book/pipeline/)
+- [Pipeline Examples](https://www.jenkins.io/doc/pipeline/examples/)
+- [Jenkins - Tutorial](https://www.jenkins.io/doc/pipeline/tour/getting-started/)
+- [Build a Node.js and React app with npm](https://www.jenkins.io/doc/tutorials/build-a-node-js-and-react-app-with-npm/)

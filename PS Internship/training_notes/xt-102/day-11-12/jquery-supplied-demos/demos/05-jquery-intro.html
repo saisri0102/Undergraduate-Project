@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>jQuery introduction</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .bg-lightblue {
+                background-color: lightblue;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <span>
+            A span within body 
+        </span>
+
+        <p>
+            <span>
+                A span within paragraph 1
+            </span>
+        </p>
+
+        <p>
+            <span>
+                A span within paragraph 2
+            </span>
+        </p>
+
+        <div id="div-1">
+            Some div 
+        </div>
+
+        <div id="div-2">
+            Some div 
+        </div>
+
+        First name : <input type="text" id="first-name" />
+
+        <script src="../external/jquery-3.2.1.min.js"></script>
+        <script>
+            console.log( $ );
+            console.log( jQuery );
+            console.log( $ === jQuery ); // true
+
+            // $() call returns a jQuery collection object - this is an array-like object.
+            // 1st argument -> css selector / DOM node
+            // 2nd argument -> css selector / DOM object 
+            console.log( $(document) );
+            console.log( $(document) instanceof Array ); // false
+
+            console.log( $( 'span' ) ); // 3 spans on the page fetched in source order
+            console.log( $( 'span', 'p' ) ); // the span(s) within paragraphs are fetched in source order
+            console.log( $( 'p span' ) ); // also retruns the span(s) within paragraphs are fetched in source order
+
+            console.log( $.fn );
+            console.log( $( 'span' ).__proto__ );
+            console.log( $.fn === $( 'span' ).__proto__ );
+
+            $(document).ready(function() { // DOMCOntentLoaded event fires before (when DOM nodes and DOM tree are created) load event (once css, js etc. are fetched)
+                // *** html content manipulation ***
+                console.log( $( 'span' ).html() ); // gets the innerHTML of the first span in the collection
+                // $( 'span:nth-of-type(2)' ) // 2nd span in the document
+                console.log( $( 'span' )[1] ); // DOM node
+                console.log( $( $( 'span' )[1] ) ); // the equivalent jQuery collection with a single item (2nd span)
+                console.log( $( 'span' ).eq(1) ); // 2nd span on the page
+
+                // like for forEach for collection
+                $( 'span' ).each(function( item, index ) {
+                    console.log( item, index );
+                    console.log( $(this).html() ); // this (context object) is a DOM node
+                });
+
+                // utility method $.each() - not to be confused with $().each()
+                $.each( [ 1, 2, 3 ], function( item ) {
+                    console.log( item );
+                });
+
+                // "    dsdvsadv ".trim() // new version of JS has it (6-78 year old browsers will be fine, old ones will fail)
+                // $.trim( "   fwafwa "); //another utility method which is safe to use across browsers
+
+                $( 'span' ).html( 'We are all spans' ); // as a setter it affects all matched elements' html
+
+                $( 'span' ).html( 'We are all <b>spans</b>' );
+                
+                $( 'span' ).text( 'We are all <b>spans</b>' ); // use .text() to avoid script injection
+
+                // *** css manipulation ***
+                $( 'span' ).css( 'color', 'red' ); // sets this up inline
+                $( 'span' ).css({
+                    color: 'blue',
+                    'text-decoration': 'underline',
+                    fontWeight: 'bold'
+                });
+                
+                $( '#div-2' ).addClass( 'bg-lightblue' ).addClass( 'bold' );
+                console.log( $( 'div' ).hasClass( 'bg-lightblue' ) ); // true - any one item in the collection matches => true
+                $( '#div-2' ).removeClass( 'bg-lightblue' );
+                console.log( $( 'div' ).hasClass( 'bg-lightblue' ) ); // now false
+
+                // attribute manipulation
+                $( '#first-name' ).attr( 'disabled', 'disabled' ); // adds disabled attribute with the value disabled
+                $( '#first-name' ).attr({
+                    name: 'first-name',
+                    value: 'John'
+                });
+
+                $( '#first-name' ).val( 'Mark' ); // only for value of form elements
+                $( '#first-name' ).prop( 'value', 'Tim' ); // in general for any dynamic value
+
+                console.log( $( '#first-name' ).attr( 'value' ) ); // the default value (attribute setting) is returned
+                console.log( $( '#first-name' ).val() ); // returns 'Tim' (the dynamic value)
+                console.log( $( '#first-name' ).prop( 'value' ) ); // returns 'Tim' (the dynamic value)
+
+                $( 'span' ).attr( 'id', 'we-are-brothers' ); // not good thing to do - same id is set on all spans
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include( 'partials/header', { title: title } ); -%>
+    <body>
+        <%- include( 'partials/navbar', { activeLink: '/' } ); -%>
+        <div class="container my-4">
+            <div class="jumbotron">
+                <h1><%= appName %></h1>
+                <hr />
+                <p>
+                    Welcome to <%= appName %>. You will find details of technical workshops happening nearby.
+                </p>
+                <hr />
+                <h2>Features</h2>
+                <ul class="list-group">
+                    <% features.forEach( feature => { %>
+                        <li class="list-group-item"><%= feature %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

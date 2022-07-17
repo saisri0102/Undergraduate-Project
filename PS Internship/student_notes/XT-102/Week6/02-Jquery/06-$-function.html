@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+</head>
+<body>
+    <p class="highlight">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus est, optio culpa ipsam cumque, numquam autem distinctio expedita vero voluptate atque accusantium consequatur vitae asperiores! Eligendi, veritatis aperiam. Amet, rerum.
+    </p>
+    <p>
+        Mollitia beatae hic fugit minima modi corrupti dignissimos omnis obcaecati rerum, commodi qui quisquam amet aspernatur ducimus cumque, unde maiores tempore nihil ut, eveniet odit! Est temporibus impedit perspiciatis veritatis?
+    </p>
+    <p class="highlight">
+        Soluta deserunt laboriosam ad hic iure possimus, omnis nihil quia quae nisi, culpa, saepe sunt magni voluptate enim at facilis ullam expedita provident. Expedita inventore quidem sint corrupti earum repellendus!
+    </p>
+    <script src="external/jquery-3.5.1.js"></script>
+    <script>
+        // $() returns jQuery collection object (an object that looks like an array)
+        // $() is just like document.querySelectorAll
+        // start collection variable with $(just naming convention)
+        const $paras = $('p');
+        const $highlightedParas = $('.highlight');
+
+        // jQuery Collection object
+        console.log($highlightedParas);
+        console.log($paras);
+        console.log($paras.length);
+
+        // DOM Node - Individual items 
+        console.log($paras[0]);
+
+        //you can pass existing DOM node to $() -> it returns a collection with that DOM node
+
+        const firstParaDOMNode = document.querySelector('p');
+        //firstParaDOMNode.html('') - not possible .html is not applicable on DOM node
+        const $firstPara= $(firstParaDOMNode);
+        console.log($firstPara); // collection with one DOM node
+        $firstPara.html('Some text with in para set using jQuery');
+
+
+    </script>
+</body>
+</html>

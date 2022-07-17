@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .panel{
+        border: 1px solid crimson;
+    }
+    .panel-heading, .panel-body{
+        padding:10px;
+    }
+    .panel-heading{
+        color: white;
+        background-color: crimson;
+        cursor: pointer;
+    }
+</style>
+<body>
+
+    <div class="panel">
+        <div class="panel-heading">
+            What is jQuery?
+        </div>
+        <div class="panel-body">
+            It is a JS library that is cross-browser compatible, and simplifies DOM operations, Ajax etc. It has a wide variety of plugins to expand its capabilities further.
+        </div>
+    </div>
+
+    <script src="./external/jquery-3.5.1.min.js"></script>
+    <script>
+           $(document).ready(function(){
+                $('.panel-heading').click(function(){
+                    // "this" - > DOM node on which event occured (not collection object)
+
+                    // next() - selects a following sibling that matches the passed selector
+                    //$(this).next('.panel-body').toggle();
+                    $(this).next('.panel-body').slideToggle(); //for transition
+
+                    // slideUp, slideDown, fadeOut, fadeToggle, slideToggle
+                   // $(this).next('.panel-body').fadeToggle(200); 
+
+                    // EXERCISE : Use closest - >$(this).closest('.panel');
+                    // EXERCISE: Explore how to use $('.panel').find('.panel-body');
+
+                    // EXERCISE: Recreate this using animate
+                })
+           });
+    </script>
+</body>
+</html>

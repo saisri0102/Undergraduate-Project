@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .cards {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .card {
+                flex-basis: 30%;
+                padding: 1em;
+                border: 1px solid black;
+                border-radius: 5px;
+                margin-bottom: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="btn-add-card">Add a card</button>
+
+        <div class="cards">
+            <div class="card" id="card-tpl" hidden>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur eos harum fugiat quas dolore quae, et dolorem? Voluptates labore, adipisci obcaecati explicabo quibusdam veritatis officia reprehenderit tempora debitis cumque necessitatibus.
+            </div>
+        </div>
+
+        <script>
+            const p1El = document.querySelector( '#p1' );
+            const btnAddCard = document.querySelector( '#btn-add-card' );
+
+            // on<event> -> onclick
+            let cardId = 0;
+            
+            btnAddCard.onclick = function() {
+                cardId++;
+
+                const cardTpl = document.querySelector( '#card-tpl' );
+                const copy = cardTpl.cloneNode( true ); // true => copies children too
+                copy.id = `card-${cardId}`;
+                copy.removeAttribute( 'hidden' );
+
+                const cardsEl = document.querySelector( '.cards' );
+                cardsEl.appendChild( copy );
+            };
+        </script>
+    </body>
+</html>

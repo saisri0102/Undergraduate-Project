@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .city-details,
+        td {
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="cityName">City</label>
+        <input type="text" id="cityName" name="city" value="" />
+
+        <label for="minTemp">Minimum Temperature</label>
+        <input type="text" id="minTemp" name="min" value="" />
+
+        <label for="maxTemp">Maximum Temperature</label>
+        <input type="text" id="maxTemp" name="max" value="" />
+
+        <button class="btn-add-city" type="button">Add</button>
+    </form>
+
+    <table class="city-details">
+        <thead>
+            <tr>
+                <th>city name</th>
+                <th>Min temp</th>
+                <th>Max temp</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        (function() {
+            const tableEl = document.querySelector('.city-details');
+            const btnAddCard = document.querySelector('.btn-add-card');
+
+            function appendTableCell( text, tr ) {
+                const cardElCell = document.createElement('td');
+                const cityNameText = document.createTextNode( text );
+                cardElCell.appendChild(cityNameText);
+                tr.appendChild(cardElCell);
+            }
+
+            btnAddCard.onclick = function () {
+                const cityNa = document.querySelector('#cityName').value;
+                const minTemp = document.querySelector('#minTemp').value;
+                const maxTemp = document.querySelector('#maxTemp').value;
+
+                const cardEl = document.createElement('tr');
+
+                appendTableCell( cityNa, cardEl );
+                appendTableCell( minTemp, cardEl );
+                appendTableCell( maxTemp, cardEl );
+
+                document.querySelector('.city-details').appendChild(cardEl);
+            };
+        })();
+    </script>
+</body>
+
+</html>

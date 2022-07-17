@@ -1,0 +1,18 @@
+{
+    "name": "day-13-14",
+    "version": "1.0.0",
+    "description": "",
+    "main": "01-hello-world.js",
+    "scripts": {
+        "start": "nodemon 03-using-the-query-string.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "dependencies": {
+        "lodash": "^4.17.21"
+    }
+}

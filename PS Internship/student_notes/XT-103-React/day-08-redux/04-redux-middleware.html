@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        
+        <script type="text/babel">
+            // action constants (action types)
+            const INCREMENT = 'INCREMENT';
+            const DECREMENT = 'DECREMENT';
+
+            // action creators
+            function increment() {
+                return {
+                    type: INCREMENT
+                };
+            }
+            
+            function decrement() {
+                return {
+                    type: DECREMENT
+                };
+            }
+
+            // reducers
+            // const initialState = { counter: 0 };
+
+            // function counterReducer( curState initialState, action ) {
+            // Reducers MUST be "pure functions" - does not change any arguments, always returns same output for same set of inputs, does not make use of global variables and functions
+            function counterReducer( curState = { counter : 0 }, action ) {
+
+                console.log('reducer called')
+                let newState;
+
+                switch( action.type ) {
+                    case INCREMENT:
+                        newState = {
+                            ...curState,
+                            counter: curState.counter + 1
+                        };
+                        break;
+                    case DECREMENT:
+                        newState = {
+                            ...curState,
+                            counter: curState.counter - 1
+                        };
+                        break;
+                    default:
+                        newState = curState; // make no changes
+                }
+
+                return newState;
+            }
+
+            /*Structure of Middleware
+
+            function loggerMiddleware( store ){
+                return function( next ) {
+                    // next is a function which returns another function
+                    return function( action ) {
+
+                        // anything which gets excuted before action is called
+                        // next() -> this controlls whether the action should reach the store or not 
+                        if we dont pass anything inside next() then this action wont reach to store
+                        next(action)
+
+                         // anything which gets excuted after action is called
+                    }
+                }
+            }
+            */
+
+
+             // function loggerMiddleware( store ) {
+            //     return function( next ) { // next() is a function
+            //         return function( action ) {
+            //             // executed before store receives the action
+            //             console.log( 'action = ', action );
+            //             console.log( 'state before change = ', store.getState() );
+
+            //             // passes on control to the next middleware if no next middleware control goes to store
+            //             // next( decrement() );
+            //             next( action );
+
+            //             // executed after store updates the state
+            //             console.log( 'state after change = ', store.getState() );
+            //         };
+            //     };
+            // }
+
+            // arrow function syntax
+            const loggerMiddleware = store => next => action => {
+                console.log( 'action = ', action );
+                console.log( 'state before change = ', store.getState() );
+
+                next( action );
+
+                console.log( 'state after change = ', store.getState() );
+            };
+
+            const preventBeyond10 = store => next => action => {
+                if( store.getState().counter < 10 ) {
+                    console.log( ' state before change inside preventBeyond10 = ', store.getState() );
+                    next( action );
+                    console.log( ' state after change inside preventBeyond10 = ', store.getState() );
+                }
+            };
+
+            /*
+                step1  -> action dispatched
+                step2 -> Excutes first middleware which is passes as argument to applymiddleware Here it is loggerMiddleware
+                step3 - > The next (action) in loggerMiddleware passes control to second middleware here it is preventBeyond10
+                step4 -> The next (action) in loggerMiddleware passes control to store ( as no next middleware is present)
+                step5 ->  Now the control in store ( Store updates)
+                step6 -> calls the last middleware here it is (preventBeyond10) and do's something which is written after next(action)
+                step7 -> calls the middleware loggerMiddleware and do's something which is written after next(action)
+                step8 -> subscribed views are rendered
+            */
+
+            // store
+            // createStore() ends up calling counterReducer when the store is created
+            // Inside applyMiddleware what  should be called first is the first argument
+            // action dispatched -> loggerMiddleware -> preventBeyond10 -> store ( Store updates) ->  preventBeyond10 ->loggerMiddleware -> subscribed views are rendered
+
+            const store = Redux.createStore( counterReducer , Redux.applyMiddleware( loggerMiddleware , preventBeyond10 ) ); // curState -> undefined, action : { type: '@@INIT' } 
+            // Reducer returns { counter: 0 }, and state updates to { counter : 0 }
+
+            // UI
+            class Counter extends React.Component {
+                render() {
+                    return (
+                        <React.Fragment>
+                            <button onClick={() => store.dispatch( decrement() )}>-</button>
+                            <span id="counter">{store.getState().counter}</span>
+                            <button onClick={() => store.dispatch( increment() )}>+</button>
+                        </React.Fragment>
+                    );
+                }
+
+                componentDidMount() {
+                    store.subscribe( () => this.forceUpdate() );
+                }
+            }
+            
+            // have the store call render whenever state updates
+            // store.subscribe( render );
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

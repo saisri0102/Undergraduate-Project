@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .parent, .child {
+                padding: 20px;
+                border: 1px solid black;
+            }
+
+            .parent {
+                display: flex;
+                flex-direction: row; /* "main" axis */
+                /* distribute extra space in "main" axis direction */
+            }
+
+            .parent-1 {   
+                justify-content: center; 
+            }
+            
+            .parent-2 {   
+                justify-content: flex-start; 
+            }
+            
+            .parent-3 {   
+                justify-content: flex-end; 
+            }
+            
+            .parent-4 {   
+                justify-content: space-between; 
+            }
+            
+            .parent-5 {   
+                justify-content: space-around; 
+            }
+            
+            .child-1 {
+                flex-shrink: 1;
+            }
+            
+            .child-2 {
+                flex-shrink: 2;
+            }
+
+            .child-3 {
+                flex-shrink: 4;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent parent-1">
+            <div class="child child-1">1. Lorem ipsum dolor </div>
+            <div class="child child-2">2. Lorem ipsum dolor</div>
+            <div class="child child-3">3. Lorem ipsum</div>
+        </div>
+        <div class="parent parent-2">
+            <div class="child child-1">1. Lorem ipsum dolor </div>
+            <div class="child child-2">2. Lorem ipsum dolor</div>
+            <div class="child child-3">3. Lorem ipsum</div>
+        </div>
+        <div class="parent parent-3">
+            <div class="child child-1">1. Lorem ipsum dolor </div>
+            <div class="child child-2">2. Lorem ipsum dolor</div>
+            <div class="child child-3">3. Lorem ipsum</div>
+        </div>
+        <div class="parent parent-4">
+            <div class="child child-1">1. Lorem ipsum dolor </div>
+            <div class="child child-2">2. Lorem ipsum dolor</div>
+            <div class="child child-3">3. Lorem ipsum</div>
+        </div>
+        <div class="parent parent-5">
+            <div class="child child-1">1. Lorem ipsum dolor </div>
+            <div class="child child-2">2. Lorem ipsum dolor</div>
+            <div class="child child-3">3. Lorem ipsum</div>
+        </div>
+    </body>
+</html>

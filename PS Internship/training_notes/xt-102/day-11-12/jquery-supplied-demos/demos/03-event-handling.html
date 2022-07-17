@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Event handling</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            div {
+                padding: 20px;
+            }
+
+            #level-1 {
+                border: 1px solid black;
+            }
+
+            #level-2 {
+                border: 1px solid blue;
+            }
+
+            #level-3 {
+                border: 1px solid green;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="level-1">
+            Div level 1
+            <div id="level-2">
+                Div level 2
+                <div id="level-3" onclick="console.log('inline handling of events (DOM Level 0 style)');">
+                    Div Level 3
+                </div>
+            </div>
+        </div>
+
+        First name: <input type="text" id="first-name" name="first-name" value="John" />
+        
+        <script>
+            // Standard events reference - https://developer.mozilla.org/en-US/docs/Web/Events
+            var level1 = document.getElementById( 'level-1' );
+            var level2 = document.getElementById( 'level-2' );
+            var level3 = document.getElementById( 'level-3' );
+
+            // DOM 1 way of handling
+            level1.onclick = foo; // actually set for bubble phase
+
+            // DOM 2 specs way of event handling
+            // Most preferred way to handle events
+            // 1. Multiple handlers can be attached for each element
+            // 2. Non-obstrusive (not part of HTML code)
+            // 3. Flexibility to set phase of event handling (capture/bubble)
+
+            // event object contains relevant information about the event that occured
+            // e.g. what were the x,y coordinates of the mouse when clicked?
+            function foo(event) {
+                console.log( '[capture] *** You clicked div with id level-1 ***' );
+                console.log( event );
+            };
+            level1.addEventListener('click', foo, true); // third argument is true (capture phase handling)
+
+            level2.addEventListener('click', function(event) {
+                console.log( '[capture] You clicked div with id level-2' );
+                console.log( event );
+            }, true);
+
+            level3.addEventListener('click', function(event) {
+                console.log( '[capture] You clicked div with id level-3' );
+                console.log( event );
+            }, true);
+
+            level1.addEventListener('click', function(event) {
+                console.log( '[bubble] You clicked div with id level-1' );
+                console.log( this );
+                console.log( event );
+                console.log( event.target ); 
+            });
+
+            level2.addEventListener('click', function(event) {
+                console.log( '[bubble] You clicked div with id level-2' );
+                console.log( this );
+                console.log( event );
+                console.log( event.target ); 
+            });
+
+            level3.addEventListener('click', function(event) {
+                console.log( '[bubble] *** You clicked div with id level-3 ***' );
+                console.log( event );
+                console.log( event.target );
+            });
+
+            setTimeout(function() {
+                level1.removeEventListener('click', foo, true); // removes the one set through addEventListener
+                level3.removeEventListener('click', function(event) { // This is NOT the same function object used in addEventListener - DOES NOT remove the handler!!
+                    console.log( '[bubble] *** You clicked div with id level-3 ***' );
+                    console.log( event );
+                });
+            }, 10000);
+
+            var obj = {
+                foo: function(event) { }
+            };
+            // firstNameEl.addEventListener( 'mouseover', obj.foo ); // the context would still be the firstNameEl
+            var firstNameEl = document.getElementById( 'first-name' );
+            firstNameEl.addEventListener( 'mouseover', function( event ) {
+                console.log( event );
+                console.log( this ); // will be firstNameEl
+                console.log( event.target ); // the innermost element where event occured
+            });
+        </script>
+    </body>
+</html>

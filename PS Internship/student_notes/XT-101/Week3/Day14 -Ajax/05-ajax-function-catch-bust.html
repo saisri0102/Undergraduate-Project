@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="ajax.js"></script>
+
+        <script>
+            function printWorkshopNames( responseText ) {
+                const workshops = JSON.parse( responseText );
+                
+                const workshopNames = workshops.map(function( workshop ) {
+                    return workshop.name;
+                });
+
+                console.log( workshopNames );
+            }
+            
+            function printMostVotedSessions( responseText ) {
+                const sessions = JSON.parse( responseText ); // convert text into a JavaScript object
+                
+                const mostvotedSessions = sessions.filter(function( session ) {
+                    return session.upvoteCount >= 3;
+                });
+
+                console.log( mostvotedSessions );
+            }
+
+            function onError( error ) {
+                console.log( error );
+            }
+
+            ajax( 'https://workshops-server.herokuapp.com/workshops?cachebust=' + (new Date()).getTime(), 'GET', printWorkshopNames, onError );
+            ajax( 'https://workshops-server.herokuapp.com/workshops/2/sessions', 'GET', printMostVotedSessions, onError );
+        </script>
+
+        <!--
+            A cache-buster is a unique string which is appended to a URL in the form of a query string.
+
+            It is generally not read by the server-side and is used purely to form a unique URL.
+            The current date/time could be appended to the reference so that every call to the webpage will return a unique cache-buster. 
+        -->
+    </body>
+</html>

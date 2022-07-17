@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+           Blocking Functions:  When the functions excutes it starts an operation. and do not return till the function  or the operation is completed. It won't go to next line. 
+
+           Non Blocking functions: starts off an operation and returns immediately and when the operation completes it informs the user using callback function. 
+
+           1. Alert - If you want to inform the user
+           2. Confirm - IF you want to take the one of the two actions
+           3. prompt - Taes an input from user. 
+
+           we cant customise alert boxes.  All dialogue boxes are blocking functions
+        */
+
+        console.log('%%%%%%%%%%%%%%%%%%%'); // get executes
+       alert('Your data saved successfully'); // Here till user press ok button then only it go to next line. 
+       console.log('*******************'); // Executes after completion of alert operation
+       const choice = confirm('Are you sure to leave my website'); // twp buttons - cancel and ok 
+       console.log("Your choice is " + choice); /*output: true for ok , false for cancel*/
+       const name= prompt('what is your name?', 'John');
+       console.log(name); // null for cancel button , user input for ok button
+
+
+
+
+    </script>
+</body>
+</html>

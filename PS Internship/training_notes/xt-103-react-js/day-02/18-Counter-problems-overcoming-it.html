@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            let x = 0;
+
+            class Counter extends React.Component {
+                state = {
+                    currentValue: this.props.initialValue
+                }
+
+                increment = ( event ) => {
+                    // the function that is passed to setState() is called when React decides to change the state
+                    this.setState(( state ) => { // temp state = { currentValue : 0 }
+                        console.log( 'state is being updated' );
+
+                        return {
+                            currentValue: state.currentValue + 1 // temp state = { currentValue : 0 + 1 }
+                        }
+                    }, () => console.log( 'state has been updated' ) ); // callback function that is called after actual state is changed and render is completed
+                    
+                    // the function that is passed to setState() is called when React decides to change the state
+                    this.setState(( state ) => { // temp state = { currentValue : 1 }
+                        console.log( 'state is being updated' );
+
+                        return {
+                            currentValue: state.currentValue + 1 // temp state = { currentValue : 1 + 1 }
+                        }
+                    }, () => console.log( 'state has been updated' ) ); // callback function that is called after actual state is changed and render is completed
+                }
+                
+                decrement = () => {
+                    this.setState(( state ) => {
+                        return {
+                            currentValue: state.currentValue - 1
+                        }
+                    });
+                    this.setState(( state ) => {
+                        return {
+                            currentValue: state.currentValue - 1
+                        }
+                    });
+                }
+
+                // PURE function - does not make use of external variable
+                // should return a UI that is depemdemt on props and state
+                render() {
+                    console.log( 'render' );
+                    // never do these within a pure function
+                    // x++;
+                    // this.setState({})
+                    // fetch( 'https://www.......' )
+
+                    return (
+                        <div style={ { marginTop: '1em' } }>
+                            <button onClick={this.decrement}>-</button>
+                            <span>{this.state.currentValue}</span>
+                            <button onClick={this.increment}>+</button>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( 
+                <React.Fragment>
+                    <Counter initialValue={0} />
+                    <Counter initialValue={100} />
+                </React.Fragment>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

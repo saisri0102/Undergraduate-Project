@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+
+        <script type="text/babel">
+
+            function TotalBill( {products}){
+                let quantitySum = 0;
+                let priceSum = 0;
+                let totalPrice = 0;
+                products.map(product => {
+                    quantitySum = quantitySum + product.quantity;
+                    priceSum = priceSum + product.price;
+                    totalPrice = totalPrice + product.quantity * product.price;
+                });
+
+                return (
+                    <tr>
+                        <td>Total</td>
+                        <td>{quantitySum}</td>
+                        <td>{priceSum}</td>
+                        <td>{totalPrice}</td>
+                    </tr>
+                );
+            }
+
+            class Invoice extends React.Component {
+                state = {
+                    currentProducts: [ ...this.props.products ]
+                };
+
+                
+
+                deleteItem = ( idx ) => {
+                    this.setState( state => {
+                 
+                        const newCurrentProducts = [ ...state.currentProducts ];
+                        newCurrentProducts.splice( idx, 1 );
+
+                        return {
+                            currentProducts: newCurrentProducts
+                        };
+                    });
+                }
+                render() {
+                    const { customer } = this.props;
+                    const { currentProducts : products } = this.state;
+
+                    return (
+                        <div className="container my-5">
+                            <h1 className="h3">
+                                Invoice
+                                <div>
+                                    <small>Customer: {customer}</small>
+                                </div>
+                            </h1>
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total Price</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        products.map( ( { name, quantity, price }, idx ) => (
+                                            <tr key={name}>
+                                                <td>{name}</td>
+                                                <td>{quantity}</td>
+                                                <td>{price}</td>
+                                                <td>{quantity * price}</td>
+                                                <td><button onClick={() => this.deleteItem( idx )}>Delete</button></td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                                <tfoot>    
+                                    <TotalBill products = {products} />  
+                                </tfoot>
+                            </table>
+                        </div>
+                    );
+                }
+            }
+
+            Invoice.defaultProps = {
+                customer: 'Not disclosed!'
+            }
+
+            Invoice.propTypes = {
+                products: PropTypes.arrayOf(PropTypes.shape({
+                    name: PropTypes.string.isRequired,
+                    quantity: PropTypes.number,
+                    price:PropTypes.number
+                })).isRequired,
+                customer: PropTypes.string
+            }
+
+            const products = [
+                { name: 'Natraj Pencil', quantity: 10, price: 5 },
+                { name: 'Reynolds Pen', quantity: "5", price: 10 },
+                { name: 'Camel Eraser', quantity: 15, price: 12 }
+            ];
+
+            ReactDOM.render(
+                <React.Fragment>
+                <Invoice products={products} customer="John Doe" />
+                <Invoice products={products}  /> 
+              
+                </React.Fragment>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

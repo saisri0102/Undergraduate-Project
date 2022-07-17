@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /**
+             * blocking and non-blocking functions
+             * 
+             * blocking functions start off an operation and DO NOT return till some action / the operation is complete
+             * 
+             * non-blocking functions start off an operation and return immediately. When the operation complete, the inform the caller using a callback function.
+             */
+
+            console.log( '%%%%%%%%%%%%%' );
+
+            // alert - if you want to inform the user
+            alert( 'You data has been saved successfully' );
+
+            console.log( '************' );
+
+            // confirm - if you want user to take one of two actions
+            const choice = confirm( 'Are you sure to leave my wonderful website?' );
+
+            console.log( choice ); // true for "OK" click and false for "Cancel" click
+            console.log( '############' );
+            
+            // prompt - take an input from user
+            const result = prompt( 'What shall we call you?', 'John' );
+            console.log( result ); // is user input for "OK" click and null for "Cancel" click
+        </script>
+    </body>
+</html>

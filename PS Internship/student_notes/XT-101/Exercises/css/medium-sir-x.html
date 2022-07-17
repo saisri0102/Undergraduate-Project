@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            padding-top:70px;
+        }
+        .main-nav{
+            position: fixed;
+            top:0;
+            left:0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: gold;
+            width:100%;
+            padding:10px 50px;
+            border-bottom:1px solid black;
+        }
+        .header{
+          font-size: 3em;
+        } 
+
+        .link-unstyled{
+            display:flex;
+            list-style-type: none;
+            padding:0;
+            border:0;
+           
+        }
+        .link-unstyled li{
+            padding-right: 1em;
+        }
+        .link-unstyled a{
+            text-decoration: none;
+            color: initial;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="main-nav">
+        <header class="header">
+           <strong>Medium</strong>
+        </header>
+        <div>
+           <ul class="link-unstyled nav-links">
+               <li><a href="">Our Story</a></li>
+               <li><a href="">Memberships</a></li>
+               <li><a href="">Write</a></li>
+               <li><a href="">Sign in</a></li>
+               <li><button>Get Started</button></li>
+           </ul>
+        </div>
+    </nav>
+    <div>
+        <strong>Hello Bindu How are you </strong>
+    </div>
+    <div>Helloo gopi how are you</div>
+</body>
+</html>

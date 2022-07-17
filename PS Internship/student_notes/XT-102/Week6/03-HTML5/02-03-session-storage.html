@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+<body>
+    <label for="fav-color">Favorite Color</label>
+    <input type="color" id="fav-color"/>
+
+    <script>
+        document.querySelector('#fav-color').addEventListener('change', function(){
+            console.log(this.value);
+            // both key, value are strings
+            // local storage maintains data until you clear the local storage 
+            try{
+
+                const favorites={
+                    color:this.value
+                }
+                sessionStorage.setItem('favorite-color', JSON.stringify(favorites));
+            }
+            catch(err){
+                sessionStorage.clear();
+            }
+            
+        })
+    </script>
+</body>
+</html>

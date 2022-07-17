@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Including jQuery</title>
+    </head>
+    <body>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia provident qui dolor omnis sit sapiente aliquid veniam velit, laborum quo esse ad id maiores neque sed asperiores tempora cumque corrupti?</p>
+
+        <!-- What if xyz.js also creates a variable called $? It will conflict and jQuery will replace the $ reference -->
+        <script src="external/xyz/xyz.js"></script>
+
+        <!-- If jQuery sees that there is already a global variable $ at the time it executes, it keeps a copy of it, and it some one asks for it it will give that object -->
+        <script src="external/jquery/jquery.min.js"></script>
+
+        <script>
+            (function( $ ) {
+                $(document).ready(function() {
+                    // we are asking jQuery to release the global $ variable, and assign it back to the xyz's $
+                    $.noConflict();
+                    // From this line onwards, the global $ refers to xyz's $
+                });
+            }( jQuery ));
+        </script>
+        
+        
+    </body>
+</html>

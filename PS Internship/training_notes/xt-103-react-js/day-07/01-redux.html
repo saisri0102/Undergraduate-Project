@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <button onclick="store.dispatch( decrement() );">-</button>
+        <span id="counter"></span>
+        <button onclick="store.dispatch( increment() );">+</button>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js"></script>
+        
+        <script>
+            // action constants (action types)
+            const INCREMENT = 'INCREMENT';
+            const DECREMENT = 'DECREMENT';
+
+            // action creators
+            function increment() {
+                return {
+                    type: INCREMENT
+                };
+            }
+            
+            function decrement() {
+                return {
+                    type: DECREMENT
+                };
+            }
+
+            // reducers
+            // const initialState = { counter: 0 };
+
+            // function counterReducer( curState initialState, action ) {
+            // Reducers MUST be "pure functions" - does not change any arguments, always returns same output for same set of inputs, does not make use of global variables and functions
+            function counterReducer( curState = { counter : 0 }, action ) {
+                let newState;
+
+                switch( action.type ) {
+                    case INCREMENT:
+                        newState = {
+                            ...curState,
+                            counter: curState.counter + 1
+                        };
+                        break;
+                    case DECREMENT:
+                        newState = {
+                            ...curState,
+                            counter: curState.counter - 1
+                        };
+                        break;
+                    default:
+                        newState = curState; // make no changes
+                }
+
+                return newState;
+            }
+
+            // store
+            // createStore() ends up calling counterReducer when the store is created
+            const store = Redux.createStore( counterReducer ); // curState -> undefined, action : { type: '@@INIT' } 
+            // Reducer returns { counter: 0 }, and state updates to { counter : 0 }
+
+            // UI
+            function render() {
+                document.getElementById( 'counter' ).innerText = store.getState().counter;
+            }
+
+            render();
+
+            // have the store call render whenever state updates
+            store.subscribe( render );
+        </script>
+    </body>
+</html>

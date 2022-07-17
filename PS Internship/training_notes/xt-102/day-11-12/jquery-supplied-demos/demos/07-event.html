@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <input type="text" id="first-name" />
+        <button id="btn-click">Click me</button>
+        <button id="btn-click-2">Click me 2</button>
+
+        <p>
+            Some paragraph
+        </p>
+
+        <ul id="fruits-list">
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Bananas</li>
+        </ul>
+
+        <script src="../external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $( '#btn-click' ).click(function() {
+                    console.log( 'clicked' );
+                });
+
+                $( '#btn-click' ).click(function() {
+                    console.log( 'clicked (one more)' );
+                });
+
+
+                $( '#btn-click-2' ).on( 'click', function() {
+                    console.log( 'clicked' );
+                });
+
+                $( '#first-name' ).on( 'keyup keydown keypress', function( $event ) { // multiple events handled by a single function - fires for each event
+                    console.log( $event ); // jQuery event object - wraps the JS event object and normalizes properties
+                    console.log( $event.originalEvent ); // the original JS event object
+                    console.log( $event.which );
+                });
+
+                var oneMoreFor2 = function() {
+                    console.log( 'clicked (one more for btn-click-2)' );
+                };
+
+                $( '#btn-click-2' ).on( 'click', oneMoreFor2 );
+
+                
+                setTimeout(function() {
+                    console.log( 'removing first button\'s click handlers' );
+                    $( '#btn-click' ).off('click'); // unlike JS, the function need not be passed - all handlers get removed in this case
+
+                    $( '#btn-click-2' ).off( 'click', oneMoreFor2 ); // similar to JS - to remove a particular handler
+
+                    $( '#btn-click' ).off( '.someNamespace' ); // removed the namespaced click and dblclick handlers
+
+                    // there is also a .one() - removes event handler after event fires first time
+                }, 10000);
+
+                $( '#btn-click' ).on({
+                    click: function() {
+                        console.log( '1' );
+                    },
+                    dblclick: function() {
+                        console.log( '2' );
+                    }
+                });
+
+                $( '#btn-click' ).on( 'click.someNamespace', function() {
+                    console.log( 'namepaced click handler' );
+                });
+
+                $( '#btn-click' ).on( 'dblclick.someNamespace', function() {
+                    console.log( 'namepaced dblclick handler' );
+                });
+
+                $( '#btn-click' ).on( 'click', function() {
+                    console.log( 'not namepaced' );
+                });
+
+                $( 'p' ).data({ // set data for DOM node
+                    a: 1,
+                    b: 2
+                });
+
+                console.log( $('p').data().a ); // retrieved the data for the DOM node
+                console.log( $('p').data( 'a' ) );
+
+                $( '#fruits-list' ).on( 'click', 'li', function( $event ) { // as though we are setting up the event handler on each li - actually it is set up only once (on the ul)
+                    console.log( '$( this ) : ', $( this ) ); // li which is clicked (converted to a collection object)
+                    console.log( '$event.target : ', $event.target ); // li
+                    console.log( '$event.delegateTarget : ', $event.delegateTarget ); // the ul on which the event handler is actually set up
+                });
+
+                document.addEventListener( 'click', function() {
+                    console.log( 'click event handler attached using plain JS' );
+                });
+
+                $( '#btn-click' ).trigger( 'click' ); // 'click' programatically
+                $( '#btn-click' ).triggerHandler( 'click' ); // 'click' programatically (but execute only the ones added by jquery)
+            });
+        </script>
+    </body>
+</html>

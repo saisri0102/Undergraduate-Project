@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // React element
+            const el = (
+                <div title="Introduction to react">
+                    An introduction to React
+                    <br />
+                    <span id="description">A UI library by Facebook and Instagram</span>
+                </div>
+            );
+
+            // React element - a simpler abstraction of a DOM node
+            console.log( el );
+
+            // you cannot modify a React element - it is immutable
+            // Step 1: Try modifying properties of el, including props and props.children, and log the element. Are you able to do so?
+
+            ReactDOM.render( el, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!-- DOM node - It is an object the browser creates. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, fugit nam, animi ipsa repudiandae ullam quae vel culpa ex iusto error veniam eius assumenda fuga ratione recusandae optio in odit?
+    </p>
+     <button>click me</button>
+
+     <script>
+         //DOM Node- an object the browser creates for every HTML element
+         // DOM - Document Object Model
+         // DOM -> set of DOM Nodes as a whole
+         // DOM -> tree of DOM nodes or tree structure that represents the HTML of the website
+         // Ex: children of HTML - head, body
+
+         //html DOM node
+         // console.dir - to see the element as object
+         const htmlNode = document.documentElement
+         console.dir(htmlNode) ;
+
+         const headNode = htmlNode.children[0];
+         const bodyNode = htmlNode.children[1];
+
+         console.dir(htmlNode.children); // somethig like an array but not really an array
+         console.dir(headNode); // head
+         console.dir(htmlNode.children[1]); // body
+         console.dir(htmlNode.children.length) ;// no,of children of html = 2
+         console.dir(headNode.children[0]); // first tag in head = meta tag
+         console.dir(bodyNode.children[0]); // first child of body = paragraph
+
+         // The above is impratical because its difficult if node has more children
+
+         console.log(headNode.nodeName); // HEAD (tag name)
+         console.log(headNode.nodeType); // 1,2,3 
+
+     </script>
+</body>
+</html>

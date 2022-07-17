@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+        const themes = {
+            light: {
+                foreground: "#000000",
+                background: "#eeeeee"
+            },
+            dark: {
+                foreground: "#ffffff",
+                background: "#222222"
+            }
+        };
+
+        const ThemeContext = React.createContext( themes );
+
+        class App extends React.Component {
+            state = {
+                theme: themes.light
+            };
+
+            toggleTheme = () => {
+                this.setState(state => ({
+                    theme: state.theme === themes.dark ? themes.light: themes.dark
+                }));
+            };
+
+            setTheme = ( theme ) => {
+                this.setState({
+                    theme: themes[ theme ]
+                });
+            }
+
+            shouldComponentUpdate( newProps, newState ) {
+                return this.state.theme !== newState.theme;
+            }
+
+            render() {
+                console.log( 'App::render' );
+                return (
+                    <ThemeContext.Provider value={{ theme: this.state.theme, toggleTheme: this.toggleTheme, setTheme: this.setTheme }}>
+                        <Toolbar />
+                    </ThemeContext.Provider>
+                );
+            }
+        }
+
+        const Toolbar = React.memo(function(props) {
+            console.log( 'Toolbar' );
+
+            return (
+                <div>
+                    <ThemedButton />
+                </div>
+            );
+        });
+
+        function ThemedButton() {
+            const themeObj = React.useContext(ThemeContext);
+            console.log( 'ThemedButton' );
+            console.log( 'themeObj = ', themeObj );
+            
+            return (
+                <React.Fragment>
+                    <button style={{ background: themeObj.theme.background, color: themeObj.theme.foreground }} onClick={themeObj.toggleTheme}>
+                        I am styled by theme context!
+                    </button>
+                    <button onClick={() => themeObj.setTheme( 'dark' )}>Set dark theme</button>
+                    <button onClick={() => themeObj.setTheme( 'light' )}>Set light theme</button>
+                </React.Fragment>
+            );
+        }
+
+        ReactDOM.render( <App />, document.getElementById( 'root' ) );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+
+Milestone2 Feedback
+
+    1. Give hint for password input
+    2. Keep headings in proper heading tag (Ex: Keep main heading in h1tag )
+    3. Note: Label (for attribute) is for id not for name 
+    4.  Stick to one convention (let const) and try to avoid var 
+    5. Stick to one naming convention (Ex: camel case or pascal case)
+    6. Give title for each page 
+    7. Use alert and confirm dialogue boxes in appropriate places
+    8. Class names should be more specific (Ex: don’t use my-3)
+    9. Don't use length property inside loop instead capture it outside loop and use it in the loop
+    10.  Create a function for repeating code in fetch
+    11. Use onchange event instead of onblur for input validation

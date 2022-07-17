@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="ajax.js"></script>
+    <script>
+     /*   function ajax( url, method, onSuccess, onError){
+            const xhr= new XMLHttpRequest();
+            xhr.addEventListener('readystatechange', function(){
+                if(xhr.readyState==4){
+                    if(xhr.status>=200 && xhr.status<300){ 
+                            onSuccess(xhr.responseText);
+                        }else if(xhr.status>=400){
+                            onError(xhr.statusText);
+                        }
+                    }
+            });
+
+            xhr.open(method, url, true);
+            xhr.send();
+        }
+    */
+        function printWorkshopNames(responseText){
+            const workshop = JSON.parse(responseText);
+
+            const workshopNames= workshop.map(function(workshop){
+                        return workshop.name; 
+             });
+             console.log(workshopNames);
+         }
+         function printMostVotedSessions(responseText){
+            const sessions = JSON.parse(responseText);
+
+            const mostVotedSessions= sessions.filter(function(session){
+                        return session.upvoteCount>=3; 
+             });
+             console.log(mostVotedSessions);
+         }
+
+
+         function onError( error){
+             console.log(error);
+         }
+
+         ajax('https://workshops-server.herokuapp.com/workshops', 'GET', printWorkshopNames, onError);
+         ajax('https://workshops-server.herokuapp.com/workshops/2/sessions/', 'GET',printMostVotedSessions, onError);
+
+
+    </script>
+</body>
+</html>

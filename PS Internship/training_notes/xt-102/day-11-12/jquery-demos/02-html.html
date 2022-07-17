@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="password-error"></div>
+        <div class="password-error"></div>
+        <div class="password-error"></div>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // we have to loop through this list and set .innerHTML
+                // const pe = document.querySelectorAll( '.password-error' );
+
+                // jQuery simplifies the above task
+                const $passwordError = $( '.password-error' );
+                $passwordError.html( 'Password must have at least 1 uppercase, 1 lowercase' );
+
+                // we can get to the DOM nodes, and use DOM methods
+                // $passwordError[0].innerHTML = 'Password must have 1 special character';
+
+                // .eq() - to get a collection with a single DOM node
+                // .slice() - to get a collection with a subset of DOM nodes
+                // we get the first DOM node inside a jQuery collection object
+                const firstPasswordError = $passwordError.eq(0);
+                console.log( $firstPasswordError );
+                $firstPasswordError.html( 'Password must have 1 special character' );
+
+                // The html() method is both a getter and a setter
+                // using html() as a getter
+                // returns the inner HTML for first element in the collection
+                console.log( $passwordError.html() );
+            });
+        </script>
+    </body>
+</html>

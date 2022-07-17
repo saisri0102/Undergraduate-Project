@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+            height:500px;
+        }
+        .container{
+            position: relative;
+            text-align: center;
+            color: crimson;
+        }
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+    <img src="../Images/meetings.jpg" id="meeting-img">
+    <p id="img-text" class="centered" hidden>This is image of meetings </p>
+    </div>
+</body>
+
+    <script>
+         const meetingImg= document.querySelector('#meeting-img');
+         const imgText = document.querySelector('#img-text');
+
+         function showText(){
+            imgText.style.display ="block";
+            meetingImg.style.opacity ="0.2";
+         }
+         function hideText(){
+            imgText.style.display ="none";
+            meetingImg.style.opacity ="1";
+
+         }
+
+         meetingImg.addEventListener('mouseover', showText);
+         meetingImg.addEventListener('mouseout', hideText);
+    </script>
+</html>

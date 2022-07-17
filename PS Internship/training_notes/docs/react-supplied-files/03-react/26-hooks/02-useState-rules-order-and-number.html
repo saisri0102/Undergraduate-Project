@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            let count = 0;
+            
+            // all hooks should be called in the SAME ORDER EVERY TIME
+            // you SHOULD have the same number of hooks called each time
+            // you should have the same type of hooks (called in order)
+
+            // DO NOT use hooks inside of if..else, for
+            
+            // Step 1: Run this script as sy=uch and check the output
+            function Counter( props ) {
+                count++;
+
+                let x, setX, y, setY;
+
+                if( count % 2 ) {
+                    [ x, setX ] = React.useState( 1 ); // f
+                    [ y, setY ] = React.useState( 1 ); // s
+                } else {
+                    [ y, setY ] = React.useState( 1 ); // f
+                    [ x, setX ] = React.useState( 1 ); // s
+                    
+                    // Step 2: Uncomment this and check the output
+                    // [ z, setZ ] = React.useState( 1 ); // t
+                }
+
+                return (
+                    <div>
+                        x = {x}
+                        {"  "}
+                        <button onClick={() => setX( x + 1)}>+x</button>
+                        <br /><br />
+                        y = {y}
+                        {"  "}
+                        <button onClick={() => setY( y + 1 )}>+y</button>
+                    </div>
+                );
+            }
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

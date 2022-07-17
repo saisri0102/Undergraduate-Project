@@ -1,0 +1,13 @@
+{
+    "dest": "./libs/",
+    "classPrefix": "my-",
+    "enableClasses": true,
+    "enableJSClass": true,
+    "minify": true,
+    "options": [
+        "setClasses"
+    ],
+    "feature-detects": [
+        "audio", "battery", "canvas", "css/gradients", "indexeddb", "mathml", "storage/localstorage", "storage/websqldatabase"
+    ]
+}

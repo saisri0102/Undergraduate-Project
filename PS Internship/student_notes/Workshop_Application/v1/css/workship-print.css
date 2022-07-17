@@ -1,0 +1,22 @@
+@media print{
+ 
+    .img-responsive{
+        display: none;
+    }
+     .workshops-list{
+        display: block;
+    } 
+    .card{
+        border:0;
+    }
+    .card:hover{
+        border:0;
+    }
+    nav{
+        display: none;
+
+    }
+    .btn{
+        display: none;
+    }
+}

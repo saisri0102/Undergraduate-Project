@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function DigitalClock( { message } ) {
+                const [ time, setTime ] = React.useState( (new Date()).toTimeString() );
+
+                let id;
+
+                // we pass an effect function to useEffect
+                // useEffect helps achieve 
+                    // - componentDidMount()
+                    // - componentDidUpdate()
+                    // - componentWillUnMount()
+                // The effect behaves like componentDidMount() if we pass an empty array - [ ], as second argument to useEffect
+                // If we do not pass a second argument to useEffect it behaves like cdm + cdu (it runs on first render, and on state and prop updates)
+                // If you do pass a second argument to useEffect (an array consisting of a subset of state and props), then it runs on first render and on specified state / prop updates
+
+                // const [status , setStatus ] = React.useState(false);
+                // const [workshops , setWorkshops ] = React.useState(null);
+
+                
+                // If you do pass a second argument to useEffect (an array consisting of a subset of state and props), then it runs on first render and on specified state / prop updates
+
+                // Ex: this function excutes after first render or  when "status" state changes but wont get excute after change of "workshops" state
+                // React.useEffect( ()=>{
+
+                // }, [status]);
+
+                //  // If we do not pass a second argument to useEffect it behaves like cdm + cdu (it runs on first render, and on state and prop updates)
+
+                // React.useEffect( ()=>{
+
+                // });
+
+                // // The effect behaves like componentDidMount() if we pass an empty array - [ ], as second argument to useEffect
+
+                // React.useEffect( ()=>{
+
+                // }, []);
+
+
+                React.useEffect( () => {
+                    console.log( 'like cdm: inside effect function' );
+
+                    let id = setInterval(() => {
+                        console.log( 'about to set new time : changing the time' );
+                        setTime( (new Date()).toTimeString() );
+                    }, 1000);
+
+                    // the function returned by the effect function is a "cleanup" function (roughly speaking it is like componentWillUnmount)
+                    return () => {
+                        console.log( 'like cwun: cleanup function executed' );
+                        clearInterval( id );
+                    };
+                }, []);
+
+                console.log( 'render: returning UI inside render' );
+
+                return (
+                    <React.Fragment>
+                        <div>
+                            {message} {time}
+                        </div>
+                    </React.Fragment>
+                );
+            }
+
+            ReactDOM.render( <DigitalClock message="The time in India is " />, document.getElementById( 'root' ) );
+
+            setTimeout(() => {
+                ReactDOM.render( <div>That's all folks</div>, document.getElementById( 'root' ) );
+            }, 10000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+Important Things to care of 
+
+    * Use semantic tags - Good for acccessability , SEO
+    * Give alignment properly , use meta tags
+    * Run your page through NVDA and Lighthouse, and 2 browsers - chrome, Firefox, Edge 
+    * Use keyboard to navigate
+    * Run your pages through w3c HTML and CSS Validator - https://validator.w3.org/
+    * Optional : Minify the CSS using the CSS minifier and include this minified css in html in the place of  original . NOTE: KEEP THE ORIGINAL 
+    * Name CSS classes well 
+    * Site Map
+
+RWD
+
+    - Fluid layout
+    - Fluid Images - make image size is 100% of parent
+    - Mobile-first-approach 
+
+Image
+    * Use proper Alt for image tag - Do not include  "image of " (good for seo, screen readers)   
+    * give alt="empty" for not important images
+
+Form 
+    * Use proper labels for form tags (inputs must enclosed within label you can hide if you don't want to  show)
+    * Use form tag for inputs ! very very Important
+    * use type= reset for reset button
+    * use type="submit" for submit button 
+    * use Method= post for important data
+
+JS
+    * While manipulating so many css styles using Js then group all those styles in one class 
+    * So that it will excute at a time instead of line by line 
+
+    Different Methods
+    Modifying DOM - creating attributes , creating new elements
+    event handling
+    event listeners 
+
+Notes: Day13
+
+Prevent Default - To stop default actions
+stop Propagation - prevents the event handling after this 
+
+Constraint_validation API
+    - https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation
+
+Topics Covered:
+    1. Event flow (capture phase and bubble phase)
+    2. Mouse Events - Handson work
+    3. Window events - scroll, resize, load
+    4. input events - focus and blur and input
+    5. Hands on - link navigation
+    6. Form input 
+    7. On error global event
+    8. Constraint_validation  apis - went to breakout room to understand the concept 
+    6. 
+
+
+    
+
+Give brief of meeting app and give team details
+Work distribution
+Agenda - what are you covering in the demo
+branching 
+Problem statement 
+Introduce the team and project
+break down of modules 
+Give brief about approach
+tools for accessibility , talk about lighthouse
+tools for seo, performance - (NVDA, keyboard)
+
+included how you validated the code (syntax validation w3c )
+
+code: 
+First output and then  code (show screen in desktop and mobile view etc )
+Functionality, SEO, accessibility
+
+Notes: Day 14
+
+Style Guide Rules for JS: https://github.com/airbnb/javascript
+https://www.markdownguide.org/basic-syntax
+
+JS Best practices Tips:
+    * Put script at end else it will render the page (i.e it should wait )
+    * put entire script inside self enclosing function (helpful not to make any variable as global)
+    * DOM Manipulations are little bit slow. 
+    * So keep minimum DOM Manipulations Ex: setting class for more styles ( I am telling browser in one shot about what are the changes required)
+
+AJAX
+    * Asynchronous JavaScript And XML
+    * AJAX is a technique for accessing web servers from a web page
+    
+
+  
+
+

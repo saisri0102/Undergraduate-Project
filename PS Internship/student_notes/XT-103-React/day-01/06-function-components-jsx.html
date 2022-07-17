@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+      
+       function MeetingCard( props ){
+            return (
+                <div>
+                    <div>{props.name}</div>
+                    <div>{props.date.toDateString()} , {props.startTime}, {props.endTime}</div>
+                    
+                </div>
+            );
+       }
+
+       // 1st way 
+
+       // <React.Fragment> ReactElement1 ReactElement2 ... </React.Fragment>
+       const card = (
+           <React.Fragment>
+            <MeetingCard
+                name= 'Project Presentation'
+                date = {new Date(2021, 2, 16)}
+                startTime = {12}
+                endTime = {13}  
+            >
+                <span>Hello Card </span>
+                <span>Hello Card 2</span>
+            </MeetingCard> 
+            <MeetingCard
+                name= 'Assessement '
+                date = {new Date(2021, 2, 16)}
+                startTime = {12}
+                endTime = {13}  
+            >
+                <span>Hello Card </span>
+                <span>Hello Card 2</span>
+            </MeetingCard> 
+           </React.Fragment>
+       );
+
+       // 2nd way 
+
+       // [ReactElement1 , ReactElement2, ...]
+
+       const card1 = (
+           [
+           <MeetingCard 
+                key = {1}
+                name= 'Project Presentation'
+                date = {new Date(2021, 2, 16)}
+                startTime = {12}
+                endTime = {13}  
+            >
+                <span>Hello Card </span>
+                <span>Hello Card 2</span>
+            </MeetingCard> ,
+            <MeetingCard
+                key = {2}
+                name= 'Assessement '
+                date = {new Date(2021, 2, 16)}
+                startTime = {12}
+                endTime = {13}  
+            >
+                <span>Hello Card </span>
+                <span>Hello Card 2</span>
+            </MeetingCard> 
+
+           ]
+       );
+       
+
+    //  Without React.Fragment card looks like this  which is wrong
+    // const card  = (
+    //        {x=1}
+    //        {y=2}
+    //    )
+
+       ReactDOM.render(card1, document.getElementById('root'));
+
+       console.log(card);
+    </script>
+</body>
+</html>

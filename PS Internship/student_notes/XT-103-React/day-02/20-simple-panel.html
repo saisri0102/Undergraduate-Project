@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .panel{
+            border:1px solid crimson;
+            border-radius: 5px;
+        }
+        .panel-heading{
+            background-color: crimson;
+            color: white;
+            padding:10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .panel-body{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+
+        class Panel extends React.Component {
+
+            state = {
+                open:true
+            }
+
+            onClickHandler  = () =>{
+
+                // This works fine if only one setState is present 
+                // But wont work if we have multiple set states
+                // So it is good to use function inside setState 
+                // this.setState({
+                //     open: !this.state.open
+                // })
+
+                this.setState(state=>{
+                    return {
+                        open: !state.open
+                    };
+                    
+                });
+            }
+            render(){
+
+                const {heading , children} = this.props;
+                const {open} = this.state;
+                return (
+                    <div className="panel">
+                        <div className= "panel-heading" onClick = {this.onClickHandler}>{heading}</div>
+                        {
+                            open ? ( <div className="panel-body">{children}</div>): null
+                        }
+                       
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Panel heading = "What is React?">
+                <p>React is a JS library for building UI of the web page</p>
+                <p>It is created by Facebook</p>
+            </Panel>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

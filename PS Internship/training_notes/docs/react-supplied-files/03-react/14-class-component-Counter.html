@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Step 1: Write a class-based component called "Counter" that shows a counter value (starting 0), and 2 buttons - "+" and "-". Clicking "+" increments the counter, and clicking "-" decrements the counter. The markup to be rendered this is provided below.
+
+            // Step 2: Try using state which is setup using class property syntax
+            
+            // Step 3: Try using both bind() and class property syntax for event handler functions to fix its context to the Counter object. You may also use define the event handler to be an arrow function that calls the real event handler methods.
+            // const el = (
+            //     <div>
+            //         Counter: <span>{/* counter value */}</span>
+            //         <button>+</button>
+            //         <button>-</button>
+            //     </div>
+            // );
+
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem culpa pariatur, rem temporibus inventore amet! Distinctio officia impedit perferendis quas, molestiae accusantium, doloribus hic dicta, tempora deleniti ad est quod.
+        </p>
+
+        <script>
+            document.addEventListener( 'DOMContentLoaded', function() {
+                const favoriteColor = localStorage.getItem( 'favorite-color' );
+                document.body.style.backgroundColor = favoriteColor;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+$base-font-size-mobile: 12px !default;
+$base-font-size-tablet: 14px !default;
+$base-font-size-desktop: 16px !default;
+
+$tablet-min-width: 640px !default;
+$desktop-min-width: 992px !default;
+
+$base-margin: 1em !default;
+$small-margin: $base-margin / 2;
+$large-margin: $base-margin * 1.75;
+
+$color-extra-lightgray: #e9e9e9;
+$color-lightgray: #dddddd;
+$color-gray: #aaaaaa;
+$color-primary: #0069d9 !default;
+$color-primary-light: lighten( $color-primary, 20% );
+$color-danger: #c81414 !default;

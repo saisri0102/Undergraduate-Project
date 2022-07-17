@@ -1,0 +1,11 @@
+.site-map ul {
+    padding-left: 4em;
+}
+
+.site-map > ul {
+    padding-left: 0;
+}
+
+.site-map li {
+    margin: 0.5em 0;
+}

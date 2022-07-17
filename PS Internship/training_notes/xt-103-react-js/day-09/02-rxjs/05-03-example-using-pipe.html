@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const interval = rxjs.interval;
+            const merge = rxjs.merge;
+            
+            const map = rxjs.operators.map;
+            
+            const take = rxjs.operators.take;
+
+            function getDateObservable( period, repeat = 10 ) {
+                return interval( period * 1000 ).pipe(
+                    take( repeat ),
+                    map( x => new Date() )
+                );
+            }
+
+            class DateObserver {
+                next( date ) {
+                    console.log( date );
+                }
+                
+                error() {
+
+                }
+
+                complete() {
+                    console.log( 'no more events' );
+                }
+            }
+
+            const observable1$ = getDateObservable( 2, 7 );
+            const observable2$ = getDateObservable( 5, 7 );
+            
+            const mergedObservable$ = merge( observable1$, observable2$ );
+
+            mergedObservable$.subscribe( new DateObserver() );
+        </script>
+    </body>
+</html>

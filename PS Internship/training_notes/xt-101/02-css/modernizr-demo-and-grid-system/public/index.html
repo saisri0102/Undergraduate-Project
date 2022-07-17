@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" class="my-no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body class="container">
+        <h1>Feature detection using Modernizr</h1>
+        <p>
+            Check out this page in browsers with different set of supported features - eg. Chrome and Firefox. As of Feb 2020, the latest version of Chrome supports websql, whereas Firefox does not. Similarly Firefox supports Math ML, whereas Chrome does not.
+        </p>
+        <div class="messages">
+            <header>My Glossy Header (putting CSS feature detection to use)</header>
+
+            <h2>Sample Math ML (supported in Firefox but not Chrome)</h2>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                   <msup><mi>a</mi><mn>2</mn></msup>
+                   <mo>+</mo>
+                       
+                   <msup><mi>b</mi><mn>2</mn></msup>
+                   <mo> = </mo>
+                       
+                   <msup><mi>c</mi><mn>2</mn></msup>
+                </mrow>
+             </math>
+        </div>
+
+        <script src="/libs/jquery/dist/jquery.js"></script>
+        <script src="/libs/modernizr.js"></script>
+        <script src="/js/index.js"></script>
+    </body>
+</html>

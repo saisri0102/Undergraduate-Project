@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p title="Introduction to DOM" id="p1" class="intro-para" data-user="john">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, quas maiores quos magni, alias quisquam cupiditate quo ut, molestiae neque aut? Omnis necessitatibus et quidem? Cum illum cumque omnis dolores.
+    </p>
+    <p title="Conclusion" id="p2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi dolores aperiam nesciunt asperiores reiciendis vitae similique provident, dignissimos ipsam. Deserunt ad eius ut reiciendis itaque, odio perspiciatis et optio at.
+    </p>
+
+    <input type="text" id="username" value="johndoe" />
+
+    <script>
+        const para1El = document.querySelector('#p1');
+        const para2El = document.querySelector('#p2');
+        const usernameEl = document.querySelector("#username");
+
+        // HTML element attributes are exposed as properties on the DOM node 
+        console.log(para1El.id); // p1
+        console.log(para1El.title); // Introduction to DOM
+        //console.log(para1El.data-user); // undefined
+
+        // getAttribute()
+
+        // Standard and custom properties can be accessed using getAttribute()
+
+        console.log(para1El.getAttribute('data-user')); // john
+        console.log(para1El.getAttribute('id')); // p1
+
+        para1El.title =" First Paragraph";
+
+        console.log('value =' , usernameEl.value); // gives live or updated value
+        console.log('value= ', usernameEl.getAttribute('value')) //  gives initial value only
+
+        //setting Attribute
+        usernameEl.value='Mark'; // does not change in the page (only change in live)
+
+        usernameEl.setAttribute('value', 'mary'); // changes in both places
+
+        console.log(usernameEl.value);
+
+        // checking Attribute
+        console.log(para1El.hasAttribute('title')); // true
+        console.log(usernameEl.hasAttribute('title')); // false
+
+        // removing Attribute
+        para2El.removeAttribute('title');
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .framework-name{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+ 
+    <!--We shall create this through React-->
+    <!-- 
+        <div id="message">
+            Hello<span id="name" class="framwork-name">React</span>
+        </div>
+     -->
+
+    <!--A place for React to create the UI and show it-->
+    <div id="root">
+       
+    </div>
+
+    <!--to define the UI components (Like architect) This piece is shared between reactnative and reactjs-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <!--Takes in UI defintions,does DOM manipulations and shows the page (Like engineer)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+    <script>
+        // Define a "React  element" -> Definition for a piece of the UI
+        // React.createElement() is similar to document.createElement('div')
+        // React element is not a DOM node
+        // 1st argument is type of the element. 
+        //2nd argument  is what are the props (Attributes) - Object
+        // 3rd , 4th, 5th arguments ... are children specified as React elements
+
+        const span = React.createElement(
+            'span',
+            {
+                id:'name',
+                className: 'framework-name'
+            },
+            'React'
+        )
+
+        // For react props and children will be inside props ,children will go under children property which is an array
+
+        const div = React.createElement(
+            'div', 
+            {
+                id:'message',
+                title:'An introduction to React UI'
+            },
+            'Hello ', // 1st child (text)
+            span //2nd child
+        ); 
+
+        console.log( div);
+
+
+        // A Div dom node is created from the div React element, and it is set as the child within the root element. Any content within root element will get removed 
+        ReactDOM.render(div, document.getElementById('root'));
+    </script>
+
+</body>
+</html>

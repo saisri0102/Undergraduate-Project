@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #p1{
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <!--Inlie,Internal , External-->
+    <!--Inline -->
+    <p onclick="console.log(this.innerHTML);" style="color: crimson;" id="p1">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat, dolores. Eum illo dicta eos quas dignissimos aliquid in magnam doloribus delectus unde. Itaque, commodi? Ullam corrupti possimus excepturi nesciunt dolor?
+    </p>
+    <p onclick="console.log(this.innerHTML);" style="color: crimson;" id="p2">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat, dolores. Eum illo dicta eos quas dignissimos aliquid in magnam doloribus delectus unde. Itaque, commodi? Ullam corrupti possimus excepturi nesciunt dolor?
+    </p>
+    
+
+    <!--To show some content if JS is disabled in browser-->
+    <noscript>You must enable JS to use this application</noscript>
+
+  <!--Internal JS-->
+    <script>
+
+        /* Javascript i interpretted Language so it is executed line by line
+
+          When some error occurs it stops excuting next line 
+          We can execute JS in console also */
+        console.log("Hello Friends");  /*When page loads ths gets executed */
+       
+        /*Execute this function when para with id (p1) is clicked*/
+
+        document.getElementById('p1').onclick=function(){
+            console.log('Paragraph1 is clicked but inline console log  wont get display');    
+        }
+
+        
+        /*Execute this function when para with id (p2) is clicked*/
+
+        document.getElementById('p2').addEventListener('click',function(){
+            console.log('Paragraph 2 is clicked and I will display inline one also');          
+        });
+
+    </script>
+    <!--External JS-->
+    <script src="01-Including-js.js"></script>
+</body>
+</html>

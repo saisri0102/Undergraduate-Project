@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Step 2: Define a WeatherReport (function-based) component. Use the received props to display details in a Bootstrap card (b4-card-default). Make sure to use className="" instead of class="" to aply CSS classes within JSX.
+            
+
+
+            const rainfall = 12.5, min = 50, max = 72, city = 'San Jose';
+            const lastFiveDaysRainfall = [ 3.2, 0, 10.5, 9.0, 11.2 ];
+
+            const date = new Date();
+
+            function inCelsius( tempInFarenheit ) {
+                return (( 5 / 9 ) * ( tempInFarenheit - 32 )).toFixed( 2 );
+            }
+
+            class TemperatureStats {
+                constructor( min, max ) {
+                    this.min = min;
+                    this.max = max;
+                }
+            }
+
+            // Step 1: Render a WeatherReport element and pass data of different types as props
+            // Step 3: Gather all the props to be passed in an object (say props), and pass it using props spread syntax ({ ...props } when creating the element)
+            ReactDOM.render( /* your element goes in here */, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

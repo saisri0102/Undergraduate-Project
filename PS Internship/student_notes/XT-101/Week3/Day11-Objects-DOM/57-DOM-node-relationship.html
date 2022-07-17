@@ -1,0 +1,39 @@
+<!-- DOM node - It is an object the browser creates. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, fugit nam, animi ipsa repudiandae ullam quae vel culpa ex iusto error veniam eius assumenda fuga ratione recusandae optio in odit?
+    </p>
+     <button>click me</button>
+
+     <script>
+       
+         const htmlNode = document.documentElement
+         console.dir(htmlNode) ;
+
+         const headNode = htmlNode.children[0];
+         const bodyNode = htmlNode.children[1];
+
+        // not important
+        // console.log(bodyNode.firstChild); // empty text (text node)
+
+        // more important
+        console.log(bodyNode.firstElementChild); // <p> </p>
+        console.log(bodyNode.lastElementChild); // <script> <script>
+
+        console.log(bodyNode.firstElementChild.nextElementSibling); // button
+        console.log(bodyNode.firstElementChild.nextElementSibling.nextElementSibling); // script  
+
+        // The above one also not good for finding DOM node
+
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const counter$ = rxjs.interval( 10000 );
+
+            const counterSubject = new rxjs.Subject();
+
+            const subscription1 = counterSubject.subscribe(evt => {
+                console.log(`[1] ${evt}`);
+            });
+
+            const subscription = counter$.subscribe( counterSubject );
+
+            setTimeout(() => {
+                const subscription2 = counterSubject.subscribe(evt => {
+                    console.log(`[2] ${evt}`);
+                });
+            }, 15000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p id="p-1" class="intro">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque repellat accusamus earum alias necessitatibus magni reprehenderit, fuga quisquam praesentium totam perferendis exercitationem nesciunt. Deleniti aut corrupti, recusandae quibusdam assumenda similique!
+        </p>
+        
+        <button class="intro">click me</button>
+
+        <script>
+            // can be even in old browsers
+            
+            // returns only 1 DOM node
+            const p1Node = document.getElementById( 'p-1' );
+            console.log( p1Node );
+
+            // like an array
+            const introEls = document.getElementsByClassName( 'intro' );
+            console.log( introEls );
+
+            // can be used in relatively new browsers (7 years old also support)
+            
+            // querySelector() returns the first matching element
+            console.log( document.querySelector( '#p-1' ) ); // first para
+            console.log( document.querySelector( '.intro' ) ); // first para
+            console.log( document.querySelector( 'body .intro' ) ); // first para
+            
+            // querySelectorAll() returns all the matching element (array-like object)
+            console.log( document.querySelectorAll( '.intro' ) ); // [ para, button ]
+        </script>
+    </body>
+</html>

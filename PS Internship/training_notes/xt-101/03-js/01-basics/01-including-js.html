@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #p1 {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Inline, internal, external -->
+        <p onclick="console.log( this.innerHTML );" style="color: crimson;" id="p1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, veritatis laborum magnam temporibus nobis veniam quo iste placeat tenetur amet consequuntur perspiciatis quod ullam vel! Eum non exercitationem officiis illo.
+        </p>
+        
+        <noscript>You must enable JS to use this application! <a href="https://support.google.com/adsense/answer/12654?hl=en">On Chrome you can do it this way</a></noscript>
+
+        <script>
+            console.log( 'Good morning' );
+
+            // hey browser,execute the function when the para is clicked
+            document.getElementById( 'p1' ).addEventListener( 'click', function() {
+                console.log( 'Para was clicked' );
+            });
+        </script>
+
+        <script src="js/01-including-js.js"></script>
+        
+        <p>After script element</p>
+    </body>
+</html>

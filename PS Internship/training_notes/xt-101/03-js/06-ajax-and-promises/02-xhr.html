@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // XMLHttpRequest
+            const xhr = new XMLHttpRequest(); // to support old IE (you need to use ActiveXObject)
+
+
+            // xhr.readyState property
+            // 'readystatechange' event is fired multiple times (initiated, got the first byte of response, completed)
+            xhr.addEventListener( 'readystatechange', function() {
+                console.log( xhr.readyState ); // completed -> readyState is 4
+
+                if( xhr.readyState === 4 ) { // on complete
+                    if( xhr.status >= 200 && xhr.status < 300 ) { // success
+                        console.log( xhr.responseText );
+
+                        // xhr.responseText is a string
+                        // converts JSON formatted string -> JS object
+                        const workshops = JSON.parse( xhr.responseText );
+                        console.log( workshops );
+                        const workshopNames = workshops.map(function( workshop ) {
+                            return workshop.name;
+                        });
+                        console.log( workshopNames );
+                    } else if( xhr.status >= 400 ) {
+                        console.log( xhr.statusText );
+                    }
+                }
+            });
+
+            // configure the request
+            // always pass true as 3rd argument - makes the request async
+            xhr.open( 'GET', 'https://workshops-server.herokuapp.com/workshops', true );
+
+            // send() will send the request from the browser
+            // since this is async, the second method will initiate data fetch and return immediately
+            xhr.send();
+
+            console.log( 'hello' );
+            // console.log( xhr.responseText ); // available only if request is sync
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+multhi-programming->context switch(if 1 device goes for I/O then only other device is selected)
+multi-tasking->context switch and time slice
+Arrival Time: Time at which the process arrives in the ready queue.
+Completion Time: Time at which process completes its execution.
+Burst Time: Time required by a process for CPU execution.
+Turn Around Time: Time Difference between completion time and arrival time.
+Turn Around Time = Completion Time – Arrival Time
+
+Waiting Time(W.T): Time Difference between turn around time and burst time.
+Waiting Time = Turn Around Time – Burst Time
+
+Convoy Effect is phenomenon associated with the First Come First Serve (FCFS) algorithm, in which the whole Operating System slows down due to few slow processes.->many shortest jobs after a longer job
+
+Shortest Job first:
+-> has the advantage of having a minimum average waiting time among all scheduling algorithms.
+->It may cause starvation if shorter processes keep coming. This problem can be solved using the concept of ageing.
+Aging is a technique of gradually increasing the priority of processes that wait in the system for a long time.
+
+
+Process synchronization:
+->Race Condition:When more than one processes are executing the same code or accessing the same memory or any shared variable in that condition there is a possibility that the output or the value of the shared variable is wrong so for that all the processes doing the race to say that my output is correct this condition known as a race condition.A race condition is a situation that may occur inside a critical section.
+->Critical section is a code segment that can be accessed by only one process at a time. Critical section contains shared variables which need to be synchronized to maintain consistency of data variables.
+->Any solution to the critical section problem must satisfy three requirements:
+
+Mutual Exclusion : If a process is executing in its critical section, then no other process is allowed to execute in the critical section.
+Progress : If no process is executing in the critical section and other processes are waiting outside the critical section, then only those processes that are not executing in their remainder section can participate in deciding which will enter in the critical section next, and the selection can not be postponed indefinitely.
+Bounded Waiting : A bound must exist on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted.Peterson’s Solution preserves all three conditions.
+
+
+Inter-Process Communication(IPC):
+Processes can communicate with each other through both:
+   Shared Memory
+   Message passing
+
+Semaphore:
+Semaphore is simply a variable which is non-negative and shared between threads.This variable is used to solve the critical section problem and to achieve process synchronization in the multiprocessing environment.
+Semaphores are of two types:
+          Binary Semaphore – This is also known as mutex lock. It can have only two values – 0 and 1. Its value is initialized to 1. It is used to implement                               the solution of critical section problem with multiple processes.
+          Counting Semaphore – Its value can range over an unrestricted domain. It is used to control access to a resource that has multiple instances.
+
+
+Thread:
+Thread is a single sequence stream within a process. Threads have same properties as of the process so they are called as light weight processes. Threads are executed one after another but gives the illusion as if they are executing in parallel. Each thread has different states. Each thread has
+1)A program counter
+2)A register set
+3)A stack space
+Threads are not independent of each other as they share the code, data, OS resources etc.
+
+Similarity between Threads and Processes –
+1)Only one thread or process is active at a time
+2)Within process both execute sequentiall
+3)Both can create children
+
+Differences between Threads and Processes –
+1)Threads are not independent, processes are.
+2)Threads are designed to assist each other, processes may or may not do it

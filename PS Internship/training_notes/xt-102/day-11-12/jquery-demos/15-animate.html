@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .panel {
+                border: 1px solid crimson;
+                margin: 10px;
+            }
+
+            .panel-heading, .panel-body {
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            .panel-heading {
+                background-color: crimson;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel">
+            <div class="panel-heading">
+                What is jQuery?
+            </div>
+            <div class="panel-body">
+                It is a JS library that is cross-browser compatible, and simplifies DOM operations, Ajax etc. It has a wide variety of plugins to expand its capabilities further.
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                What is jQuery?
+            </div>
+            <div class="panel-body">
+                It is a JS library that is cross-browser compatible, and simplifies DOM operations, Ajax etc. It has a wide variety of plugins to expand its capabilities further.
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                What is jQuery?
+            </div>
+            <div class="panel-body">
+                It is a JS library that is cross-browser compatible, and simplifies DOM operations, Ajax etc. It has a wide variety of plugins to expand its capabilities further.
+            </div>
+        </div>
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $( '.panel-heading' ).click(function() {
+                    // Recreate the previous demo using animate
+                });
+            });
+        </script>
+    </body>
+</html>

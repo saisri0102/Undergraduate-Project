@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="https://mymeetingsapp.herokuapp.com/api/auth/login" id="login-form">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password" />
+        <button>Login</button>
+    </form>
+
+    <section>
+        <h2>Teams</h2>
+        <hr/>
+        <ul id="teams"></ul>
+    </section>
+
+    <script>
+
+        const LS_KEYS = {
+            TOKEN: 'token',
+            NAME: 'name',
+            EMAIL: 'email'
+        }
+        const loginForm= document.querySelector('#login-form');
+
+       function validate(){
+           return true; // assume input is valid 
+       }
+
+
+       function storeUserInfo( responseJson){
+            localStorage.setItem(LS_KEYS.EMAIL, responseJson.email);
+            localStorage.setItem(LS_KEYS.NAME, responseJson.name);
+            localStorage.setItem(LS_KEYS.TOKEN, responseJson.token);
+       }
+
+       function getToken( responseJson){
+     
+            return localStorage.getItem(LS_KEYS.TOKEN) // if item is nor present then it will return null
+       }
+
+       function showTeams(teams){
+           const teamsEl= document.querySelector('#teams');
+
+           for(let team of teams){
+                let teamMembers = '';
+                for(let member of team.members){
+                        teamMembers+= `<li>${member}</li>`;
+                }
+                teamsEl.innerHTML+=`
+                  <li>
+                    <div>Name; ${name} </div>
+                    <div> Short name: @${shortName}</div>
+                    <div>Description: ${description}</div>
+                  </li>
+                `
+           }
+          
+
+           
+       }
+
+       function getTeams(){
+            
+            const token= getToken();
+            const myHeaders = new Headers();
+
+           
+            
+            myHeaders.append('Content-Type', 'application/json');
+            myHeaders.append('Authorization', token);
+
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+      
+            redirect: 'follow'
+            };
+
+            fetch('https://mymeetingsapp.herokuapp.com/api/teams', requestOptions)
+                .then(async function (response){
+                if(!response.ok){
+
+                    const errorResponse= await response.json();
+                    throw new Error(errorResponse.message);
+                }
+                return response.json();
+                })
+                .then(function(teams){
+                    return teams;
+                });
+                //.catch(error=> console.log(error));
+
+
+       }
+
+        function login(){
+            var myHeaders = new Headers();
+
+            myHeaders.append('Content-Type', 'application/json');
+            // myHeaders.append('Authorization', token);
+
+            const body = JSON.stringify({  
+                email:loginForm.email.value,
+                password:loginForm.password.value
+            });
+
+            var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: body,
+            redirect: 'follow'
+            };
+
+            return fetch('https://mymeetingsapp.herokuapp.com/api/auth/login', requestOptions)
+            .then(function (response){
+                if(!response.ok){
+                    throw new Error('Bad credentials');
+                }
+                return response.json();
+            })        // reponse.json() returns promise
+            .then(storeUserInfo )
+            .then(getTeams)
+            .catch(error => console.log('error', error.message));
+        }
+
+        loginForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                if(validate()){
+                    try{
+                        await login();
+                        const teams= await getTeams();
+                        showTeams(teams);
+                    }
+                    catch(error){
+                        alert('Unable to fetch and show teams you are part of');
+                    }
+                    
+                }
+               
+        });
+
+        
+        
+    </script>
+</body>
+</html>

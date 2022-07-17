@@ -1,0 +1,68 @@
+
+<!--
+    Input event fires whenever you add or remove character
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" />
+            <span id="username-error" style="display: none;">username must have at least 8 characters</span>
+        </div>
+
+        <div>
+            <input type="text" id="input-2" />
+        </div>
+
+        <script>
+            const usernameEl = document.querySelector( '#username' );
+            const input2El = document.querySelector( '#input-2' );
+            const usernameErrorEl = document.querySelector( '#username-error' );
+
+            function focusHandler( event ) { // // gets excuted everytime when element is focused
+                console.log( 'focus' );
+
+                // To get the inner most DOM node on which the event occured
+                console.log( event.target ); // <input type=​"text" id=​"username">​
+
+                // every function has a "this" not only for constructor function (function context)
+                console.log( this );
+            }
+            
+            usernameEl.addEventListener( 'focus', focusHandler );
+            input2El.addEventListener( 'focus', focusHandler );
+            
+            function blurHandler( event ) {
+                console.log( 'blur' ); // Helpful For validation
+                console.log( this );
+            }
+            
+            usernameEl.addEventListener( 'blur', blurHandler );
+            input2El.addEventListener( 'blur', blurHandler );
+
+            function usernameErrorCheck() {
+                if( usernameEl.value.length < 8 ) {
+                    usernameErrorEl.style.display = 'inline';
+                } else {
+                    usernameErrorEl.style.display = 'none';
+                }
+            }
+
+            function inputHandler() {
+                console.log( this.value ); 
+            }
+
+            usernameEl.addEventListener( 'blur', usernameErrorCheck );
+            usernameEl.addEventListener( 'input', usernameErrorCheck );
+            usernameEl.addEventListener( 'input', inputHandler );
+        </script>
+    </body>
+</html>

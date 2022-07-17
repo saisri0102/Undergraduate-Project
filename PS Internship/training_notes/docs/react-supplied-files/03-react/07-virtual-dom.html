@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.10.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.10.2/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+        <script type="text/babel">
+            const el1 = (
+                <div>
+                    <h1>Form heading</h1>
+                    <form action="/oldurl">
+                        <div>
+                            <label>Name <input type="text" /></label>
+                            <span>
+                                <span>Hello</span>
+                                <span>John</span>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            );
+
+            const el2 = (
+                <div>
+                    <h2>Form heading</h2>
+                    <form action="/newurl">
+                        <div>
+                            <label>Name <input type="text" /></label>
+                            <div>
+                                <span>Hello</span>
+                                <span>John</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            );
+
+            ReactDOM.render( el1, document.getElementById( 'root' ) );
+
+            setTimeout(function() {
+                ReactDOM.render( el2, document.getElementById( 'root' ) );
+            }, 40000);
+        </script>
+    </body>
+</html>

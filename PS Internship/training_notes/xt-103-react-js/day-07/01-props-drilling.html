@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function App( { links, name } ) {
+                const [ lastClickedLink, setLastClickedLink ] = React.useState( '' );
+
+                return (
+                    <React.Fragment>
+                        <span>{name}</span>
+                        <Navbar links={links} setLastClickedLink={setLastClickedLink} />
+                        <Main lastClickedLink={lastClickedLink} />
+                    </React.Fragment>
+                )
+            }
+
+            function Navbar( { links, setLastClickedLink } ) {
+                return links.map( link => <Link link={link} setLastClickedLink={setLastClickedLink} /> );
+            }
+
+            function Link( { link, setLastClickedLink } ) {
+                function onClick( event ) {
+                    event.preventDefault();
+                    setLastClickedLink( event.target.innerText + ' ' + event.target.href );
+                }
+
+                return <a href={link.to} onClick={onClick}>{link.text}</a>
+            }
+
+            function Main( { lastClickedLink } ) {
+                return <div>{lastClickedLink}</div>;
+            }
+
+            const props = {
+                links: [
+                    { to: '/workshops', text: 'Workshops List' },
+                    { to: '/about', text: 'About Us' },
+                ],
+                name: 'Workshops App'
+            };
+            
+            ReactDOM.render( <App {...props} />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

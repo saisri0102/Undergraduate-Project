@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form>
+            <input type="text" name="username" required />
+            <input type="password" name="password" required />
+            <button type="submit">Submit</button>
+        </form>
+
+        <button id="btn-outside-form">This will also submit the form</button>
+
+        <script>
+            const formEl = document.querySelector( 'form' );
+            console.dir( formEl );
+            console.log( formEl[0] );
+            console.log( formEl[1] );
+            console.dir( formEl.length );
+
+
+            formEl.addEventListener( 'submit', function( event ) {
+                event.preventDefault();
+
+                const formValues = {};
+
+                for( let i = 0; i < formEl.length; i++ ) {
+                    const input = formEl[i];
+                    if( input.name !== '' ) {
+                        formValues[input.name] = input.value;
+                    }
+                }
+
+                console.log( formValues );
+            });
+
+            document.querySelector( '#btn-outside-form' ).addEventListener( 'click', function() {
+                formEl.submit();
+            });
+        </script>
+    </body>
+</html>

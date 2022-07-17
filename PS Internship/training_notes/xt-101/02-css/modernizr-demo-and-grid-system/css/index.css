@@ -1,0 +1,7 @@
+.my-no-cssgradients header {
+    background: url("/images/glossybutton.png");
+}
+  
+.my-cssgradients header {
+    background-image: linear-gradient(cornflowerblue, rebeccapurple);
+}

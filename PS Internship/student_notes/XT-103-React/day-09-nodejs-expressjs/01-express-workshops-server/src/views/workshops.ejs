@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('partials/header' , {title: title}) -%>
+    </head>
+    <body>
+        <%- include('partials/navbar' , {activeLink: '/workshops'}); -%>
+        <div class="container my-4">
+            <div class="jumbotron">
+                <h1>Workshops</h1>
+                <hr />
+                <p>
+                    Welcome to Workshops App. You will find details of technical workshops happening nearby.
+                </p>
+                <h2>Workshops List</h2>
+                <ul class="list-group">
+                    <% workshops.forEach(workshop => { %>
+                        <li class="list-group-item"><%= workshop.name %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

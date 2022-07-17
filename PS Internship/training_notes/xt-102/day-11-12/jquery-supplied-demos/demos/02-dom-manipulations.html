@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <p class="intro bold">
+            Para 1
+        </p>
+        <p class="main-content" name="second paragraph" data-index="2" id="para-2">
+            Para 2
+        </p>
+        <p class="intro">
+            Para 3
+        </p>
+        <p class="main-content">
+            Para 4
+        </p>
+        <script>
+            var mainContentEl = document.querySelector( '.main-content' ); // it accepts any CSS selector as a string (returns first match) // we can select the el with 2 classes too - e.g. document.querySelector( '.intro.bold' );
+            var mainContentEls = document.querySelectorAll( '.main-content' ); // it accepts any CSS selector as a string (returns all matches)
+            console.log( mainContentEl );
+            console.log( mainContentEls );
+
+            // attribute manipulation methods
+            var para2 = document.getElementById( 'para-2' );
+            console.log( para2.getAttribute( 'name' ) );
+            console.log( para2.getAttribute( 'data-index' ) );
+
+            para2.setAttribute( 'name', 'para after first para' );
+            console.log( para2.getAttribute( 'name' ) );
+
+            para2.removeAttribute( 'name' );
+            console.log( para2.getAttribute( 'name' ) );
+
+            // DOM manipulation (structure of the tree)
+            var span1 = document.createElement( 'span' );
+            span1.innerHTML = 'I am an unborn child of para 2';
+            para2.appendChild( span1 ); // now i am born
+
+            var span2 = document.createElement( 'span' );
+            span2.innerHTML = 'I am the second unborn child of para 2';
+            para2.insertBefore( span2, span1 ); // now i am born (as the sibling of span1); second argument is the reference node (insert happens before this one)
+
+            var someTextNode = document.createTextNode( 'Hello, DOM' );
+            span2.appendChild( someTextNode );
+
+            span1.appendChild( someTextNode );
+
+            para2.removeChild( span1 );
+        </script>
+    </body>
+</html>

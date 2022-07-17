@@ -1,0 +1,13 @@
+.sitemap {
+    ul {
+        padding-left: 4em;
+    }
+    
+    > ul {
+        padding-left: 0;
+    }
+
+    li {
+        margin: 0.5em 0;
+    }
+}

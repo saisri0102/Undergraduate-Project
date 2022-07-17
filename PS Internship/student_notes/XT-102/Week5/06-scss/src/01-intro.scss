@@ -1,0 +1,28 @@
+//$ is used for created variables
+$primary-color: navy;
+$base-font-size:12px;
+
+// if you think smthg is constant in future also, then keep that in mixin
+@mixin std-border {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.btn{
+    @include std-border;
+    padding: $base-font-size; 
+}
+.btn-primary{
+    border-color: $primary-color;
+}
+.alert{
+
+    @include std-border;
+    padding: $base-font-size * 2; // 2times font size
+    border-radius: 5px;
+}
+
+.alert-primary{
+    border-color: $primary-color;
+}
+

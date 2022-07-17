@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .framework-name{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+       
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+        // class   Intro extends React.Component {
+        //     constructor(props) {
+        //     super(props);
+        //     }
+
+        //     render() {
+        //             return (
+        //             <div id="message" title ="Intro to React">
+        //                 Hello <span className="framework-name" id="name">React</span>
+        //             </div>
+        //             );
+        //     }
+
+        // }
+
+        // ReactDOM.render( <Intro />, document.getElementById('root'));
+        /**
+         * render returns a React element, which is a lightweight description of what to render. Most React developers use a special syntax called “JSX” which makes these structures easier to write. The <div /> syntax is transformed at build time to React.createElement('div'). 
+         *
+         */
+        // Babel convert below script to react js script that we did in 01-hello-react.html
+        // JSX (Javascript XML) is like HTML written within JS code
+        // "React Element" -> Definition of a piece UI component 
+        
+        const div = 
+            <div id="message" title ="Intro to React">
+                <label htmlFor ="username">User name</label>
+                <input type="text" id="username" />
+                Hello <span className="framework-name" id="name">React</span>
+            </div>
+
+        ReactDOM.render(
+            div,
+            document.getElementById('root')
+        )
+    </script>
+
+</body>
+</html>

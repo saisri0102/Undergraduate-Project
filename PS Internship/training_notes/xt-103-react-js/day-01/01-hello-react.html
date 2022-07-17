@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .framework-name {
+                color: crimson;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- We shall create this through React -->
+        <!-- 
+            <div id="message" title="An introduction to React UI">
+                Hello <span id="name" class="framework-name">React</span>
+            </div>
+        -->
+        <!-- A place for React to create the UI and show it -->
+        <div id="root"></div>
+        
+        <!-- to define the UI components -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <!-- takes in UI defintions, does DOM manipulations and shows the page -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script>
+            // Define a "React element" -> defintion for a piece of the UI
+            // React.createElement() is simlar to document.createElement( 'div' )
+            // a "React element" is NOT a DOM node
+            // 1st argument -> type, 2nd argument -> object - the props (attributes), 3rd argument, 4th, 5th, 6th... -> children specified as React elements
+            const span = React.createElement( 'span', { id: 'name', className: 'framework-name' }, 'React' )
+            
+            const div = React.createElement(
+                'div',
+                {
+                    id: 'message',
+                    title: 'An introduction to React UI'   
+                },
+                'Hello ', // 1st child (text)
+                span // 2nd child (span)
+            );
+
+            // A div DOM node is created from the div React element, and it is set as the child within the root element
+            ReactDOM.render( div, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

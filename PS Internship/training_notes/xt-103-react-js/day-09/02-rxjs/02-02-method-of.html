@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const sequence$ = rxjs.of( 1, 2, 3 );
+
+            const subscription = sequence$.subscribe({
+                next( evt ) {
+                    console.log( evt );
+                },
+                complete() {
+                    console.log( 'completed' );
+                }
+            });
+        </script>
+    </body>
+</html>

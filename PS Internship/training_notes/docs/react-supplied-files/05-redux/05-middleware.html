@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.4/redux.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.10.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.10.2/umd/react-dom.development.js"></script>
+
+        <script type="text/babel">
+            // action types
+            const INCREMENT = 'INCREMENT';
+            const DECREMENT = 'DECREMENT';
+
+            // "action creators" - functions that return "actions" (i.e. objects representing actions in the app)
+            function incrementAC() {
+                return {
+                    type: INCREMENT
+                };
+            } 
+            
+            function decrementAC() {
+                return {
+                    type: DECREMENT
+                };
+            }
+
+            function counterReducer( curState = { value : 0 }, action ) {
+                let newState;
+
+                switch( action.type ) {
+                    case INCREMENT:
+                        newState = { ...curState, value: curState.value + 1 };
+                        break;
+                    case DECREMENT:
+                        newState = { ...curState, value : curState.value - 1 };
+                        break;
+                    default:
+                        newState = curState;
+                }
+
+                return newState;
+            }
+
+            function logger1( store ) {
+                return function( next ) {
+                    return function( action ) {
+                        console.log( 1 );
+                        console.group( 'before state change' );
+                        console.log( 'action = ', JSON.stringify( action, null, 4 ) );
+                        console.log( 'state = ', JSON.stringify( store.getState(), null, 4 ) );
+                        console.groupEnd();
+
+                        next( action );
+
+                        console.log( 1 );
+                        console.group( 'after state change' );
+                        console.log( 'action = ', JSON.stringify( action, null, 4 ) );
+                        console.log( 'state = ', JSON.stringify( store.getState(), null, 4 ) );
+                        console.groupEnd();
+                    }
+                }
+            }
+            
+            // Step 1: add another logger function - define it using arrow function syntax
+
+            // Step 2: Add the new logger to the middleware chain
+            const store = Redux.createStore( counterReducer, Redux.applyMiddleware( logger1 ) );
+
+            class Counter extends React.Component {
+                increment = () => {
+                    store.dispatch( incrementAC() );
+                }
+
+                decrement = () => {
+                    store.dispatch( decrementAC() );
+                }
+
+                render = () => {
+                    return (
+                        <div>
+                            <span>{store.getState().value}</span>
+                            <button onClick={this.increment}>+</button>
+                            <button onClick={this.decrement}>-</button>
+                        </div>
+                    );
+                }
+
+                componentDidMount() {
+                    store.subscribe( this.forceUpdate.bind( this ) );
+                }
+            }
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+        <style>
+            table, caption {
+                margin: 20px 0;
+            }
+
+            table, th, td {
+                border-width: 1px;
+                border-style: solid;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
+
+            .weather-report, .weather-report th, .weather-report td {
+                border-color: green;
+            }
+            
+            .weather-forecast, .weather-forecast th, .weather-forecast td {
+                border-color: crimson;
+            }
+
+            tr:nth-child(even) {
+                background-color: lightgray;
+            }
+    
+            th, td {
+                padding: 10px;
+            }
+
+            th {
+                font-weight: normal;
+            }
+
+            caption {
+                caption-side: bottom;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <table class="weather-report">
+                    <caption>Weather in metro cities</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">City</th>
+                            <th scope="col">Rainfall</th>
+                            <th scope="col">Min</th>
+                            <th scope="col">Max</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sortable-rows-container">
+                        <tr>
+                            <th scope="row">Bangalore</th>
+                            <td>10</td>
+                            <td>22</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Chennai</th>
+                            <td>5</td>
+                            <td>25</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">New Delhi</th>
+                            <td>0</td>
+                            <td>5</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mumbai</th>
+                            <td>35</td>
+                            <td>25</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Hyderabad</th>
+                            <td>0</td>
+                            <td>5</td>
+                            <td>15</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </thead>
+        </table>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $( '#sortable-rows-container' ).sortable();
+            });
+        </script>
+    </body>
+</html>

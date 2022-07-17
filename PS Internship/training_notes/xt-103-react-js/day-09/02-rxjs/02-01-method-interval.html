@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const sequence$ = rxjs.interval( 1000 );
+
+            const subscription = sequence$.subscribe(evt  => {
+                console.log( evt );
+            });
+
+            setTimeout(() => {
+                subscription.unsubscribe();
+            }, 5000);
+        </script>
+    </body>
+</html>

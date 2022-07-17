@@ -1,0 +1,37 @@
+@use 'includes/vars' as base;
+
+body {
+    font-family: base.$primary-font-stack;
+}
+
+.intro {
+    h1 {
+        padding: base.$padding-lg 0;
+        font-size: base.$font-size-base + 12px;
+        color: base.$primary-color;
+    }
+
+    h2 {
+        padding: base.$padding-lg 0;
+        font-size: base.$font-size-base + 7px;
+        color: base.$primary-color;
+    }
+
+    p {
+        padding: base.$padding-base 0;
+    }
+
+    a {
+        text-decoration: underline base.$primary-color;
+
+        &:hover {
+            text-decoration: none;
+            color: base.$primary-color;
+        }
+    }
+}
+
+p.highlight {
+    border: base.$primary-border;
+    box-shadow: base.$primary-box-shadow;
+}

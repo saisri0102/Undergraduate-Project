@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <script src="external/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            const $container = $('.container');
+            // $() is also used to create an element
+
+            const $row = $('<div class="row" id="row-1">This is the row</div>')
+            console.log($row); // collection with single dom node
+
+            // set $row as last child of every element of container 
+            $container.append($row);
+
+            // create en element and insert it as the previous sibling of evry row element 
+
+            const $rows = $('.row');
+            $rows.before($('<div class="row">Newly added row</div>'));
+            $rows.after($('<div class="row">Newly added row after initial row</div>'));
+        })
+    </script>
+</body>
+</html>

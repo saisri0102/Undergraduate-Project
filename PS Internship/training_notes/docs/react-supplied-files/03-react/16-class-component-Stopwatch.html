@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            /**
+             * Build a Stopwatch
+             * You can start, stop and reset the stopwatch using buttons
+             * It stores the seconds elapsed when it is in running state
+             * "Reset" sets the seconds elapsed back to 0
+             * Which signature of setState() will you use in this case? The answer may depend upon your implementation of Stopwatch
+             * 
+             * Note: setInterval() returns an integer id. Calling clearInterval() with the id, stops a function executing periodically via setInterval()
+             */
+            class Stopwatch extends React.Component {
+                state = {
+                    /* what info would you need to maintain here? */
+                };
+
+                start = () => {
+
+                }
+
+                stop = () => {
+
+                }
+
+                reset = () => {
+
+                }
+
+                render() {
+                    return (
+                        <div className="container">
+                            Time elapsed: <span></span>
+                            <button className="btn btn-primary">Start</button>
+                            <button className="btn btn-primary">Stop</button>
+                            <button className="btn btn-primary">Reset</button>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

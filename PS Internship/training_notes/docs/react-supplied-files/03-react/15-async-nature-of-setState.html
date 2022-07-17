@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Step 1: Run this to check it does not increment/decrement twice
+            // Step 2: Change to the function form of setState() and verify that it does change as intended now
+            // Step 3: Log the state to the console when the state actually changes
+            class Counter extends React.Component {
+                state = {
+                    counter: 0
+                };
+
+                increment = () => {
+                    this.setState({
+                        counter: this.state.counter + 1
+                    });
+                    this.setState({
+                        counter: this.state.counter + 1
+                    });
+                }
+                
+                decrement = () => {
+                    this.setState({
+                        counter: this.state.counter - 1
+                    });
+                    this.setState({
+                        counter: this.state.counter - 1
+                    });
+                }
+
+                render() {
+                    const { counter } = this.state;
+                    const { increment, decrement } = this;
+
+                    return (
+                        <div className="container">
+                            Counter: <span>{counter}</span>
+                            {' '}
+                            <button onClick={increment} className="btn btn-primary">+</button>
+                            {' '}
+                            <button onClick={decrement} className="btn btn-danger">-</button>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

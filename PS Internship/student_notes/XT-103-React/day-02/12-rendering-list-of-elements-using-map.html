@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .card{
+            display: flex;
+            padding:20px;
+            border:1px solid black;
+            margin:1em;
+            border-radius: 5px;;
+        }
+        .card-img{
+            width:auto;
+            height:200px;
+            border-radius: 50%;
+        }
+        ul{
+            margin:0;
+        }
+      
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+
+        function ContactDetails({email , tel}){
+             return (
+                <React.Fragment>
+                    <ul>
+                        <li className="contact-details">
+                            Tel: {tel}
+                        </li>
+                        <li className="contact-details">
+                            Email: {email}
+                        </li>
+                    </ul>
+                </React.Fragment>
+             );
+        }
+    
+        function BusinessCard(cards){
+
+            const {fullName, designation, company,  image , contactDetails} = cards
+
+            return (
+                <div className="card">
+                    <div className="card-details">
+                        <h1> {fullName} </h1>
+                        <div>
+                            <strong>Designation:</strong> {designation}
+                        </div>
+                        <div>
+                            <strong>Company:</strong> {company}
+                        </div>
+                        <div>
+                            <strong>Contact Details:</strong>
+                            <ContactDetails {...contactDetails}/>
+                        </div>
+                    </div>
+                    <img src= {image} className="card-img" />
+                </div>
+            );
+        }
+
+
+        function BusinessCardsList( {cards}){
+            const cardReactEls = cards.map( card => <BusinessCard {...card} /> );
+            return (
+                    <React.Fragment>
+                        {cardReactEls}
+                    </React.Fragment>
+                );
+        }
+        
+        const CardDetails = [
+            {
+                fullName: 'John Doe',
+                designation: 'Junior Associate',
+                company:'Publicis Sapient',
+                contactDetails:{
+                    tel: "9113244470",
+                    email:"johndoe@example.com"
+                },
+                image: "../images/johndoe.png",
+                key:1
+            }, 
+
+            {
+                fullName: 'Sundar Pichai',
+                designation: 'CEO',
+                company:'Google',
+                contactDetails:{
+                    tel: "9113244470",
+                    email:"sundar@example.com"
+                },
+                image: "../images/sundar.png",
+                key:2
+            },
+            {
+                fullName: 'John Doe',
+                designation: 'Junior Associate',
+                company:'Publicis Sapient',
+                contactDetails:{
+                    tel: "9113244470",
+                    email:"johndoe@example.com"
+                },
+                image: "../images/johndoe.png",
+                key:3
+            }
+        ]
+
+    
+        ReactDOM.render(<BusinessCardsList cards={CardDetails} />, document.getElementById('root'));
+
+
+    </script>
+</body>
+</html>

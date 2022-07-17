@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent, .child{
+            border:1px solid black;
+            padding: 20px;
+        }
+        .parent1{
+            border:1px solid red;
+   
+            display:flex;
+            flex-direction: row;
+
+        }
+        .child1{
+            border:1px solid red;
+            
+        }
+        .parent2, .child2{
+           
+           border:1px solid green;
+        }
+        .parent2{
+            display:flex;
+            height:90vh;
+            flex-direction:column;
+        }
+        .child2{
+            flex-basis: 20;
+            flex-grow:1;
+        }
+        .parent3{
+            display:flex;
+            flex-direction: row;
+            padding:20px;
+           border:1px solid blue;
+        }
+        .child3-1{
+            flex-shrink: 10;
+            border:1px solid blue;
+        }
+        .child3-2{
+            flex-shrink: 8;
+            border:1px solid blue;
+        }
+        .child3-3{
+            flex-shrink: 8;
+            border:1px solid blue;
+        }
+        .parent5{
+            border:1px solid yellow;
+           display:flex;
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+        .parent6{
+            border: 1px solid skyblue;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .parent7{
+            border: 1px solid violet;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+        .parent8{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .parent9{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .parent10{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            align-items: space-around;
+        }
+        .parent11{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .parent12{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        .parent13{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .parent14{
+            border: 1px solid indianred;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <div class=" parent parent1">
+        <div class="child1 child1-1">1. Lorem ipsum dolor sit amet consectetur adipisicing </div>
+        <div class="child1 child1-2">2. Lorem ipsum dolor sit amet consectetur</div>
+        <div class="child1 child1-3">3. Lorem ipsum dolor sit  </div>
+    </div>
+    <div class="parent parent2">
+        <div class="child2 child2-1">1. Lorem ipsum dolor sit amet consectetur adipisicing </div>
+        <div class="child2 child2-2">2. Lorem ipsum dolor sit amet consectetur</div>
+        <div class="child2 child2-3">3. Lorem ipsum dolor sit  </div>
+    </div>
+    <div class="parent parent3">
+        <div class="child3 child3-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque consequuntur delectus dolore corrupti corporis doloribus mollitia quasi impedit iure cumque. Neque quaerat labore recusandae expedita ipsa perferendis minus id corrupti. </div>
+        <div class="child3 child3-2">2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt impedit quo nostrum expedita fugiat voluptatem quam sit molestiae voluptate. Pariatur ducimus nobis eligendi, assumenda eius hic in alias quam sunt.</div>
+        <div class="child3 child3-3">3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum vero, repellendus quisquam eveniet ab sunt iste ipsa corporis harum et voluptates ipsam! Est sint necessitatibus facere veritatis. Earum, porro facere.  </div>
+    </div>
+    <div class="parent parent4">
+        <div class="child child4-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        <div class="child child4-2">2. Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="child child4-3">3. Lorem ipsum dolor sit, amet   </div>
+    </div>
+    <div class="parent parent5">
+        <div class="child child5-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        <div class="child child5-2">2. Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="child child5-3">3. Lorem ipsum dolor sit, amet   </div>
+    </div>
+    <div class="parent parent6">
+        <div class="child child6-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        <div class="child child6-2">2. Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="child child6-3">3. Lorem ipsum dolor sit, amet   </div>
+    </div>
+    <div class="parent parent7">
+        <div class="child child7-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        <div class="child child7-2">2. Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="child child7-3">3. Lorem ipsum dolor sit, amet   </div>
+    </div>
+    <div class="parent parent8">
+        <div class="child child8-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        <div class="child child8-2">2. Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="child child8-3">3. Lorem ipsum dolor sit, amet   </div>
+    </div>
+    <div class="parent parent9">
+        <div class="child child9-1">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
+        <div class="child child9-2">2. Lorem ipsum dolor sit amet consectetur.</div>
+        <div class="child child9-3">3. Lorem ipsum dolor sit, amet   </div>
+    </div>
+
+
+    <div class="parent parent10">
+        <div >1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque consequuntur delectus dolore corrupti corporis doloribus mollitia quasi impedit iure cumque. Neque quaerat labore recusandae expedita ipsa perferendis minus id corrupti. </div>
+        <div>2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt impedit quo nostrum expedita fugiat voluptatem quam sit molestiae voluptate. Pariatur ducimus nobis eligendi, assumenda eius hic in alias quam sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam reprehenderit sunt ipsa tenetur eligendi quod dolores quis expedita! Totam quia ab ea maiores deleniti dolor aliquam suscipit inventore repudiandae quo.</div>
+        <div>3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum vero, repellendus quisquam eveniet ab sunt iste ipsa corporis harum et voluptates ipsam! Est sint necessitatibus facere veritatis. Earum, porro facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis earum? Placeat, similique, quae quis architecto officia sunt facilis beatae, doloremque molestiae quia consequatur esse tempora odio temporibus reiciendis! Nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam temporibus eligendi incidunt animi facere laborum. Aliquam dolorum tenetur quos illum, odit eius debitis non nobis soluta officiis, hic neque veniam! </div>
+    </div>
+    <div class="parent parent11">
+        <div >1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque consequuntur delectus dolore corrupti corporis doloribus mollitia quasi impedit iure cumque. Neque quaerat labore recusandae expedita ipsa perferendis minus id corrupti. </div>
+        <div>2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt impedit quo nostrum expedita fugiat voluptatem quam sit molestiae voluptate. Pariatur ducimus nobis eligendi, assumenda eius hic in alias quam sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam reprehenderit sunt ipsa tenetur eligendi quod dolores quis expedita! Totam quia ab ea maiores deleniti dolor aliquam suscipit inventore repudiandae quo.</div>
+        <div>3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum vero, repellendus quisquam eveniet ab sunt iste ipsa corporis harum et voluptates ipsam! Est sint necessitatibus facere veritatis. Earum, porro facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis earum? Placeat, similique, quae quis architecto officia sunt facilis beatae, doloremque molestiae quia consequatur esse tempora odio temporibus reiciendis! Nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam temporibus eligendi incidunt animi facere laborum. Aliquam dolorum tenetur quos illum, odit eius debitis non nobis soluta officiis, hic neque veniam! </div>
+    </div>
+    <div class="parent parent12">
+        <div >1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque consequuntur delectus dolore corrupti corporis doloribus mollitia quasi impedit iure cumque. Neque quaerat labore recusandae expedita ipsa perferendis minus id corrupti. </div>
+        <div>2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt impedit quo nostrum expedita fugiat voluptatem quam sit molestiae voluptate. Pariatur ducimus nobis eligendi, assumenda eius hic in alias quam sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam reprehenderit sunt ipsa tenetur eligendi quod dolores quis expedita! Totam quia ab ea maiores deleniti dolor aliquam suscipit inventore repudiandae quo.</div>
+        <div>3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum vero, repellendus quisquam eveniet ab sunt iste ipsa corporis harum et voluptates ipsam! Est sint necessitatibus facere veritatis. Earum, porro facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis earum? Placeat, similique, quae quis architecto officia sunt facilis beatae, doloremque molestiae quia consequatur esse tempora odio temporibus reiciendis! Nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam temporibus eligendi incidunt animi facere laborum. Aliquam dolorum tenetur quos illum, odit eius debitis non nobis soluta officiis, hic neque veniam! </div>
+    </div>
+    <div class="parent parent13">
+        <div>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque consequuntur delectus dolore corrupti corporis doloribus mollitia quasi impedit iure cumque. Neque quaerat labore recusandae expedita ipsa perferendis minus id corrupti. </div>
+        <div>2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt impedit quo nostrum expedita fugiat voluptatem quam sit molestiae voluptate. Pariatur ducimus nobis eligendi, assumenda eius hic in alias quam sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam reprehenderit sunt ipsa tenetur eligendi quod dolores quis expedita! Totam quia ab ea maiores deleniti dolor aliquam suscipit inventore repudiandae quo.</div>
+        <div>3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum vero, repellendus quisquam eveniet ab sunt iste ipsa corporis harum et voluptates ipsam! Est sint necessitatibus facere veritatis. Earum, porro facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis earum? Placeat, similique, quae quis architecto officia sunt facilis beatae, doloremque molestiae quia consequatur esse tempora odio temporibus reiciendis! Nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam temporibus eligendi incidunt animi facere laborum. Aliquam dolorum tenetur quos illum, odit eius debitis non nobis soluta officiis, hic neque veniam! </div>
+    </div>
+    <div class="parent parent14">
+        <div>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque consequuntur delectus dolore corrupti corporis doloribus mollitia quasi impedit iure cumque. Neque quaerat labore recusandae expedita ipsa perferendis minus id corrupti. </div>
+        <div>2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt impedit quo nostrum expedita fugiat voluptatem quam sit molestiae voluptate. Pariatur ducimus nobis eligendi, assumenda eius hic in alias quam sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam reprehenderit sunt ipsa tenetur eligendi quod dolores quis expedita! Totam quia ab ea maiores deleniti dolor aliquam suscipit inventore repudiandae quo.</div>
+        <div>3. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum vero, repellendus quisquam eveniet ab sunt iste ipsa corporis harum et voluptates ipsam! Est sint necessitatibus facere veritatis. Earum, porro facere. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, officiis earum? Placeat, similique, quae quis architecto officia sunt facilis beatae, doloremque molestiae quia consequatur esse tempora odio temporibus reiciendis! Nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam temporibus eligendi incidunt animi facere laborum. Aliquam dolorum tenetur quos illum, odit eius debitis non nobis soluta officiis, hic neque veniam! </div>
+    </div>
+
+  
+  
+
+    
+</body>
+</html>

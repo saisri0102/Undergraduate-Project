@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form name="register">
+            <input type="email" name="email" pattern="^[a-z]+\.[a-z]+@publicisgroupe\.net$" />
+            <input type="email" name="email2" id="email2" />
+            <button type="submit">Submit</button>
+        </form>
+
+        <script>
+            (function() {
+                const registrationForm = document.forms['register'];
+                const emailInput = registrationForm['email'];
+
+                registrationForm.addEventListener( 'submit', function( event ) {
+                    // const emailPat = /^[a-z]+\.[a-z]+@publicisgroupe\.net$/
+                    const emailPat = new RegExp( '^[a-z]+\.[a-z]+@publicisgroupe\.net$' );
+
+                    const email2El = document.querySelector( '#email2' );
+
+                    if( emailPat.test( email2El.value ) === false ) {
+                        alert( 'Something wrong with your email2 input' );
+                        event.preventDefault();
+                    }
+                });
+            }());
+        </script>
+    </body>
+</html>

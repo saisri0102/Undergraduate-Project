@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .message {
+                color: crimson;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="http://localhost:8081/meetings/add" id="form-add-meetings" method="post" novalidate> <!-- submit -->
+            <div>
+                <input type="text" id="title" name="title" aria-describedby="title-help" />
+                <div id="title-help">
+                    Meeting title should have at least 10 characters
+                </div>
+                <div class="message" id="title-error-message"></div>
+            </div>
+            
+            <div>
+                <input type="number" id="start-hours" name="start-hours" min="0" max="23" aria-describedby="start-hours-help" />
+                <div id="start-hours-help">
+                    Choose a number betwen 0 - 23
+                </div>
+                <div class="message" id="start-hours-error-message"></div>
+            </div>
+
+            <button>Submit</button> <!-- click -->
+        </form>
+
+        <script>
+            function displayError( selector, message ) {
+                document.querySelector( selector ).innerHTML = message;
+            }
+
+            document.querySelector( '#form-add-meetings' ).addEventListener( 'submit', function( event ) {
+                // select input using id, then get value -> then check length of it and if it is less than 10 then prevent default action
+
+                const title = document.querySelector( '#title' ).value;
+
+                if( title.length < 10 ) {
+                    // hey browser, do not o ahead with the default action
+                    event.preventDefault();
+
+                    displayError( '#title-error-message', 'Meeting title is less than 10 characters' );
+                }
+
+                const startHours = parseInt( document.querySelector( '#start-hours' ).value );
+
+                if( startHours < 0 || startHours > 23 ) {
+                    // hey browser, do not o ahead with the default action
+                    event.preventDefault();
+
+                    displayError( '#start-hours-error-message', 'Meeting title is less than 10 characters' );
+                }
+            });
+        </script>
+    </body>
+</html>

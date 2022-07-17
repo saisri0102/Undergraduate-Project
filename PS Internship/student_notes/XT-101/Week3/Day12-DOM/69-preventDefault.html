@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      .message{
+        color:crimson;
+      }
+    </style>
+</head>
+<body>
+
+    <form action="" id="form-add-meetings" novalidate>
+      <input type="text" id="title"  name="title" aria-describeby= "title-help"/>
+      <div id="title-help">
+          Meeting title should have at least 10 characters 
+      </div>
+      <div class="message" id="title-error-message"></div>
+
+      <input type="number" id="start-hours"  name="start-hours" min="0" max="23" aria-describeby= "start-hours-help" value=""/>
+      <div id="start-hours-help">
+          choose a number between 0-23
+      </div>
+      <div class="message " id="start-hours-error-message"></div>
+      <div class="message" id="title-error-message"></div>
+      <button>Submit</button> <!--Click event and form submit event gets fired -->
+    </form>
+
+    <script>
+
+       function displayError(selector, message){
+         document.querySelector(selector).innerHTML= message;
+       }
+      document.querySelector('#form-add-meetings').addEventListener('submit', function(event){
+      
+
+        // select input using id, then get value -> then check length of it and if it is less than 10 prevent default action
+
+        const title= parseInt(document.querySelector('#title').value);
+
+        if(title.length<10){
+              // Hey browser dont go with the default action
+            event.preventDefault(); 
+            displayError('#title-error-message','Meeting title is less than 10');
+        }
+
+        const time= document.querySelector('#start-hours').value;
+      
+
+        if(time<0 || time>23){
+           event.preventDefault(); 
+
+           displayError('#start-hours-error-message', 'Start hours must be a number between o and 23')
+           
+        }
+          
+      })
+    </script>
+</body>
+</html>

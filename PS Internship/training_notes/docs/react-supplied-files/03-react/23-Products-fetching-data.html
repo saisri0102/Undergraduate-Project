@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Step 1: Fetch products from https://awesome-store-server.herokuapp.com/products and show them here.
+            class ProductCatalog extends React.Component {
+                state = {
+                    products: null
+                };
+
+                render() {
+                    const { products } = this.state;
+                    console.log( products );
+
+                    return (
+                        <div>
+                            <h2>Product Catalog</h2>
+                            <hr />
+                            <div className="d-flex" style={{ flexWrap: 'wrap' }}>
+                            {
+                                products && products.map( 
+                                    product => (
+                                        <div className="card d-flex" style={{ flexBasis: '20rem' }}>
+                                            <img className="card-img-top" src={product.imageUrl} style={{ width: '9rem', margin: '0 auto' }} alt={product.description} />
+                                            <div className="card-body" style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <div className="card-title font-weight-bold">{product.name}</div>
+                                                <div className="card-text">{product.description}</div>
+                                            </div>
+                                        </div>
+                                    )
+                                )
+                            }
+                            </div>
+                        </div>
+                    );
+                }
+            }
+        </script>
+    </body>
+</html>

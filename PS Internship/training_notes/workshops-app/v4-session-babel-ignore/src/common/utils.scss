@@ -1,0 +1,93 @@
+@use 'vars';
+@use 'button';
+@use 'display';
+@use 'grid';
+@use 'img';
+@use 'jumbotron';
+@use 'spacing';
+@use 'typography';
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: vars.$base-font-size-mobile;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.card {
+    padding: 1em;
+    border: 1px solid vars.$color-lightgray;
+    border-radius: 4px;
+
+    &:hover {
+        box-shadow: 0 0 1px 1px rgb( 235, 165, 32, 0.5 );
+    }
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    flex-wrap: wrap;
+}
+
+.control-label {
+    flex-basis: 100% / 4;
+}
+
+.required-indicator {
+    color: crimson;
+}
+
+.form-control-container {
+    flex-basis: 72.5%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid vars.$color-gray;
+    border-radius: 3px;
+}
+
+.form-control:focus {
+    outline: 0;
+    box-shadow: 0px 0px 1px 3px lightskyblue;
+}
+
+.form-control-help,
+.form-control-error {
+    font-size: 0.8em;
+}
+
+.form-control-help {
+    color: #444;
+}
+
+.form-control-error {
+    display: none;
+    color: crimson;
+}
+
+/* tablet */
+@media all and ( min-width : vars.$tablet-min-width ) {
+    :root {
+        font-size: vars.$base-font-size-tablet;
+    }
+}
+
+/* desktop */
+@media all and ( min-width : vars.$desktop-min-width ) {
+    :root {
+        font-size: vars.$base-font-size-desktop;
+    }
+}

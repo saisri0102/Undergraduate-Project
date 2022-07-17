@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Step 1: Create an ErrorBoundary parent for each Dummy element rendered. This will catch any errors and display error message if error occured.
+            class Dummy extends React.Component  {
+                render() {
+                    this.props.throwError ? foo() : null; // no such method - error thrown
+
+                    return (
+                        <div>
+                            <h1>Parent</h1>
+                            {this.props.message}
+                            <br/>
+                            {this.props.x ? this.props.x : null}
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( 
+                <div>
+                    <Parent message="Hello" throwError={true} />
+                    <Parent message="Hello" />
+                </div>, 
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

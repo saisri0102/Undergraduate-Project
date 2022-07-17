@@ -1,0 +1,16 @@
+{
+  "name": "typescript-demos",
+  "version": "1.0.0",
+  "main": "01-problems.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {},
+  "description": ""
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                background-color: crimson;
+                color: white;
+                text-align: center;
+                line-height: 100px;
+                /* transition: height 2s, line-height 8s; */
+                transition: all 300ms;
+            }
+
+            .move {
+                animation-name: move, pulse;
+                animation-duration: 3s, 1s;
+                animation-delay: 2s, 0s;
+                animation-timing-function: linear, ease-in-out;
+                animation-iteration-count: 2, infinite; /*infinite*/;
+                animation-direction: alternate, normal;
+            }
+            
+            div:active {
+                height: 200px;
+                line-height: 200px;
+            }
+
+            @-webkit-keyframes move {
+                0% {
+                    left: 0px;
+                    top: 0px;
+                }
+
+                25% {
+                    left: calc( 100vw - 100px );
+                    top: 0px;
+                }
+
+                50% {
+                    left: calc( 100vw - 100px );
+                    top: calc( 100vh - 100px );
+                }
+
+                75% {
+                    left: 0px;
+                    top: calc( 100vh - 100px );
+                }
+
+                100% {
+                    left: 0px;
+                    top: 0px;
+                }    
+            }
+            
+            @-moz-keyframes move {
+                0% {
+                    left: 0px;
+                    top: 0px;
+                }
+
+                25% {
+                    left: calc( 100vw - 100px );
+                    top: 0px;
+                }
+
+                50% {
+                    left: calc( 100vw - 100px );
+                    top: calc( 100vh - 100px );
+                }
+
+                75% {
+                    left: 0px;
+                    top: calc( 100vh - 100px );
+                }
+
+                100% {
+                    left: 0px;
+                    top: 0px;
+                }
+            }
+            
+            @keyframes move {
+                0% {
+                    left: 0px;
+                    top: 0px;
+                }
+
+                25% {
+                    left: calc( 100vw - 100px );
+                    top: 0px;
+                }
+
+                50% {
+                    left: calc( 100vw - 100px );
+                    top: calc( 100vh - 100px );
+                }
+
+                75% {
+                    left: 0px;
+                    top: calc( 100vh - 100px );
+                }
+
+                100% {
+                    left: 0px;
+                    top: 0px;
+                }
+            }
+            
+            @keyframes move2 {
+                0% {
+                    transform: translate( 0, 0 )
+                }
+
+                25% {
+                    transform: translate( calc( 100vw - 100px ), 0 )
+                }
+
+                50% {
+                    transform: translate( calc( 100vw - 100px ), calc( 100vw - 100px ) );
+                }
+
+                75% {
+                    transform: translate( 0, calc( 100vw - 100px ) );
+                }
+
+                100% {
+                    transform: translate( 0, 0 );
+                }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale( 1, 1 );
+                }
+
+                50% {
+                    transform: scale( 1.2 );
+                }
+
+                100% {
+                    transform: scale( 1, 1 );
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="sapient">SAPIENT</div>
+        <button onclick="document.querySelector( '#sapient' ).classList.add( 'move' )">Move</button>
+    </body>
+</html>

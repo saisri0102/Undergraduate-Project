@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM manipulation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="message">
+            <div id="message-title">Hello jQuery</div>
+        </div>
+
+        <script src="../external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // convention is to put a $ at the start of a collection object variable name
+                var $div = $( '<div class="message-body">Div 1: A great JS library that makes scripting fun</div>' );
+
+                var $div2 = $( '<div class="message-body">Div 2: A great JS library that makes scripting fun</div>' );
+
+                var $div3 = $( '<div class="message-body">Div 3: A great JS library that makes scripting fun</div>' );
+
+                var $div4 = $( '<div class="message-body">Div 4: A great JS library that makes scripting fun</div>' );
+
+                $( '#message' ).append( $div );
+                $div2.appendTo( '#message' );
+                $div3.insertAfter( $div2 );
+                $div3.after( $div4 );
+
+                $div4.after( $div2 ); // removes div 2 from the DOM and puts after div 4
+
+                $div3.remove(); // removes div 3
+
+                $clonedMessage = $( '#message' ).clone();
+                $clonedMessage.attr( 'id', 'twin-bro' );
+                $('body').append( $clonedMessage );
+            });
+        </script>
+    </body>
+</html>

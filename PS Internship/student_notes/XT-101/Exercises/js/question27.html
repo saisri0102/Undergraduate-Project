@@ -1,0 +1,76 @@
+<!--
+    27. Create an HTML page with 3 paragraphs (give each a unique id). Now do the following by
+manipulating the DOM via JavaScript.
+* Create a new paragraph with some text within, and add it before the first paragraph.
+* Create a new paragraph with some text within, and add it to the end of the document body
+* Print the HTML within the second paragraph to the console
+* Replace the contents of the second paragraph with 2 spans, each with some text
+* Print the id of the second paragraph
+* Change the id of the second paragraph
+* Set the name attribute for the second paragraph to some value. Use setAttribute() to do so.
+* Set styles for the third paragraph and turn it to crimson color background with white colored
+text
+* Define a class in CSS that sets a black border, small padding and olive colored text. Add the
+class to the last paragraph.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .color-background{
+            border:1px solid black;
+            padding: 10px;
+            color: olive;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div-1">
+    <p id="p-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, cupiditate. Necessitatibus libero veniam doloremque quod. Nam voluptatum repellat quis amet voluptate dolorem! Voluptas, ratione explicabo vero laborum expedita iste aperiam.</p>
+    <p id="p-2">Maiores optio iure ipsum eius, iste dolorem sint delectus sed, odit est minus ab fugiat? Expedita suscipit provident excepturi illum voluptates culpa tenetur nemo, accusamus, quos quidem asperiores harum fugit.</p>
+    <p id="p-3">Voluptatem quia tempora vel ab sapiente repellat quam adipisci maiores vero repellendus! Magni doloribus eligendi dolor, sed laudantium dolorem distinctio nostrum sequi rerum quia quae minima neque accusantium modi commodi.</p>
+   </div>
+
+    <script>
+
+        const p1El= document.querySelector('#p-1');
+        const p2El= document.querySelector('#p-2');
+        const p3El= document.querySelector('#p-3');
+        const div1El= document.querySelector('#div-1');
+        const p4El = document.createElement('p');
+        const t4El = document.createTextNode('Hiii I am para which is inserted on top');
+        
+        p4El.appendChild(t4El);
+        div1El.insertBefore(p4El,p1El );
+
+        const p5El = document.createElement('p');
+        const t5El = document.createTextNode('Hiii I am para which is inserted at end of the body');
+        p5El.appendChild(t5El);
+
+        div1El.appendChild(p5El);
+        
+
+        console.log(p2El);
+
+        p2El.innerHTML= "<span>Hii I am para2</span> and <span>I have 2 span elements </span>"
+
+        console.log(p2El.id);
+
+        p2El.id= 'para-2';
+
+        p2El.setAttribute('name', 'Para2');
+
+        p3El.style.backgroundColor= 'crimson';
+        p3El.style.color='white';
+
+        p5El.classList.add('color-background');
+
+    </script>
+</body>
+</html>

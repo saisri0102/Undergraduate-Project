@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+           class WorkshopsList extends React.Component{
+            static LOADING = "LOADING"
+            static LOADED = "LOADED"
+            static ERROR_LOADING = "ERROR_LOADING"
+
+            state  = {
+                status:WorkshopsList.LOADING,
+               // workshops:null
+            }
+            render(){
+                let el = null;
+                const {status, posts, error} = this.state;
+
+                switch(status){
+                    case WorkshopsList.LOADING:
+                        el = (
+                            <div>We are fetching posts.. Please wait</div>
+                        );
+                        break;
+                    case WorkshopsList.LOADED:
+                        console.log(posts)
+                    el = (
+                        <ul className ="d-flex justify-content-around flex-wrap">
+                            {
+                                posts.map(post =>(
+                               
+                                    <div className="card" key= {post.question_id} style = {{width: "18em", marginBottom:"10px"}}>
+                                    <div className="card-body">
+                                        <h5 className="card-title" 
+                                            style = {
+                                                {
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    display: "-webkit-box",
+                                                    WebkitLineClamp: 2,
+                                                    WebkitBoxOrient: "vertical"
+                                                }
+                                            }>
+                                            <small> <strong>Title:</strong> {post.title}</small>
+                                        </h5>
+                                        <h6 className="card-subtitle mb-2 text-muted">View Count: {post.view_count}</h6>
+                                        
+                                        <a href={post.link} className="card-link">Post link</a>
+                                        <a href={post.owner.link} className="card-link">Owner link</a>
+                                    </div>
+                                    </div>
+                                    
+                                    
+                                ))
+                            }
+                        
+                        </ul>
+                    );
+                        break;
+                    case WorkshopsList.ERROR_LOADING:
+                        el = (
+                            <div>{error.message}</div>
+                        );
+                        break;
+                    default:
+                        el = null;
+                }
+                return el;
+            }
+            componentDidMount() {
+                fetch(`https://api.stackexchange.com/2.0/questions?site=stackoverflow`)
+                    .then(response =>{
+                        if(!response.ok){
+                            throw new Error('Something went wrong');
+                        }
+                        return response.json();
+                    })
+                    .then(posts =>{
+                        console.log(posts.items);
+                        this.setState({
+                            status: WorkshopsList.LOADED,
+                            posts: posts.items
+
+                        });
+
+                    })
+                    .catch(error =>{
+                        this.setState({
+                            status:WorkshopsList.ERROR_LOADING,
+                            error:error
+                        })
+                    })
+            }
+            
+        }
+
+        ReactDOM.render(<WorkshopsList />, document.getElementById('root'))
+    
+    </script>
+</body>
+</html>

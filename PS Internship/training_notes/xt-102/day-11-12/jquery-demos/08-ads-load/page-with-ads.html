@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ads-container {
+        height: 200px;
+        padding: 10px;
+        border: 1px dashed olive;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>w3schools.com</h1>
+      <hr />
+    </header>
+    <div class="ads-container"></div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam dicta atque
+      sequi at ad, dolor hic animi, ipsa, veniam quasi consequuntur omnis.
+      Error, eos iusto. Dolorem eveniet soluta totam incidunt!
+    </p>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi voluptate,
+      ut nobis beatae aliquam laudantium dicta doloremque architecto cum libero!
+      Eius distinctio quasi fuga pariatur iusto hic fugit soluta consectetur!
+    </p>
+
+    <script src="external/jquery-3.2.1.min.js"></script>
+    <script>
+      var page = 1;
+      $(document).ready(function () {
+        setInterval(addSwitcher,1000);
+      });
+      
+     
+      function addSwitcher(){
+        if(page>=5){
+          page=1;
+        }
+        $(".ads-container").load(`./ads/ad-${page}.html .ad`);
+        page++
+      }
+    </script>
+  </body>
+</html>
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                const ads = [
+                    './ads/ad-1.html',
+                    './ads/ad-2.html',
+                    './ads/ad-3.html',
+                    './ads/ad-4.html'
+                ];
+
+                adIdx = -1;
+
+                function nextAd() {
+                    adIdx = ( adIdx + 1 ) % 4;
+
+                    $( '.ads-container' ).load( `${ads[adIdx]} .ad`, function( response, status, xhr ) {
+                        
+                        if( status === 'error' ) {
+                            $( '.ads-container' ).html( 'Some problem loading ads...' );
+                        }
+
+                        // similarly you can do something if successful
+                    });
+                }
+
+                // the second argument (callback function executes on success / error)
+                nextAd();
+                setInterval( nextAd, 5000 );
+            });
+        </script>
+    </body>
+</html>

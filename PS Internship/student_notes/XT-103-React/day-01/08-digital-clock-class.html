@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+      
+        class DigialClock extends React.Component{
+
+            state = {
+                time:(new Date()).toTimeString()
+            }
+
+            startClock = () => {
+                    setInterval(() => {
+                        // we never meddle with the state directly in React, because React will not get to know about the state change
+                        // this.state.time = (new Date()).toTimeString()
+                        // request React to change the state
+                        this.setState({
+                            time: (new Date()).toTimeString()
+                        });
+                    }, 1000);
+            }
+
+            render(){
+
+                // console.log('render');
+                // console.log('this.state' , this.state);
+                //const time = (new Date()).toTimeString();
+                return (
+                    <React.Fragment>
+                        <div>
+                            {this.props.message} {this.state.time}
+                        </div>
+                        <button onClick={this.startClock}>Start ticking</button>
+                    </React.Fragment>
+                );
+            }
+
+            // this method gets called after the first render 
+            componentDidMount() {
+                // setInterval( ()=>{
+                //     // we never meddle with the state directly in React, because Reacct will not get to know about the state changes 
+                //     // this.state.time =(new Date()).toTimeString()
+
+                //     // instead request react to change the state
+                //     this.setState({
+                //         time: (new Date()).toTimeString()
+                //     })
+                // }, 1000)
+            }
+           
+       }
+
+       ReactDOM.render(
+           <DigialClock message ="The time in India is " />, 
+            document.getElementById('root'));
+    </script>
+</body>
+</html> 

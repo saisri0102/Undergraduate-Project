@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicis</title>
+    <style>
+
+        #hide {
+               display:none;
+               width: 100px;
+               height:100px;
+               background-color: deeppink;
+               
+            }
+   
+        .transi{
+            border:2px solid blue;
+            transform: rotate(45deg);
+            transition: "transform 5s";  
+            text-align: center;
+        }
+        #div2{
+            width:100px;
+            height:100px;
+        }
+            
+        
+      
+       
+    </style>
+</head>
+
+<body>
+
+    <header class="main">
+        <div id=>
+           
+            <button onclick="myFunction()" id="btn">Menu</button>
+        </div>
+        <div id="hide" >
+         
+        </div>
+        <div id="div2">
+          HII BINDU
+      </div>
+    </header>
+ 
+ <script>
+     const btn= document.querySelector("#hide");
+     function myFunction(){
+         // classList.add('classname');
+         //classList.remove('class name');
+         
+         btn.style.display="block";
+         document.querySelector("#div2").style.backgroundColor="limegreen";
+        
+         document.querySelector("#div2").style.classList.add(".transi");
+
+     }
+     </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .btn {
+                border: 0;
+                margin: 5px;
+                background-color: navy;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function getCounter( CounterPresentation ) { // Higher-Order Component (HOC) is actually a function
+                return class extends React.Component { // an "anonymous" class is generated and returned each time the HOC is called
+                    // define shared state and logic
+                    state = {
+                        counter: 0
+                    };
+
+                    increment = () => {
+                        this.setState(state => {
+                            return {
+                                counter: state.counter + 1
+                            };
+                        });
+                    }
+                    
+                    decrement = () => {
+                        this.setState(state => {
+                            return {
+                                counter: state.counter - 1
+                            };
+                        });
+                    }
+
+                    setCounter = ( counter ) => {
+                        this.setState({
+                            counter
+                        });
+                    }
+
+                    // render the component passed as argument, as a child component - pass it whatever it requires
+                    render() {
+                        return <CounterPresentation
+                                    increment={this.increment}
+                                    decrement={this.decrement}
+                                    setCounter={this.setCounter}
+                                    counter={this.state.counter} />
+                    }
+                };
+            } 
+
+            // the "Presentation component" - it assumes it shall get whatever it needs and simply needs to render -  so a function component can also be used (in fact function component is more appropriate)
+            class Counter extends React.Component {
+                render() {
+                    const { increment, decrement, counter } = this.props;
+
+                    return (
+                        <div>
+                            <button onClick={decrement}>-</button>
+                            <span>{counter}</span>
+                            <button onClick={increment}>+</button>
+                        </div>
+                    );
+                }
+            }
+
+            // another "Presentation component"
+            class FancyCounter extends React.Component {
+                render() {
+                    const { increment, decrement, setCounter, counter } = this.props;
+
+                    return (
+                        <div>
+                            <button onClick={decrement} className="btn">-</button>
+                            <span>{counter}</span>
+                            <button onClick={increment} className="btn">+</button>
+                            <button onClick={() => setCounter( 0 )}>Reset</button>
+                        </div>
+                    );
+                }
+            }
+
+            // generate "Container components" by calling the HOC
+            const CounterContainer = getCounter( Counter );
+            const FancyCounterContainer = getCounter( FancyCounter );
+
+            // use the Container components which in turn render the Presentation components as children
+            ReactDOM.render( 
+                <React.Fragment>
+                    <CounterContainer />
+                    <FancyCounterContainer />
+                </React.Fragment>,
+                document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

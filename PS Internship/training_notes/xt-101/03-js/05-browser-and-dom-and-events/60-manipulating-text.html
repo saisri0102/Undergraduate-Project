@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div role="alert" id="page-alert" aria-live="assertive">
+            Dummy text
+        </div>
+
+        <script>
+            // innerHTML property of a DOM node represents is HTML in the formn a string
+            
+            const name = prompt( 'How can i call you?' );
+            const pageAlert = document.querySelector( '#page-alert' );
+
+            console.log( pageAlert.innerText );
+
+            if( name ) {
+                pageAlert.innerText = pageAlert.innerText + `Welcome <strong>${name}</strong>! Good to have you with me.`;
+            } else {
+                pageAlert.innerText = pageAlert.innerText + `Sorry, you do not want to share your name. We understand and respect your privacy.`;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const of = rxjs.of;
+            const filter = rxjs.operators.filter;
+
+            const sequence$ = of( 1, 2, 3, 4, 5, 6, 7, 8 );
+            const evenSequence$ = filter( x => x % 2 === 0 )( sequence$ );
+
+            const subscription = evenSequence$.subscribe({
+                next( evt ) {
+                    console.log( evt );
+                },
+                complete() {
+                    console.log( 'completed' );
+                }
+            });
+        </script>
+    </body>
+</html>

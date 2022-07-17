@@ -1,0 +1,25 @@
+Feb 8
+    * Design an array of objects that holds data for some restaurants - say for details displayed on https://www.swiggy.com/restaurants
+    * Also include a method increaseRating() that increases rating by 0.1
+    * The Math Object
+    * Rounding Up and Rounding Down (Math.round(), .ceil(), .floor())
+    * Generating Random Numbers (Math.random())
+    * Write a function that generates a random number within a given range of number
+        random( 10, 20 );
+        random( 120, 200 );
+    * What is hoisting? - https://javascript.info/var
+
+Feb 9
+    * Read up, understand and implement Mondrian pattern, gallery pattern
+    * Implement fibonacci( n ) recursively
+    * String method substring() - how is it differemt from substr()
+      shift(), unshift() - Also check if push, pop, shift, unshift return any value? - Explore splice()
+    * Exercise 23, 24, 25 from JS Lab guide (ES5 and before)
+    * Use getElementsByTagName()
+Feb 10
+    * Read Up Masonry Layout 
+    * Read up and use insertBefore() to add a child, remove child
+Feb 11
+    * Read Window object - https://developer.mozilla.org/en-US/docs/Web/API/Window
+    * Read Window unload - https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event
+    

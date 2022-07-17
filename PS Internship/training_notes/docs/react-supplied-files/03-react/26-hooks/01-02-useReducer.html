@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            const initialState = { value : 0 };
+
+            function counterReducer( curState, action ) {
+                let newState;
+
+                switch( action.type ) {
+                    case 'INCREMENT':
+                        newState = { ...curState, value: curState.value + 1 };
+                        break;
+                    case 'DECREMENT':
+                        newState = { ...curState, value : curState.value - 1 };
+                        break;
+                    default:
+                        newState = curState;
+                }
+
+                return newState;
+            }
+
+            function Counter( props ) {
+                const [ state, dispatch ] = React.useReducer( counterReducer, initialState );
+
+                const increment = React.useCallback(
+                    () => dispatch( { type: 'INCREMENT' } ),
+                    [ ]
+                );
+
+                return (
+                    <div>
+                        Counter : {state.value}
+                        <button onClick={increment}>+</button>
+                        <button onClick={() => dispatch( { type: 'DECREMENT' } )}>-</button>
+                        <Child increment={increment} />
+                    </div>
+                );
+            }
+
+            ReactDOM.render( <Counter />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

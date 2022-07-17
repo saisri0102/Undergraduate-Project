@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // search / filter page card with meeting details
+            // Components MUST begin with uppercase letter
+            function MeetingCard( props ) {
+                console.log( props );
+
+                return (
+                    <div>
+                        <div>{props.name}</div>
+                        <div>{props.date.toDateString()}, {props.startTime} - {props.endTime}</div>
+                    </div>
+                );
+            }
+
+            const cards = [
+                    <MeetingCard 
+                        name="Project Presentation"
+                        date={new Date( 2021, 2, 16 )}
+                        startTime={12}
+                        endTime={13}
+                        key={1}>
+                            <span>Hello</span>
+                            <span>World</span>
+                    </MeetingCard>,
+                    <MeetingCard 
+                        name="Assessment 1"
+                        date={new Date( 2021, 2, 20 )}
+                        startTime={1}
+                        endTime={2}
+                        key={2}>
+                            <span>Hello</span>
+                            <span>World</span>
+                    </MeetingCard>
+            ];
+
+            ReactDOM.render( cards, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

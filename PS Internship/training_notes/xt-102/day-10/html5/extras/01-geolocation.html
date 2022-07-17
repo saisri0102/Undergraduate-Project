@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Geolocation</title>
+    </head>
+    <body>
+        <img src="" id="map" />
+        <script>
+            if( navigator.geolocation ) {
+                // alert user and stop the code
+            }
+
+            function success( position ) {
+                console.log( position );
+                let { latitude, longitude } = position.coords;
+                document.getElementById( 'map' ).src = `https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&center=${latitude},${longitude}`;
+            }
+
+            function error( err ) {
+                console.log( err );
+            }
+
+            navigator.geolocation.getCurrentPosition( success, error );
+        </script>
+    </body>
+</html>

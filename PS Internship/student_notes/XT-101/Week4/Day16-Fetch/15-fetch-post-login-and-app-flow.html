@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .teams {
+                display: flex;
+                flex-wrap: wrap;
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+            .team {
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 100%;
+                padding: 2em;
+                border: 1px solid gray;
+                border-radius: 10px;
+                margin: 1em 0;
+            }
+
+            @media (min-width: 640px) {
+                .team {
+                    flex-basis: 47.5%;
+                }
+            }
+            
+            @media (min-width: 992px) {
+                .team {
+                    flex-basis: 30%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post" action="https://mymeetingsapp.herokuapp.com/api/auth/login" id="login-form">
+            <input type="email" name="email" placeholder="email" />
+            <input type="password" name="password" placeholder="password" />
+            <button>Login</button>
+        </form>
+
+        <section>
+            <h2>Teams</h2>
+            <hr />
+            <button id="fetch-teams">Fetch teams</button>
+            <ul id="teams" class="teams"></ul>
+        </section>
+
+        <section>
+            <h2>Calendar</h2>
+            <hr />
+            <button id="fetch-calendar">Fetch teams</button>
+            <ul id="calendar" class="teams"></ul>
+        </section>
+
+        <script src="../js/services/auth.js"></script>
+        <script src="../js/login.js"></script>
+        <script src="../js/teams.js"></script>
+        <script src="../js/calender.js"></script>
+    </body>
+</html>

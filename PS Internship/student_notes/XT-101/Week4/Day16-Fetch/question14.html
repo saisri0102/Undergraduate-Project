@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         async function getCommenters(name){
+
+                try{ 
+                    let response, data, user;
+                    response = await fetch(`https://jsonplaceholder.typicode.com/users?username=${name}`); // this may be give response or reject . so we are using try and catch block
+                    data = await response.json(); // without await it returns promise with await it returns json
+                    console.log(data);
+                    user = data[0]; // it gives the id of user
+                    console.log('user id:',user);
+                    response = await fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`); // gives list of posts done by given userid (here Bret id i.e 1)
+                    data = await response.json();
+                    console.log(data);
+                    postId= data[0].id; // selects first post id 
+                    console.log('postID:', postId);
+                    response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`); // fetchs the commenters of post id =1
+                    data = await response.json(); 
+                    console.log(data);
+                    const commenters = data.map(function( value ) {
+                            return value.email;
+                        });
+
+
+                    return commenters; // [promise]
+                    //console.log(commenters);
+
+                }
+                catch{
+                    throw new Error(`Call to backend failed with response code ${response.status}`);
+                }
+
+        }
+
+        getCommenters('Bret')
+        .then((commenters)=>{
+            console.log(commenters);
+        })
+        .catch((error)=>{
+            console.log(error.message);
+        })
+
+    </script>
+</body>
+</html>
+<!--
+     * 14. Given the following APIs
+        * Retrieve users with a particular username (in the example below, username is Bret)
+        ```
+        https://jsonplaceholder.typicode.com/users?username=Bret
+        ```
+        * Retrieve posts by a user with given id (in the example below, user id is 1)
+        ```
+        https://jsonplaceholder.typicode.com/users/1/posts'
+        ```
+        * Retrieve comments for post with given id (in the example below, post id is 1)
+        ```
+        https://jsonplaceholder.typicode.com/comments?postId=1
+        ```
+        Write a function that accepts the username and returns a promise that resolves with the email ids
+        of people who have commented on the first post of the first user matching the given username.
+        ```
+        function getCommentersEmailIds( username ) {
+        }
+        ```
+        For example, if username = Bret, then first user matching username Bret has id = 1 (user whose
+        name is "Leanne Graham" and username is "Bret"). The first post by this user has id = 1. The
+        list of people who commented on this post are [ "Eliseo@gardner.biz",
+        "Jayne_Kuhic@sydney.com", "Nikita@garfield.biz", "Lew@alysha.tv", "Hayden@althea.biz" ]
+        Test your function out, for example by passing username as 'Bret'
+-->
+       
+
+ 
+
+
+     
+

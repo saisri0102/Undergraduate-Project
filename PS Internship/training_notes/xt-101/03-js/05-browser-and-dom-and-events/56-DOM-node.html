@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias, beatae. Fuga, ducimus non numquam similique tempora iste ipsam libero nulla soluta sequi velit veniam quas vitae harum id doloribus dolorem.
+        </p>
+        <button>click me</button>
+
+        <script>
+            // DOM node - an object the browser creates for every HTML element
+            // Document Object Model
+            // DOM -> set of DOM nodes as a whole
+            // DOM -> tree of DOM nodes
+
+            // html element DOM node
+            const htmlNode = document.documentElement;
+            console.dir( htmlNode );
+
+            const headNode = htmlNode.children[0];
+            const bodyNode = htmlNode.children[1];
+
+            console.dir( htmlNode.children ); // something like an array
+            console.dir( headNode );
+            console.dir( bodyNode );
+            console.dir( htmlNode.children.length );
+            console.dir( headNode.children[0] ); // meta tag
+            console.dir( bodyNode.children[0] ); // paragraph
+
+            console.log( headNode.nodeType ); // 1, 2, 3 -> different types of nodes
+            console.log( headNode.nodeName ); // tag name
+        </script>
+    </body>
+</html>

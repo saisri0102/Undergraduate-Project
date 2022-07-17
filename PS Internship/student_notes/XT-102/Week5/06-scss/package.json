@@ -1,0 +1,13 @@
+{
+  "name": "06-scss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-sass ./src -o ./dist",
+    "build:scss": "sass --style=compressed ./src -o ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

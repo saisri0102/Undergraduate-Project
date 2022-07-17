@@ -1,0 +1,59 @@
+<!-- // First chance is for parent - in capture phase
+
+ Always capture phase excutes then bubble phase comes 
+
+capture phase - parent gets excuted first- If we set true then it will be capture phase
+ bubble phase - child gets excuted first - default
+
+How Event Handlers get chance?
+ Every element get two chances if you want to handle in first hance then we need to add in capture phase
+
+event.stopPropagation() - do not call the events that follow after this  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="div-1">
+            <button id="btn-1">Click</button>
+        </div>
+
+        <script>
+            // first phase of event flow is the "capture phase"
+            document.querySelector( '#btn-1' ).addEventListener( 'click', function() {
+                console.log( 'button is clicked (capture)' );
+            }, true );
+            
+            document.querySelector( '#div-1' ).addEventListener( 'click', function() {
+                console.log( 'div is clicked (capture)' );
+            }, true );
+            
+            document.querySelector( 'body' ).addEventListener( 'click', function() {
+                console.log( 'body is clicked (capture)' );
+            }, true );
+
+            // event handlers are set to be called in "bubble phase of event flow"
+            document.querySelector( '#btn-1' ).addEventListener( 'click', function( event ) {
+                console.log( 'button is clicked (bubble)' );
+                
+                // uncomment the next line to stop propagating event to rest of handlers
+                //event.stopPropagation();
+            } /*, false */ );
+            
+            document.querySelector( '#div-1' ).addEventListener( 'click', function() {
+                console.log( 'div is clicked (bubble)' );
+            });
+            
+            document.querySelector( 'body' ).addEventListener( 'click', function() {
+                console.log( 'body is clicked (bubble)' );
+            });
+        </script>
+    </body>
+</html>

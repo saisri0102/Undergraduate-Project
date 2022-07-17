@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="chosen_v1.8.7/chosen.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="chosen_v1.8.7/chosen.jquery.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            class Chosen extends React.Component {
+                render() {
+                    const { children, onChange } = this.props;
+
+                    return (
+                        <div>
+                            <select className="chosen-select" ref={el => this.el = el}>
+                                {children}
+                            </select>
+                        </div>
+                    );
+                }
+
+                handleChange = ( e ) => {
+                    this.props.onChange( e.target.value );
+                }
+
+                componentDidMount() {
+                    this.$el = $(this.el);
+                    this.$el.chosen();
+
+                    this.$el.on('change', this.handleChange);
+                }
+
+                componentDidUpdate(prevProps) {
+                    if (prevProps.children !== this.props.children) {
+                        this.$el.trigger( "chosen:updated" );
+                    }
+                }
+
+                componentWillUnmount() {
+                    this.$el.off( 'change', this.handleChange );
+                    this.$el.chosen( 'destroy' );
+                }
+            }
+
+            function Example( { welcomeMessage, extraOptions } ) {
+                return (
+                    <React.Fragment>
+                        <Chosen onChange={value => console.log(value)}>
+                            <option>vanilla</option>
+                            <option>chocolate</option>
+                            <option>strawberry</option>
+                            {extraOptions && extraOptions.map( option => <option>{option}</option>)}
+                        </Chosen>
+                        <div>{welcomeMessage}</div>
+                    </React.Fragment>
+                );
+            }
+
+            ReactDOM.render( <Example welcomeMessage="hello" />, document.getElementById( 'root' ) );
+
+            setTimeout(() => {
+                ReactDOM.render( <Example welcomeMessage="hi" extraOptions={[ 'pista', 'mango' ]} />, document.getElementById( 'root' ) );
+            }, 5000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+<!-- https://medium.com/ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .row {
+                overflow: auto; 
+            }
+
+            .col {
+                float: left;
+                width: 30%;
+                text-align: justify;
+                margin: 0 2.5%;
+            }
+
+            :nth-child(3n + 1) {
+                margin-left: 0;
+            }
+            
+            :nth-child(3n) {
+                margin-right: 0;
+            }
+
+            .clearfix {
+                display: table;
+                content: ' ';
+                width: 100%;
+                height: 0;
+            }
+
+            .trending {
+                width: 90%;
+                margin: 1em auto;
+            }
+
+            .float-parent {
+
+            }
+
+            .trending-item-serial {
+                float: left;
+                width: 3em;
+            }
+
+            .trending-item-description {
+                /* float: left;  */
+                display: -webkit-box;
+                width: calc( 100% - 3em );
+                font-size: 1em;
+                line-height: 1.5; 
+                height: 6em; 
+                overflow: hidden; 
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 4;
+                   /* -moz-line-clamp: 2;
+                    -ms-line-clamp: 2; */
+                        /* line-clamp: 4; */
+                -webkit-box-orient: vertical;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Column layout using floats</h1>
+            
+            <p>Build the following using floats...</p>
+            <img src="../images/column-layout-using-floats.png" alt="Sample screenshot column layout" />
+            <hr />
+        </section>
+
+        <section>
+            <h2>Solution (partial)</h2>
+            <hr />
+            <section class="trending">
+                <h3 class="sr-only">Some heading</h3>
+                <div class="row">
+                    <div class="col float-parent">
+                        <span class="trending-item-serial">01</span>
+                        <div class="trending-item-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia mollitia, iusto dolor ipsam deleniti placeat officiis consequatur quidem excepturi. 
+                        </div>
+                    </div>
+                    <div class="col">
+                        <span class="trending-item-serial">02</span>
+                        <div class="trending-item-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia mollitia, iusto dolor ipsam deleniti placeat officiis consequatur quidem excepturi. Nesciunt 
+                        </div>
+                    </div>
+                    <div class="col">
+                        <span class="trending-item-serial">03</span>
+                        <div class="trending-item-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia mollitia, iusto dolor ipsam deleniti placeat officiis consequatur quidem excepturi. Nesciunt odio libero a nostrum illo facere culpa, rem laborum ratione! Lorem ipsum dolor 
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </body>
+</html>

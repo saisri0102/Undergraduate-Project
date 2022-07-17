@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Event delegation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <ul id="fruits-basket">
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Bananas</li>
+            <li>Guavas</li>
+            <li>Pears</li>
+        </ul>
+
+        <script>
+            // using event delegation - event handling is done on parent ul - so new LIs automatically get click event handled by parent
+            var fruitsBasket = document.querySelector( '#fruits-basket' );
+            fruitsBasket.addEventListener('click', function( event ) {
+                console.log( event.target.innerHTML );
+            });
+            
+            
+            // less preferred (and complex too)
+            /*
+            var listItems = document.querySelectorAll( '#fruits-basket > li' );
+            
+            function listItemClickHandler() {
+                console.log( this.innerHTML ); // name of the fruit is logged
+            }
+            
+            listItems.forEach(function( listItem ) {
+                listItem.addEventListener('click', listItemClickHandler);
+            });
+            */
+            
+            // we cannot use innerHTML to add new list item as it removes previously set handlers on existing list items
+            var litchisListItem = document.createElement( 'li' );
+            var litchisText = document.createTextNode( 'Litchis' );
+            litchisListItem.appendChild( litchisText );
+            fruitsBasket.appendChild( litchisListItem );
+        </script>
+    </body>
+</html>

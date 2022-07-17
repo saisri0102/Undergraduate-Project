@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="post">POst your message</label>
+    <textarea type="text" id="post"></textarea>
+
+    <form action="" id="form-add-meetings"> 
+      <input type="text" id="title" aria-describeby= "title-help"/>
+      <div id="title-help">
+          Meeting title should have at least 10 characters 
+      </div>
+      <button>Submit</button> <!--Click event and form submit event gets fired -->
+    </form>
+
+    <script>
+      const postEl= document.querySelector('#post');
+
+      postEl.addEventListener('input', function(event){
+         console.log(event);
+      });
+
+      postEl.addEventListener('keypress', function(event){
+          if(event.key==='Enter' && event.ctrlKey== true){
+              // send a message to backend
+              console.log(event);
+          }
+      });
+
+      document.querySelector('#form-add-meetings').addEventListener('submit', function(event){
+      
+
+        // select input using id, then get value -> then check length of it and if it is less than 10 prevent default action
+
+        const title= document.querySelector('#title').value;
+
+        if(title.length<10){
+              // Hey browser dont go with the default action
+            event.preventDefault(); 
+        }
+          
+      })
+    </script>
+</body>
+</html>

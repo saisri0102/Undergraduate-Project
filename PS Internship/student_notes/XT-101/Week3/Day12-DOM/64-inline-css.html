@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        p{
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="btn-change-color">Change Color</button>
+    <p id="p1"  style="color:blue;">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis alias earum corporis, iusto natus dignissimos, similique veniam quia facere aliquam eius amet incidunt doloremque iste libero debitis officia minus dolore?
+    </p>
+
+    <script>
+
+    
+
+        (function() {
+            const p1El= document.querySelector('#p1')
+            const btnChangeColor = document.querySelector('#btn-change-color');
+
+            console.log(p1El.style); // reads only inline style
+            console.log(p1El.style.color); // read the inline color style
+            console.log(p1El.style.textDecoration); // wont read as it is internal style
+            console.log(window.getComputedStyle(p1El).getPropertyValue('text-decoration'));
+        
+            btnChangeColor.onclick= function(){
+                // Changing inline css 
+                    p1El.style.color= "olive";
+                  //p1El.style.font-size= "30px"; // wrong syntax
+                  //p1El.style['font-size'] = '2 em'; // only some browsers accept this
+                   p1El.style.fontSize= "30px"; // safe to use this
+                   p1El.style.textDecoration= "none"; 
+                
+
+                // The above one is not good . It is good to use class to change so many properties
+
+               
+            }
+            
+        }());
+        
+    </script>
+</body>
+</html>

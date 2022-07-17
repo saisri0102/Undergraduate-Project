@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            class ReviewForm extends React.Component {
+                constructor( props ) {
+                    super( props );
+
+                    // Step 1: Define state to hold...
+                    // 1. values of each user input
+                    // 2. a boolean variable with validity of the form
+                
+
+                    // Step 2 : Create reference to input DOM nodes
+                }
+
+
+                // Step 4: Create a validateForm() that returns the validity of the form
+                // const isValid = this.state.values.reviewer !== '' &&
+                //         this.state.values.starRating >= 1 && this.state.values.starRating <= 5 &&
+                //         this.state.values.title !== '' &&
+                //         this.state.values.text !== ''
+
+
+                // Step 5: Create a updateValues() method that sets the values in state to the latest, and calls validateForm() to set validity too
+                
+                
+                // Step 6: Create addReview() that is called on form submission and adds the review. Here, we make an Ajax call to POST /products/:productId/reviews, passing in review details (this.state.values)
+
+                render() {
+                    // Step 3: Setup refs and tie the form to the state values
+                    // Also explore defaultValue vs value
+                    return (
+                        <div className="container">
+                            <div className="row">
+                                <div className="col">
+                                    <h1>Post a review for this product</h1>
+                                    <hr />
+                                </div>
+                            </div>
+                            <form className="form-horizontal" role="form">
+                                <div className="form-group">
+                                    <label htmlFor="name" className="control-label">Your name</label>
+                                    <input type="text" id="reviewer" name="reviewer" className="form-control" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="title" className="control-label">Title</label>
+                                    <input type="text" id="title" name="title" className="form-control" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="starRating" className="control-label">Rating</label>
+                                    <select id="starRating" name="starRating" className="form-control">
+                                        <option value="">-- Select a number --</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="text" className="control-label">Your review goes in here...</label>
+                                    <textarea id="text" name="text" className="form-control"></textarea>
+                                </div>
+                                <div className="form-group">
+                                    <button type="submit" className="btn btn-primary">Post review</button>
+                                </div>
+                            </form>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( <ReviewForm />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

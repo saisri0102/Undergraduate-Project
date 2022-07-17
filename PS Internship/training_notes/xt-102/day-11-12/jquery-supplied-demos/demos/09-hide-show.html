@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hide and show elements</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .panel {
+                border: 1px solid crimson;
+                border-radius: 4px;
+            }
+
+            .panel-heading, .panel-body {
+                padding: 10px 20px;
+            }
+
+            .panel-heading {
+                background-color: lightpink;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel">
+            <div class="panel-heading">
+                What is jQuery
+            </div>
+            <div class="panel-body">
+                A simple to use cross-browser supporting general-purpose JS library
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                What is jQuery
+            </div>
+            <div class="panel-body">
+                A simple to use cross-browser supporting general-purpose JS library
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                What is jQuery
+            </div>
+            <div class="panel-body">
+                A simple to use cross-browser supporting general-purpose JS library
+            </div>
+        </div>
+        
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $( '.panel-heading' ).on( 'click', function() {
+                    // $( this ).closest( '.panel' ).find( '.panel-body' ) // also does the job
+                    // $( this ).next( '.panel-body' ).hide(); // always hides() - not good for our purpose - there is also a show()
+                    // $( this ).next( '.panel-body' ).slideToggle( 200 ); // great for our case (toggle() and its variants) - there are slide*() methods and fade*() methods for hide, show and toggle
+
+                    
+                    /*
+                    $( this ).next( '.panel-body' ).animate(
+                        {
+                            height: 0,
+                            padding: 0
+                        },
+                        200
+                    );*/
+                });
+            });
+        </script>
+    </body>
+</html>

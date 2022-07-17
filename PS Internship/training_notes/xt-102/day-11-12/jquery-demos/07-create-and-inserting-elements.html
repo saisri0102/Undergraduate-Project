@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .error {
+                text-decoration: underline;
+            }
+
+            .highlight {
+                color: navy;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container"></div>
+        <div class="container"></div>
+        <div class="container"></div>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                const $container = $( '.container' );
+                
+                // $() is also used to create an element
+                const $row = $( '<div class="row">This is a row</div>' );
+                console.log( $row );
+
+                // set copies of $row as last child of every element of $container
+                $container.append( $row );
+                
+                // create an element, and insert it as the previous sibling of every row element
+                // a copy of the created node is made for each row, and inserted before the row!
+                const $rows = $( '.row' );
+                $rows.before( $( '<div class="row">Newly added row</div>' ) );
+            });
+        </script>
+    </body>
+</html>

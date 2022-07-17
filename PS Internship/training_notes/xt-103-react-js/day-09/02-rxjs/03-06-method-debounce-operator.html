@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            input {
+                padding: 0.2em;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        Search: 
+        <input type="search" placeholder="What are you looking for?" id="search" />
+
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const searchInput$ = rxjs.fromEvent( document.getElementById( 'search' ), 'input' );
+
+            const searchInputDebounced$ = rxjs.operators.debounceTime( 500 )( searchInput$ );
+
+            searchInputDebounced$.subscribe(function( event ) {
+                const searchTerms = event.target.value;
+
+                // make Ajax calls to get suggestions based on searchTerms
+                console.log( 'making Ajax calls to fetch suggestions for ' + searchTerms );
+            });
+        </script>
+    </body>
+</html>

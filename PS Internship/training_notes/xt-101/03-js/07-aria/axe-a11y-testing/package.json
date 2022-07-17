@@ -1,0 +1,21 @@
+{
+    "name": "axe-a11y-testing",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "http-server -c-1 -p 3000 ./src",
+        "test": "axe http://localhost:3000/"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "axe-cli": "^3.2.1",
+        "axe-core": "^4.1.2",
+        "axe-webdriverjs": "^2.3.0",
+        "chromedriver": "^88.0.0",
+        "http-server": "^0.12.3",
+        "selenium-webdriver": "^4.0.0-alpha.8"
+    }
+}

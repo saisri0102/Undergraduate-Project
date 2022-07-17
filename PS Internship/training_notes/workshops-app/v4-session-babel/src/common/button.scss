@@ -1,0 +1,32 @@
+@use 'mixins';
+@use 'vars';
+
+.btn {
+    padding: 0.5em 2em;
+    border: 0;
+    @include mixins.border-radius( 4px );
+    cursor: pointer;
+}
+
+.btn-primary {
+    @extend .btn;
+    color: white;
+    background-color: vars.$color-primary;
+
+    &:hover {
+        background-color: vars.$color-primary-light;
+    }
+}
+
+.btn-danger {
+    @extend .btn;
+    color: white;
+    background-color: vars.$color-danger;
+}
+
+.btn-icon {
+    padding: 8px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}

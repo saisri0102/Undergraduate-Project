@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .text {
+                font-size: 1em;
+            }
+
+            .text-primary {
+                color: crimson;
+                text-decoration: underline;
+            }
+
+            .text-secondary {
+                color: olive;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="btn-change-color">Change color</button>
+        
+        <p id="p1" class="text text-primary">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores doloremque tenetur, excepturi minus nisi dolore consequuntur. Ipsam perspiciatis fugiat praesentium aliquid odio! Perferendis excepturi sapiente, odit repudiandae vel recusandae dicta.
+        </p>
+
+        <script>
+            (function() {
+                const p1El = document.querySelector( '#p1' );
+
+                console.log( p1El.style );
+
+                document.querySelector( '#btn-change-color' ).onclick = function() {
+                    // p1El.className = 'text text-secondary';
+                    p1El.classList.remove( 'text-primary' );
+                    p1El.classList.add( 'text-secondary' );
+
+                    // p1El.classList.toggle( 'x' ) // add class x if it does not exist, else it remove class x
+                };
+            }());
+        </script>
+    </body>
+</html>

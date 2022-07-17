@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Including jQuery</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // cdn -content delivert Network
+        //Highly distributed platform of servers that helps minimize delays in loading webpage content by reducing the physical distance between the server and the user
+        // cdn helps in reducing the latency
+        // 2 global variables are created by jQuery
+        // $, jQuery is referred to as the jQuery namespace
+        //$ or jQuery is the only global function 
+        console.log($);
+        console.log(jQuery);
+       
+
+        //both refer to the same function
+        console.log($===jQuery);
+        
+        // Events that occur when the HTML page loads (in order they fire)
+        
+        // 1. DOMContentLoaded - fired on document object after the browser goes through the entire HTML page & created the DOM nodes, then it fires DOMContentLoaded
+        // 2. load- fired on window object after all assests are fetched
+
+        // because we are very sure that DOM has been created and accessibile 
+        // Now we can put this script on the top also
+        // becuase this function excutes only after browser understood everything 
+        document.addEventListener('DOMContentLoaded', function(){
+
+            // example of startup code being called now...
+            // const page= new LoginPage();
+            // page.init();
+            console.log('DOM is ready for access');
+        });
+
+        // selecting the document DOM node , using $() function and setting handler for DOMContentLoader(i.e, ready event)
+        // when the DOM is ready this function excutes
+        $(document).ready(function(){ // same as DOMContentLoaded
+            console.log('DOM is ready for access');
+        });
+
+        //Alternative way to add ready event handler
+
+        // $(function(){
+
+        //})
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .panel {
+                border: 1px solid crimson;
+            }
+
+            .panel-heading,
+            .panel-body {
+                padding: 1em;
+            }
+
+            .panel-heading {
+                background-color: crimson;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            class Panel extends React.Component {
+                state = {
+                    open: true
+                };
+
+                onClickHandler = () => {
+                    this.setState(state => {
+                        return {
+                            open: !state.open
+                        };
+                    });
+                }
+
+                render() {
+                    const { heading, children } = this.props;
+                    const { open } = this.state;
+
+                    console.log( heading, children );
+
+                    return (
+                        <div className="panel">
+                            <div className="panel-heading" onClick={this.onClickHandler}>{heading}</div>
+                            {
+                                open ? (
+                                    <div className="panel-body">
+                                        {children}
+                                    </div>
+                                ) : null
+                            }
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render( 
+                <Panel heading="What is React?">
+                    <p>React is a JS library for building UI of web pages</p>
+                    <p>It is created by Facebook</p>
+                </Panel>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            class X extends React.Component {
+                inputRef = React.createRef();
+                orangeLiRef = React.createRef();
+
+                printFruitName = ( event ) => {
+                    console.log( event );
+                    console.log( event.target );
+
+                    console.log( this.inputRef );
+                    console.log( this.inputRef.current );
+                    console.log( this.inputRef.current.value );
+                }
+
+                render() {
+                    return (
+                        <ul>
+                            <input type="text" ref={this.inputRef} />
+                            <li onClick={this.printFruitName}>Apples</li>
+                            <li onClick={this.printFruitName} ref={this.orangeLiRef}>Oranges</li>
+                            <li onClick={this.printFruitName}>Bananas</li>
+                        </ul>
+                    );
+                }
+            }
+
+            ReactDOM.render( <X />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

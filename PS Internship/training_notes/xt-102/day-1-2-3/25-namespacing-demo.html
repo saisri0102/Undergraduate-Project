@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="25-namespacing-utils-price.js"></script>
+        <script src="25-namespacing-utils-date.js"></script>
+
+        <script>
+            // create variables for convenience
+            const MADate = MeetingsApp.Utils.Date;
+            
+            MADate.formatDate( "2019-01-03T08:00:00.000Z" );
+            MADate.formatDate( "2020-01-03T08:00:00.000Z" );
+            MADate.formatDate( "2021-01-03T08:00:00.000Z" );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function TaskInput( { placeholder, buttonText } ) {
+                // const { placeholder, buttonText } = props;
+                
+                return (
+                    <form>
+                        <input type="text" className="task-input" placeholder={placeholder} />
+                        <button>{buttonText}</button>
+                    </form>
+                );
+            }
+
+            ReactDOM.render(
+                <React.Fragment>
+                    <TaskInput placeholder="New task" buttonText="Add task" />
+                </React.Fragment>,
+                document.getElementById( 'root' )
+            )
+        </script>
+    </body>
+</html>

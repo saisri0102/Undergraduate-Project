@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head></head>
+    <body>
+        <button id="btn-click-1">click me</button>
+
+        <!-- inline handling -->
+        <button id="btn-click-2" onclick="console.log( 'event handler 2' );">click me</button>
+        
+        <button id="btn-click-3" onclick="console.log( 'event handler 3.1' );">click me</button>
+        
+        <button id="btn-click-4" onclick="console.log( 'event handler 4.1' );">click me</button>
+
+        <script>
+            // more preferable when compared to inline handling
+            document.querySelector( '#btn-click-1' ).onclick = function() {
+                console.log( 'event handler 1' );
+            };
+
+            // document.querySelector( '#btn-click-1' ).id = "btn-click-new-1";
+            
+            // we have set the onclick property to another function
+            document.querySelector( '#btn-click-3' ).onclick = function() {
+                console.log( 'event handler 3.2' );
+            };
+
+            // addEventListener - most preferred way
+            document.querySelector( '#btn-click-4' ).addEventListener( 'click', function() {
+                console.log( 'event handler 4.2' );
+            });
+            
+            document.querySelector( '#btn-click-4' ).addEventListener( 'click', function() {
+                console.log( 'event handler 4.3' );
+            });
+            
+            document.querySelector( '#btn-click-4' ).addEventListener( 'click', function() {
+                console.log( 'event handler 4.4' );
+            });
+        </script>
+    </body>
+</html>

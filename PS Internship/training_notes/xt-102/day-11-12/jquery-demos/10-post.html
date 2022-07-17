@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <ul id="workshops"></ul>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // NOTE: do not stringify the data!
+                $.post( 
+                    'http://workshops-server.herokuapp.com/sessions',
+                    {
+                        name: 'Ajax methods in jQuery',
+                        speaker: 'John Doe',
+                        abstract: 'Introduction to get(), post(), ajax() and load()',
+                        duration: 3,
+                        level: 'Intermediate',
+                        sequenceId: 1,
+                        upvoteCount: 0,
+                        workshopId: 12
+                    }
+                )
+                    .done(function( updatedSession ) {
+                        alert( 'Added session with id = ' + updatedSession.id );
+                        
+                        // return does not matter :(
+                        return updatedSession.id;
+                    })
+                    .done(function( updatedSession ) {
+                        console.log( updatedSession );
+                    })
+                    .fail(function( xhr, status, message ) {
+                        alert( 'Could not add session' )
+                    });
+            });
+        </script>
+    </body>
+</html>

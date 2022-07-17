@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="workshops"></ul>
+    <script src="./external/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                method: 'post',
+                url : 'http://workshops-server.herokuapp.com/sessions',
+               data: {
+                name:'Ajax methods in jQuery ',
+                speaker: 'Jonathon doe',
+                abstract: 'Introduction to get(), post() and load()',
+                duration:3,
+                level:'Basic',
+                sequenceId: 1,
+                upvoteCount:0,
+                workshopId: 12
+
+            },
+            success: function(){
+                console.log('success callback');
+            },
+            error: function(){
+                console.log('error callback');
+            }
+            // headers: {
+            //     'Authorization' : getToken();
+            // }
+
+        })
+            .done(function(updateSession){
+                alert('Added workshop with id ='+ updateSession.id)
+            })
+            .fail(function(xhr,status,message){
+                console.log('could not fetch', message);
+            })
+
+        });
+    </script>
+</body>
+</html>

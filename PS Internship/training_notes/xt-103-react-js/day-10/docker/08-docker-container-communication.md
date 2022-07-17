@@ -1,0 +1,17 @@
+- Two ways of communication
+    - Legacy linking
+        - when creating container we --link to other containers via their name
+            - docker run -d --name mongodb mongo
+            - docker run -d -p 10000:10000 --link mongodb:mongodb puranik3/node-app
+    - Create Network and add container to the network
+        - We create n/w
+            - docker network create --driver bridge web-app-network
+        - we add containers to the n/w
+            - docker run -d --net=web-app-network --name mongodb mongo
+            - docker run -d -p 10000:10000 --net=web-app-network puranik3/node-app
+        - all containers in a n/w can communicate with one another
+        - a container can be in multiple network
+    - List networks
+        - docker network inspect web-app-network
+    - Inspect 
+        - docker network inspect <network-name>

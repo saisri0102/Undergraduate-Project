@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Node relationships</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .bold {
+                font-weight: bold;
+            }
+            
+            .underline {
+                text-decoration: underline;
+            }
+
+            .italic {
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p id="para-1" name="paragraph 1" style="color: red;" class="bold underline">
+                Para 1
+            </p>
+            <p id="para-2">
+                Para 2
+            </p>
+        </div>
+        <script>
+            var paraNodes = document.getElementsByTagName( 'p' );
+            console.log( 'First paragraph\s id is ', paraNodes[0].id );
+            console.log( 'First paragraph\s name is ', paraNodes[0].name );
+            console.log( 'First paragraph\s style is ', paraNodes[0].style ); // this is the inline styles and NOT final computed styles
+            paraNodes[1].style.color = 'red'; // all property values are strings
+            console.log( 'First paragraph\s classes are ', paraNodes[0].className ); // since class was not allowed as property name earlier, classes on the node are accessed using className
+            paraNodes[0].classList.add('italic');
+            console.log( paraNodes[0].classList );
+
+            var paraNode1 = document.getElementById( 'para-1' );
+            console.log( paraNode1.nextSibling );
+            console.log( paraNode1.nextSibling.nextSibling );
+            console.log( paraNodes[1].previousSibling );
+            console.log( paraNodes[1].previousSibling.previousSibling );
+            console.log( paraNodes[1].parentNode );
+            console.log( paraNodes[1].parentNode.childNodes[0] );
+            console.log( paraNodes[1].parentNode.children[0] );
+        </script>
+    </body>
+</html>

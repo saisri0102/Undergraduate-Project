@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Including jQuery</title>
+    </head>
+    <body>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia provident qui dolor omnis sit sapiente aliquid veniam velit, laborum quo esse ad id maiores neque sed asperiores tempora cumque corrupti?</p>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            // 2 global variables are created by jQuery
+            // $, jQuery is referred to as the jQuery namespace
+            console.log( $ );
+            console.log( jQuery );
+
+            // both refer to the same function
+            console.log( $ === jQuery );
+
+            // Events that occur when the HTML page loads (in the order they fire)
+            // 1. DOMContentLoaded - document - after the browser goes through the entire HTML page & created the DOM nodes, then it fires DOMContentLoaded
+            // 2. load - window (after all assets are fetched)
+            
+            // because we are very sure that DOM has been created and accessible
+            document.addEventListener( 'DOMContentLoaded', function() {
+                // example of startup code being called now...
+                // const page = new LoginPage();
+                // page.init();
+
+                console.log( 'DOM is ready for access' );
+            });
+
+            // selecting the document DOM node, using $() function, and setting handler for DOMContentLoaded (i.e. "ready" event)
+            $(document).ready(function() {
+                console.log( 'DOM is ready for access' );
+            });
+
+            // Alternative way to add ready event handler
+            // $(function() {
+
+            // })
+        </script>
+    </body>
+</html>

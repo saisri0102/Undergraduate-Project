@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Welcome to Workshops Application. This helps find technical workshops happening in and around your place.">
+        
+        <!-- reset stylesheet - removes default styling by browser -->
+        <link rel="stylesheet" href="dist/css/external/reset.css">
+        <link rel="stylesheet" href="libs/fontawesome-free-5.15.2-web/css/all.min.css">
+        <link rel="stylesheet" href="libs/notifications-center/css/notifications.css">
+        <link rel="stylesheet" href="dist/css/utils.css">
+        <link rel="stylesheet" href="dist/css/app.css">
+        <link rel="stylesheet" href="dist/css/nav.css">
+        <link rel="stylesheet" href="dist/css/pages/workshops.css">
+
+        <title>Workshops List | Workshops App</title>
+    </head>
+    <body>
+        <nav class="navbar-main">
+            <div class="container nav-wrapper">
+                <ul class="nav nav-desktop">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="workshops.html" class="active">Workshops List</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+                <button class="btn-menu btn-icon">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav nav-mobile container hide">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="workshops.html">Workshops List</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <section class="container">
+                <header class="my-5">
+                    <div class="d-flex justify-content-space-between">
+                        <h1>List of Workshops</h1>
+                        <button class="btn-primary" id="btn-hide-details">Hide details</button>
+                    </div>
+                    <hr />
+                </header>
+                <div class="workshops-list" id="workshops-list"></div>
+            </section>
+        </main>
+        <footer class="page-footer">
+            <nav class="navbar-footer">
+                <div class="container">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="workshops.html">Workshops List</a>
+                        </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                        <li>
+                            <a href="sitemap.html">Site map</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="text-center">&copy; <a href="http://www.digdeeper.in">www.digdeeper.in</a></div>
+        </footer>
+
+        <script src="libs/notifications-center/js/notifications.js"></script>
+        <script src="js/pages/workshops.js" type="module"></script>
+    </body>
+</html>

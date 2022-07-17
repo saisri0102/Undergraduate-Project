@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.js"></script>
+        <!-- <script src="rxjs-6.6.3.umd.js"></script> -->
+
+        <script>
+            function getDateObservable() {
+                // To the Observable constructor, we pass a function that may start off some operation, or does some set up (initialization)
+                return new rxjs.Observable(( observer ) => {
+                    // observer.next();
+                    // observer.error();
+                    // observer.complete();
+
+                    const id = setInterval(() => {
+                        observer.next( new Date() );
+                    }, 1000);
+
+                    setTimeout(() => {
+                        // stop the operation
+                        clearInterval( id );
+
+                        // when you are done with your operation, call observer.complete() to complete the observable
+                        observer.complete();
+                    }, 10000);
+                });
+            }
+
+            const dateObservable$ = getDateObservable();
+
+            const observer = {
+                next( data ) {
+                    console.log( data );
+                },
+                error( err ) {
+                    console.log( err );
+                },
+                complete() {
+                    console.log( 'completed' );
+                }
+            }
+
+            // When we subscribe() for the first time to an observable, the operation starts off
+            const subscription = dateObservable$.subscribe( observer );
+
+            // unsubscribe even before the observable completes naturally
+            setTimeout(() => {
+                subscription.unsubscribe();
+            }, 5000);
+
+            // an "Observable" represents a sequence of events over time
+
+            // Subscriber function is used to define an Observable
+            // When we "subscribe" to an Observable it will initiate an action
+            // observer has 3 methods - next(), error() and complete()
+            // function getDateObservable( interval, repeat = 10 ) {
+            //     return new rxjs.Observable(observer => {
+            //         let count = 0, id;
+
+            //         id = setInterval(() => {
+            //             count++;
+            //             observer.next( new Date() );
+
+            //             if( count === repeat ) {
+            //                 observer.complete(); // results in unsubscription
+            //             }
+            //         }, interval * 1000);
+
+            //         return {
+            //             unsubscribe() {
+            //                 clearInterval( id );
+            //             }
+            //         };
+            //     });
+            // }
+
+            // class DateObserver {
+            //     next( date ) {
+            //         console.log( date );
+            //     }
+                
+            //     error( err ) {
+            //         console.log( err.message );
+            //     }
+
+            //     complete() {
+            //         console.log( 'no more events' );
+            //     }
+            // }
+
+            // // subscribe is passed an "observer" object - it should have 3 methods - next, error, complete
+            // // const subscription = getDateObservable( 3, 7 ).subscribe( new DateObserver() );
+            // const subscription = getDateObservable( 3, 7 ).subscribe(
+            //     ( date ) => { console.log( date )}, // next
+            //     () => {}, // error
+            //     () => { console.log( 'no more events' ); } // complete
+            // );
+
+            // setTimeout(() => {
+            //     subscription.unsubscribe();
+            // }, 10000);
+        </script>
+    </body>
+</html>

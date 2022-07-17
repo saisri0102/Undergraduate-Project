@@ -1,0 +1,16 @@
+@use 'vars';
+
+.my-1 {
+    margin-top: vars.$small-margin !important;
+    margin-bottom: vars.$small-margin / 2 !important;
+}
+
+.my-3 {
+    margin-top: vars.$base-margin !important;
+    margin-bottom: vars.$base-margin !important;
+}
+
+.my-5 {
+    margin-top: vars.$large-margin !important;
+    margin-bottom: vars.$large-margin !important;
+}

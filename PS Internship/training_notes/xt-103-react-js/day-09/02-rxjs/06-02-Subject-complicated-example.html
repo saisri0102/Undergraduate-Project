@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+            }
+            
+            #my-element {
+                position: relative;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100vh;
+                border: 1px solid crimson;
+            }
+
+            #forbidden-1 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 40px;
+                height: 40px;
+                background-color: rgba( 220, 20, 60, 0.75 );
+                z-index: 100;
+            }
+            
+            #forbidden-2 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100px;
+                height: 100px;
+                background-color: rgba( 0, 0, 128, 0.75 );
+                z-index: 10
+            }
+        </style>
+    </head>
+    <body>
+        <div id="my-element">
+            <div id="forbidden-1"></div>
+            <div id="forbidden-2"></div>
+        </div>
+
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const el = document.getElementById('my-element');
+            const mouseMoves$ = rxjs.fromEvent(el, 'mousemove');
+
+            const mouseMoveSubject = new rxjs.Subject();
+
+            const subscription1 = mouseMoveSubject.subscribe(evt => {
+                console.log(`[1] Coords: ${evt.clientX} X ${evt.clientY}`);
+
+                if (evt.clientX < 40 && evt.clientY < 40) {
+                    subscription1.unsubscribe();
+                }
+            });
+            
+            const subscription2 = mouseMoveSubject.subscribe(evt => {
+                console.log(`[2] Coords: ${evt.clientX} X ${evt.clientY}`);
+
+                if (evt.clientX < 100 && evt.clientY < 100) {
+                    subscription2.unsubscribe();
+                }
+            });
+
+            const subscription = mouseMoves$.subscribe( mouseMoveSubject );
+        </script>
+    </body>
+</html>

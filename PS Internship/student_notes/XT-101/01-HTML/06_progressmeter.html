@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            progress {
+                width: 100%;
+                border: none;
+            }
+
+            progress::-webkit-progress-value {
+                background: red;
+            }
+
+            progress::-webkit-progress-bar {
+                background: blue;
+            }
+
+            progress::-moz-progress-bar {
+                background: lightcolor;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- progress : eg. progress bar (progress of some process) -->
+        <!-- meter : eg. download / upload in speedtest.net -->
+        The download has progressed <progress value="0" max="100" id="download-progress">0%</progress>
+
+        <script>
+            const downloadProgress = document.getElementById( 'download-progress' );
+
+            let id = setInterval(function() {
+                let currentValue = parseInt( downloadProgress.getAttribute( 'value' ), 10 );
+                let newValue = currentValue + 10;
+                downloadProgress.setAttribute( 'value', newValue );
+                
+                if( newValue >= 100) {
+                    newValue = 100;
+                    clearInterval( id );
+                }
+                
+                // this does not appear on the page - 
+                downloadProgress.innerText = newValue + '%';
+                console.log( newValue );
+            }, 200);
+        </script>
+    </body>
+</html>

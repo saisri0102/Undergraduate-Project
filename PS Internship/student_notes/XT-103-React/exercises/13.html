@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        body{
+            font-size:20px;
+        }
+        .todo-app{
+            padding:10px;
+            width:300px;
+            margin-left:50px;
+            border: 1px solid crimson;
+            border-radius: 5px;
+        }
+        .todo-list{
+            width:250px;
+            margin:0 auto;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .todo-list li{
+            display: flex;
+            margin: 1em 0;
+            justify-content: space-between;
+            border:1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+     
+        .todo-input input, button{
+            padding:10px;
+            border-radius: 5px;
+        }
+        .todo-input button{
+            background-color: rgb(108, 199, 108);
+            border: 0;
+            color: white;
+        }
+
+        .todo-list li button{
+            background-color: crimson;
+            padding:10px;
+            color:white;
+            border: 0;
+            width:60px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">  
+
+        function TaskInput({placeholder, buttonText, addTask}){
+
+            const inputRef = React.createRef();
+           
+            //render(){
+               // const addTaskHelper = () => addTask(this.inputRef.current.value)
+                //const {placeholder, buttonText, addTask} = this.props;
+                return (
+                    <form className="todo-input">
+                        <input type="text"  placeholder = {placeholder} ref= {inputRef}/>
+                        &nbsp;
+                        <button type="button" onClick={()=>addTask(inputRef.current.value)}>{buttonText}</button>
+                    </form>
+                );
+            //}
+        }
+
+        function TaskItem({name, completed, index, deleteTask }) {
+            return (
+                <li>
+                    <label htmlFor="completed-box">
+                    <input type= "checkbox" id="completed-box" checked = {completed}/>
+                    &nbsp;
+                    {name}
+                    </label>
+                    <button onClick = {()=>deleteTask(index)}>Delete</button>
+                </li>   
+            );
+        }
+
+        function TasksList ( {tasks , deleteTask}){
+            return (
+                <React.Fragment>
+                    <ol className="todo-list">
+                        { tasks.map( (task , idx) => <TaskItem {...task} index = {idx} deleteTask = {deleteTask} key = {idx}/>)}
+                    </ol>
+                </React.Fragment>
+            )
+        }
+      
+
+        class TodoListApp extends React.Component{
+
+            state = {
+                currentTasks: [...this.props.tasks]
+            }
+
+            deleteTask = (index) =>{
+         
+                this.setState(state =>{
+                    let newCurrentTasks = [...state.currentTasks];
+
+                    newCurrentTasks.splice(index, 1);
+                    return {
+                        currentTasks: newCurrentTasks
+                    }
+                })
+            }
+
+            addTask = (name) =>{
+                this.setState(state=>{
+
+                    const newCurrentTasks = [ ...state.currentTasks]
+                    newCurrentTasks.push({
+                        name,
+                        completed: false
+                    })
+                    return {
+                        currentTasks : newCurrentTasks
+                    };
+                });
+            }
+
+            render(){
+
+                const tasks = this.state.currentTasks;
+                return (
+                    <div className= "todo-app">
+                        <TaskInput placeholder="Task Name" buttonText="Add" addTask = {this.addTask}/>
+                        <TasksList tasks = {tasks} deleteTask = {this.deleteTask} />
+                    </div>
+                )
+            }
+            
+        }
+
+        const tasks = [
+            {
+                name: 'Buy Milk',
+                completed:true,
+               
+            },
+            {
+                name: 'Learn React',
+                completed:false,
+               
+            }
+        ]
+
+        ReactDOM.render(
+            <TodoListApp tasks= {tasks} />,
+            document.getElementById('root')
+
+        )
+    </script>
+</body>
+</html>

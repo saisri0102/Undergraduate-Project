@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            const span = <span key={1}>0</span>
+            const buttonPlus = React.createElement( 'button', { key: 2 }, '+' );
+            
+            // If prop value is NOT a string or a variable that holds a string, we put it within {} in JSX
+            const buttonMinus = <button key={3}>-</button>;
+
+            // one option is to pass an array of React elements
+            ReactDOM.render( [ span, buttonPlus, buttonMinus ], document.getElementById( 'root' ) );
+            
+            setTimeout(function() {
+                // create a single container element, and add the required elements as children - disadvantage is we end up creating an unnecessary div DOM node
+                ReactDOM.render( <div><span>Span 1</span><span>Span 2</span></div>, document.getElementById( 'root' ) );
+            }, 2000);
+
+            setTimeout(function() {
+                // React.Fragment - a dummy HTML container element - it does not result in an extra container element in the DOM
+                ReactDOM.render( 
+                    <React.Fragment>
+                        <span>Span A</span>
+                        <span>Span B</span>
+                    </React.Fragment>,
+                    document.getElementById( 'root' )
+                );
+            }, 4000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam culpa, impedit consequuntur recusandae alias quis molestias repellendus ducimus aperiam earum natus modi, obcaecati corrupti iure? Voluptatem eaque fuga temporibus explicabo!
+    </p>
+
+    <script src="external/xyz.js"></script>
+    <script src="external/jquery.min.js"></script>
+
+    <!--
+        If jQuery sees that there is already a global variable $ at the time it excutes, it keeps a copy of it, and if some one asks for it, it will give that object
+    -->
+    <script>
+        (function ($){ // This is the way of keeping  my jQuery $ symbol safe
+            $(document).ready(function(){
+                // we are asking jQuery to release the global $ and assign it back to the xyz's $
+                $.noConflict(); 
+                //  From this line onwards, the global $ refers to xyz's $
+
+            });
+        }(jQuery));
+       
+    </script>
+   
+</body>
+</html>

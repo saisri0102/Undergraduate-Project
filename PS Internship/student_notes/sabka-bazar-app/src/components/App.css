@@ -1,0 +1,155 @@
+:root{
+    font-size: 12px;
+}
+body{
+    font-family: "Dosis" , sans-serif;
+    font-size: 1rem;
+}
+.container{
+    width: 95%;
+    margin: auto;
+    padding: 0;
+}
+.box-shadow{
+    box-shadow: 0px 3px 8px #928e8e;
+    border-bottom:2px solid #ededed;
+}
+.brand-logo{
+     height: 50px; 
+}
+.nav-list{
+    display: flex;
+    margin-bottom: 0;
+    padding: 0;
+}
+.nav-item{
+    list-style-type: none;
+    padding-left: 10px;
+}
+.nav-item a{
+    color: gray;
+    font-weight: 900;
+}
+/* .nav-item .active{
+   color: black;
+} */
+
+.w-90{
+    width: 90%;
+}
+.cart{
+    background-color:#eaeaea;
+    padding: 5px;
+}
+.cart img{
+    padding-right: 5px;
+    width:20px;
+    fill: rgb(191, 41, 87);
+    
+}
+.d-inline-block{
+    display: inline-block;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    margin-left: -30%;
+    text-align: center;
+    list-style: none;
+    
+}
+.carousel-indicators li {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 10px
+}
+.carousel-indicators .active {
+    width: 5px;
+    height: 5px;
+    margin: 1px;
+    background-color: black;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    background: 50%/100% 100% no-repeat;
+    background-color: black;
+}
+.b-bottom{
+    border-bottom: 1px solid black;   
+}
+
+.btn-primary{
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    color:white;
+    background-color: rgb(191, 41, 87);
+}
+
+.btn-primary-pink{
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    color:white;
+    background-color: rgb(191, 41, 87);
+}
+
+.btn-primary:hover{
+    background-color: rgb(165, 25, 67);
+}
+.card-title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.card-img{
+    width:100%;
+    height:75%;
+}
+.footer{
+    background-color: #eaeaea;
+    padding: 10px;
+    margin-top:10px;
+}
+.categories-nav{
+    background-color: #eaeaea;
+}
+.bg-light-gray{
+    background-color: #eaeaea;
+}
+
+@media screen and (min-width: 360px)  {
+    :root{
+        font-size: 16px;
+    }
+    .container{
+        width: 85%;
+        margin: auto;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width: 960px) {
+    :root{
+        font-size: 14px;
+    }
+    .container{
+        width: 90%;
+        margin: auto;
+        padding: 0;
+    }
+}

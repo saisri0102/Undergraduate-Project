@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="error"></div>
+        <div class="error"></div>
+        <div class="error"></div>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                const $paras = $( '.error' );
+                $paras.html( 'Some error occured' );
+                
+                // just .style.color in DOM nodes
+                $paras.css( 'color', 'crimson' );
+
+                // set many CSS properties in one shot
+                $paras.eq(0).css({
+                    color: 'navy',
+                    fontSize: '1.5em'
+                });
+
+                // as a getter it gets the CSS property value for first element in the collection
+                console.log( $paras.css( 'color' ) );
+            });
+        </script>
+    </body>
+</html>

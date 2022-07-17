@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables Exercise</title>
+    <style>
+        table, th,td{
+            border: 1px solid black;
+           border-collapse: collapse;
+           text-align: center;
+           padding:2px; 
+        }
+        tr:nth-child(even)  td{
+           background-color: pink;
+        }
+
+        tr:nth-child(odd) td {
+           background-color: yellow;
+           opacity: 0.5;
+        }
+   
+
+     
+    </style>
+</head>
+
+<body>
+    <table>
+       <caption>Data about planets of Solar System</caption>
+       <colgroup>
+         <col>
+         <col >
+         <col style="border: 2px solid black;">
+         <col>
+         <col>
+      </colgroup>
+   
+       <thead>
+           <tr>
+               <th colspan="2"></th>
+               <th>Name</th>
+               <th>Mass</th>
+               <th>Diameter</th>
+           </tr>
+               
+       </thead>  
+       <tbody>    
+          
+           <tr>
+               <td rowspan="4" colspan="2">Terristrail Planets</td>
+               <td>mercury</td>
+               <td>4</td>
+               <td>5</td>
+           </tr>
+           <tr>
+                
+                <td>mercury</td>
+                <td>4</td>
+                <td>5</td>
+           </tr>
+           <tr>
+                
+                <td>mercury</td>
+                <td>4</td>
+                <td>5</td>
+           </tr>
+           <tr>
+                
+                <td>mercury</td>
+                <td>4</td>
+                <td>5</td>
+           </tr>
+           <tr>
+                <td rowspan="4">Jovian planets</td>
+                <td rowspan="2">Gas giants</td>
+                <td>Jupiter</td>
+                <td>6</td>
+                <td>7</td>
+           </tr>
+           <tr>
+                
+                <td>Saturn</td>
+                <td>8</td>
+                <td>9</td>
+           </tr>
+           <tr>
+              <td rowspan="2">Ice giants</td>
+               <td>Uranus</td>
+               <td>10</td>
+               <td>11</td>
+           </tr>
+           <tr>
+                <td>Neptune</td>
+                <td>10</td>
+                <td>11</td>
+           </tr>
+           <tr>
+               <td colspan="2">Dwart Planets</td>
+               <td>pluto</td>
+               <td>12</td>
+               <td>13</td>
+           </tr>
+        </tbody> 
+    </table>
+
+</body>
+</html>

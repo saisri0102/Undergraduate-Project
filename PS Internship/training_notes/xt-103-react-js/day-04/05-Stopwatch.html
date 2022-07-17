@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function Stopwatch( { initialValue } ) {
+                const [ timeElapsed, setTimeElapsed ] = React.useState( initialValue );
+                const [ running, setRunning ] = React.useState( false );
+
+                // If we do not pass a second argument to useEffect it behaves like cdm + cdu (it runs on first render, and on state and prop updates)
+                // If you do pass a second argument to useEffect (an array consisting of a subset of state and props), then it runs on first render and on specified state / prop updates
+                React.useEffect(() => {
+                    if( running ) {
+                        console.log( 'effect function is running' );
+
+                        let id = setInterval(() => {
+                            setTimeElapsed( timeElapsed => timeElapsed + 1 );
+                        }, 1000);
+
+                        return () => {
+                            clearInterval( id );
+                        };
+                    }
+                }, [ running /*, initialValue */ ] );
+
+                let id;
+
+                const start = () => {
+                    setRunning( true );
+                };
+
+                const stop = () => {
+                    setRunning( false );
+                    // clearInterval( id );
+                };
+
+                return (
+                    <div>
+                        Time elapsed: {timeElapsed}
+                        <button onClick={start}>Start</button>
+                        <button onClick={stop}>Stop</button>
+                    </div>
+                );
+            }
+
+            ReactDOM.render( <Stopwatch initialValue={0} />, document.getElementById( 'root' ) );
+
+            setTimeout(() => {
+                ReactDOM.render( <Stopwatch initialValue={100} />, document.getElementById( 'root' ) );
+            }, 10000);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // "Props" -> data received from outside the component instance
+            // "State" -> data that the component mantains internally (this data changes with time)
+            // The UI should be decided ONLY using "state" and "props"
+            class DigitalClock extends React.Component {
+                state = {
+                    time: (new Date()).toTimeString()
+                }
+
+                // constructor( props ) {
+                //     super( props ); // this.props = props;
+
+                //     this.state = {
+                //         time: (new Date()).toTimeString()
+                //     };
+                // }
+
+                // event handler context will be undefined in Reatc. Therefore we need to use arrow function syntax to fix the context to the DigitalClock object
+                startClock = () => {
+                    setInterval(() => {
+                        // we never meddle with the state directly in React, because React will not get to know about the state change
+                        // this.state.time = (new Date()).toTimeString()
+                        // request React to change the state
+                        this.setState({
+                            time: (new Date()).toTimeString()
+                        });
+                    }, 1000);
+                }
+
+                render() {
+                    console.log( 'render' );
+                    console.log( 'this.state = ', this.state );
+
+                    return (
+                        <React.Fragment>
+                            <div>
+                                {this.props.message} {this.state.time}
+                            </div>
+                            <button onClick={this.startClock}>Start ticking</button>
+                        </React.Fragment>
+                    )
+                }
+
+                // this method gets called after the first render
+                componentDidMount() {
+                    // setInterval(() => {
+                    //     // we never meddle with the state directly in React, because React will not get to know about the state change
+                    //     // this.state.time = (new Date()).toTimeString()
+                    //     // request React to change the state
+                    //     this.setState({
+                    //         time: (new Date()).toTimeString()
+                    //     });
+                    // }, 1000);
+                }
+            }
+
+            ReactDOM.render( <DigitalClock message="The time in India is " />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

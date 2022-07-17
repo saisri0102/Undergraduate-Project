@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                font-size: 1em;
+            }
+
+            .todo-list {
+                width: 320px;
+                margin: 0 auto;
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .todo-list li {
+                display: flex;
+                padding: 0.5em;
+                border: 1px solid lightgray;
+                border-radius: 8px;
+                margin: 1em;
+            }
+
+            .todo-list li button {
+                align-self: flex-end;
+            }
+
+            .todo-list .task-name {
+                flex-basis: auto;
+                flex-grow: 1;
+                margin-left: 0.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function TaskListItem( { name, completed, priority } ) {
+                return (
+                    <li>
+                        <input type="checkbox" checked={completed} />
+                        <span class="task-name">
+                            {name}
+                            &nbsp;&nbsp;
+                            <span>
+                                {priority ? 'Priority: ' : null}
+                                {priority}
+                            </span>
+                        </span>
+                        <button>Delete</button>
+                    </li>
+                )
+            }
+
+            function TaskList( { tasks } ) {
+                return (
+                    <ul className="todo-list">
+                        {tasks.map(task => <TaskListItem {...task} />)}
+                    </ul>
+                );
+            }
+
+            const tasks = [
+                { name: 'Buy milk', completed: true, priority: 'high' },
+                { name: 'Learn React', completed: false, priority: 'low' },
+                { name: 'Cook dinner', completed: true },
+            ];
+
+            ReactDOM.render(
+                <TaskList tasks={tasks} />,
+                document.getElementById( 'root' )
+            )
+        </script>
+    </body>
+</html>

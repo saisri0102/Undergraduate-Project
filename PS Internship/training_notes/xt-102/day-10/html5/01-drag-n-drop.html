@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .lanes {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .lane {
+                padding: 10px;
+                border: 1px solid black;
+                flex-basis: 30%;
+            }
+
+            .task {
+                padding: 10px;
+                border: 1px solid black;
+                margin: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Kanban board</h1>
+        <div class="lanes">
+            <div class="lane">
+                <h2>Not started</h2>
+                <div class="task" draggable="true" id="task-1">
+                    Conversion from Sass to CSS
+                </div>
+                <div class="task" draggable="true"id="task-2">
+                    Using ES2015 features
+                </div>
+                <div class="task" draggable="true" id="task-3">
+                    Using MVC architecture
+                </div>
+            </div>
+            <div class="lane" id="lane-2">
+                <h2>In progress</h2>
+            </div>
+            <div class="lane">
+                <h2>Done</h2>
+            </div>
+        </div>
+
+        <script>
+            let currentTaskId;
+
+            document.querySelectorAll( '.task' ).forEach(function( task ) {
+                task.addEventListener( 'drag', function( event ) {
+                    console.log( this.id );
+                    // event.dataTransfer.setData( 'id', this.id );
+                    currentTaskId = this.id;
+                });
+            });
+
+            document.querySelector( '#lane-2' ).addEventListener( 'dragover', function( event ) {
+                // default action is to prevent drop - and we prevent the default action - so we effectively allow drop
+                event.preventDefault();
+                console.log( 'dragging over lane 2' );
+            });
+
+            document.querySelector( '#lane-2' ).addEventListener( 'drop', function( event ) {
+                console.log( 'dropped something' );
+                // const id = event.dataTransfer.getData( 'id' );
+                const id = currentTaskId;
+                console.log( id );
+                const task = document.querySelector( '#' + id );
+                this.appendChild( task );
+            });
+        </script>
+    </body>
+</html>

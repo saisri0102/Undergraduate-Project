@@ -1,0 +1,16 @@
+{
+  "name": "jquery-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "copy": "cpx \"node_modules/jquery/dist/*.js\" external/jquery"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cpx": "^1.5.0",
+    "jquery": "^3.5.1"
+  }
+}

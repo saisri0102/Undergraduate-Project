@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            class Counter extends React.Component {
+                state = {
+                    currentValue: this.props.initialValue
+                }
+
+                increment = () => {
+                    // the function passed inside setState() gets called when react decides to change the state
+                    // this state gets stored in temporary state which is passed as argument 
+                    // It updates the temporary value 
+                    // This processing is called batched updates
+                    // React gathers all the set states and batches it 
+                    // excute this batch updates when run time is free 
+                    // after completion of batched updates it refresh the page (call the render)
+
+                    this.setState((state /*this is tempstate*/)=>{ // temp state {currentValue : 0 }
+                        
+                       console.log('state is being updated');
+                        return {
+                         currentValue: state.currentValue + 1 // temp state {currentValue : 0 + 1}
+                       } 
+                    }, ()=> console.log('State has been updated') // callback function is called after  actual state is changed and render is completed 
+                    );
+                     // the function passed inside setState() gets called when react decides to change the state
+                    this.setState((state /*this is tempstate*/)=>{ // temp state = {currentValue :1 }
+                         console.log('state is being updated 2nd set state');
+                        return {
+                         currentValue: state.currentValue + 1 // temp state {currentValue : 1 + 1}
+                       } 
+                    }, ()=> console.log('State has been updated 2nd set state') // callback function is called after  actual state is changed and render is completed 
+                    );
+                    
+                }
+                
+                decrement = () => {
+                    this.setState((state)=>{
+                       return {
+                         currentValue: state.currentValue - 1
+                       } 
+                    });
+                    this.setState((state)=>{
+                       return {
+                         currentValue: state.currentValue - 1
+                       } 
+                    });
+                   
+                }
+
+                // render is a PURE function - does not make use of external variable
+                // should return a UI that is dependent on propa and state
+
+                render() {
+
+                    // NEVER do these within a pure function 
+                    // x++;
+                    // this.setState()
+                    // return fetch('http://..')
+
+                    // Try to keep more pure functions s
+                    console.log('render function called');
+                    return (
+                        <div style={ { marginTop: '1em' } }>
+                            <button onClick={this.decrement}>-</button>
+                            <span>{this.state.currentValue}</span>
+                            <button onClick={this.increment}>+</button>
+                        </div>
+                    );
+                }
+                /*
+                   console output 
+                   state is being updated
+                    state is being updated 2nd set state
+                    render function called
+                    State has been updated
+                    State has been updated 2nd set state
+                 */
+            }
+
+            ReactDOM.render( 
+                <React.Fragment>
+                    <Counter initialValue={0} />
+                    <Counter initialValue={100} />
+                </React.Fragment>,
+                document.getElementById( 'root' )
+            );
+        </script>
+    </body>
+</html>

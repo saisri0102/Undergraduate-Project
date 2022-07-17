@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ajax in jQuery</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="qod"></div>
+        <script>
+            function ajax( config ) {
+                // plain JS Ajax
+                var xhr = new XMLHttpRequest();
+
+                xhr.addEventListener( 'readystatechange', function( event ) {
+                    /*
+                    console.log( 'event = ', event );
+                    console.log( 'xhr.status = ', xhr.status ); // response status code
+                    console.log( 'xhr.responseText = ', xhr.responseText ); // response body
+                    console.log( 'xhr.readyState = ', xhr.readyState ); // 1/2/3/4 (state value for various stages of the HTTP request)
+                    */
+
+                    if( xhr.readyState === 4 ) { // end of request
+                        if( xhr.status >= 200 && xhr.status < 400 ) { // success
+                            config.success( xhr.responseText );
+                        } else { // failure
+                            config.error();
+                        }
+                    }
+                });
+
+                xhr.open( config.method, config.url, true );
+                // xhr.setRequestHeader( 'header-key', 'header-value' ); // in case you want to pass request ehaders
+                xhr.send(config.data); // we can pass data as argument in case of POSTing etc.
+            }
+
+
+            /*  
+            ajax({
+                url: 'data/quote-of-the-day.txt',
+                method: 'GET',
+                success: function( responseText ) {
+                    document.getElementById( 'qod' ).innerHTML = responseText; // add the quote to the div
+                },
+                error: function() {
+                    alert( 'some problem. try again.' );
+                }
+            });
+            */
+        </script>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+
+        <script>
+            $.ajaxPrefilter(function( options, originalOptions ) {
+                console.log( 'prefilter called' );
+                console.log( options );
+                console.log( originalOptions );
+                options.headers = {
+                    Authorization: 'Bearer cjsjkcajkckawkcbkawjbc'
+                }
+            });
+
+            $.ajax({
+                url: 'data/quote-of-the-day.txt',
+                method: 'GET',
+                success: function( responseText ) {
+                    document.getElementById( 'qod' ).innerHTML = responseText; // add the quote to the div
+                },
+                error: function() {
+                    alert( 'some problem. try again.' );
+                }
+            });
+
+            /* lots of convenience methods */
+            $(document).ajaxComplete(function() {
+                // remove spinner
+            });
+        </script>
+    </body>
+</html>

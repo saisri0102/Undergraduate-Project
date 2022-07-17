@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .rollover {
+                position: relative;
+                width: 200px;
+            }
+
+            .rollover-img, .rollover-text {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+
+            }
+
+            .rollover-text {
+                display: none;
+                background-color: rgba( 255, 255, 255, 0.5 );
+            }
+
+            .rollover:hover .rollover-text {
+                display: block;
+            }
+            
+            .img-responsive {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            When you rollover this image some text describing details comes over it (the image is partially visible)
+
+            Add any necessary HTML, CSS and JS
+        -->
+        <div class="rollover">
+            <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" class="rollover-image img-responsive" />
+            <span class="rollover-text">
+                Welcome to my website
+            </span>
+        </div>
+
+        <script>
+
+        </script>
+    </body>
+</html>

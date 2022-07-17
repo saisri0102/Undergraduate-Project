@@ -1,0 +1,21 @@
+# latest format is being used for docker-compose.yml files (version 3)
+version: "3"
+
+services:
+    node:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - "12000:10000"
+            - "443:443"
+        networks:
+            - web-app-network
+    mongodb:
+        image: mongo
+        networks: 
+            - web-app-network
+
+networks:
+    web-app-network:
+        driver: bridge

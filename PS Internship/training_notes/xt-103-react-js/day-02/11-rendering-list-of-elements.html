@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .meeting-card {
+                padding: 2em;
+                border: 1px solid lightgray;
+                border-radius: 20px;
+                margin: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            function MeetingCard( props ) {
+                console.log( props );
+
+                return (
+                    <div className="meeting-card">
+                        <div>{props.name}</div>
+                        <div>{props.date.toDateString()}, {props.startTime} - {props.endTime}</div>
+                    </div>
+                );
+            }
+
+            function MeetingsList( { meetings } ) {
+                // EXERCISE: generate meetingReactEls array using meetings.map()
+
+                const meetingReactEls = [];
+                
+                for( let i = 0; i < meetings.length; i++ ) {
+                    let meeting = meetings[i];
+
+                    meetingReactEls.push(
+                        <MeetingCard {...meeting} />
+                    );
+                }
+
+                return (
+                    <React.Fragment>
+                        {meetingReactEls}
+                    </React.Fragment>
+                );
+            }
+
+            const meetings = [
+                {
+                    name: "Project Presentation",
+                    date: new Date( 2021, 2, 16 ),
+                    startTime: 12,
+                    endTime: 13,
+                    key: 1
+                },
+                {
+                    name: "Assessment 1",
+                    date: new Date( 2021, 2, 20 ),
+                    startTime: 1,
+                    endTime: 2,
+                    key: 2
+                }
+            ];
+
+            ReactDOM.render( <MeetingsList meetings={meetings} />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

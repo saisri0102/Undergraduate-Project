@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // The React element hierarchy forms the specification for the UI - is called the Virtual DOM
+            /*
+                {
+                    type: "form",
+                    props: {
+                        action: "/login",
+                        method: "post",
+                        children: [
+                            {
+                                type: "div",
+                                props: [
+                                    {
+                                        type: "label",
+                                        props: ...
+                                    }
+                                ]
+                            },
+                            {
+                                type: "div",
+                                ...
+                            },
+                            {
+                                type: "div",
+                                ...
+                            }
+                        ]
+                    }
+                }
+            */
+           // 1. Virtual DOM diffing
+                // - O(n^3) algorithm is required to find an exact difference between 2 trees : This strategy can take too long to compute differences in trees
+                // So React uses a simplified O(n) algorithm - Stop diffing when a parent changes, and recreate all DOM nodes within that part of the tree - this works well in practice
+           // 2. Reconciliation (apply the required changes to the real DOM)
+            const initialUI = <form action="/login" method="post">
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input type="text" id="username" name="username" />
+                </div>
+                
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                </div>
+
+                <div className="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>;
+
+            ReactDOM.render( initialUI, document.getElementById( 'root' ) );
+
+            const updatedUI = <form action="/register" method="post">
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input type="text" id="username" name="username" />
+                </div>
+                
+                <section className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" name="password" />
+                </section>
+                
+                <div className="form-group">
+                    <label htmlFor="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" />
+                </div>
+
+                <div className="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>;
+
+            setTimeout( () => {
+                ReactDOM.render( updatedUI, document.getElementById( 'root' ) );
+            }, 40000);
+        </script>
+    </body>
+</html>

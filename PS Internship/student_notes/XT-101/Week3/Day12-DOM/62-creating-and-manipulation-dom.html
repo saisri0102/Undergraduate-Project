@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cards{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card{
+            flex-basis: 30%;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn-add-card">Add a card</button>
+    <div class="cards"> 
+       <!-- <div class="card">
+           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias esse aliquid aspernatur. Ab obcaecati quae, nostrum consequuntur repellat totam, autem reiciendis nisi voluptas sed sint cum asperiores esse nemo! Aut.
+       </div> -->
+    </div>
+    <script>
+        const p1El= document.querySelector('#p1');
+        const btnAddCard = document.querySelector('#btn-add-card')
+
+        // on<event> -> onclick
+
+        let cardId= 0;
+        btnAddCard.onclick = function(){
+            cardId++;
+         // creating Element node
+           const cardEl= document.createElement('div');
+           cardEl.className='card';
+
+        //    const cardsEl= document.querySelector('.cards');
+        //    cardsEl.appendChild(cardEl);
+
+        // creating text node
+           const textEl= document.createTextNode(`I am card ${cardId}`);
+           cardEl.appendChild(textEl);
+
+           const cardsEl = document.querySelector('.cards');
+           cardsEl.appendChild(cardEl);
+
+        };
+    </script>
+</body>
+</html>

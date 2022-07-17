@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Step 1: Build a Stopwatch using useState() and useEffect
+            function Stopwatch( props ) {
+                return (
+                    <div>
+                        Time elapsed : {timeElapsed}
+                        <button onClick={start}>Start</button>
+                        <button onClick={stop}>Stop</button>
+                        <button onClick={reset}>Reset</button>
+                    </div>
+                );
+            }
+
+            ReactDOM.render( <Stopwatch />, document.getElementById( 'root' ) );
+        </script>
+    </body>
+</html>

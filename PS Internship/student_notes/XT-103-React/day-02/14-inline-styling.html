@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.development.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+
+    <script type="text/babel">
+       const style = {
+           color:'crimson',
+           fontSize: '20px'
+       }
+       const activeStyle = {
+           textDecoration: 'underline',
+           fontSize:'16px'
+       }
+
+       // usually the combiedstyle created inline in JSX and used to set the style
+       const combineStyles  = {
+           ...style,
+            ...activeStyle
+       }
+
+       ReactDOM.render(
+           <ul>
+           <li style = {combineStyles}>Hello Inline Styles</li>
+           <li style = {{ ...style , ...activeStyle}}>Hello Inline Styles</li>
+           <li style = {style}>Hello Inline Styles</li>
+           </ul>, 
+           document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

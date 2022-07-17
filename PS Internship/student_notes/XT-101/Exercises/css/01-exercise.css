@@ -1,0 +1,47 @@
+body {
+    padding: 40px;
+    background-color: #444;
+    color:rgb(92, 90, 90);
+    
+}
+
+.plan {
+    
+    padding: 1em;
+    text-align: center;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    background-color: rgb( 255, 255, 255 );
+   
+}
+
+.plan-title {
+    color: rgb( 85, 136, 211 );
+    font-size: 1.75em;
+    font-weight:normal;
+}
+.plan-clr{
+    color: rgb( 85, 136, 211 );
+    font-weight:normal;
+}
+
+.plan-cta {
+    color: white;
+    background-color: rgb( 106, 206, 38 );
+    padding: 1em 2em;
+    border: none;
+  border-radius: 4px;
+  margin-top: 1.5em;
+}
+
+h4{
+    color:rgb( 85, 136, 211 );
+    font-size: 1.5em;
+    font-weight: normal;
+}
+hr{
+    width: 40%;
+}
+.plan-thr{
+    text-decoration: line-through;
+}

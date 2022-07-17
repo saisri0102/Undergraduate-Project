@@ -1,0 +1,18 @@
+.workshops-list{
+    display: flex;
+    flex-wrap:wrap;
+    
+    justify-content:space-between;
+}
+.workshops-list-item{
+    flex-basis:30%;
+}
+.workshops-list-item-title{
+    font-size:1.4em;
+    font-weight:bold;
+}
+@media all and (max-width:506px){
+    .workshops-list-item{
+        flex-basis: 100%;
+    }
+}

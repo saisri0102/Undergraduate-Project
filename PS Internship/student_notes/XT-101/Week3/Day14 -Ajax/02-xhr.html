@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+       // STEP1 - Creating XMLHTTPRequest -  used to exchange data with a server behind the scenes
+        const xhr= new XMLHttpRequest(); // to support more old IE (you need to use ActiveXObject)
+
+        // After sending the request we can see state of the request 
+        /**
+         * XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in. 
+         * An XHR client exists in one of the following states:
+
+                Value	State	            Description
+                0	    UNSENT	            Client has been created. open() not called yet.
+                1	    OPENED	            open() has been called.
+                2	    HEADERS_RECEIVED	send() has been called, and headers and status are available.
+                3	    LOADING	            Downloading; responseText holds partial data.
+                4	    DONE	            The operation is complete.
+         * 
+         * */
+        xhr.addEventListener('readystatechange', function(){
+           console.log(xhr.readyState); // completed -> readyState is 4
+
+           if(xhr.readyState==4){ // on complete
+               if(xhr.status>=200 && xhr.status<300){ // to check it  is success
+                    console.log(xhr.responseText); 
+
+                    // xhr.responsetext is string 
+                    // JSON.parse() - convert JSON Formatted string to JS object
+
+                    const workshop = JSON.parse(xhr.responseText);
+                    console.log(workshop); // will be an array  of objects
+
+                    const workshopNames= workshop.map(function(workshop){
+                        return workshop.name; // getting names of workshop
+                    });
+                    const workshopCity = workshop.map(function(workshop){
+                        return workshop.location;
+                    });
+                    console.log(workshopNames);
+                    console.log(workshopCity);
+                }else if(xhr.status>=400 && xhr.status<500){
+                    console.log(xhr.statusText); //Not Found
+                }
+            }
+        });
+
+        xhr.addEventListener('error', function(events){
+            console.log(event);
+        })
+
+        //STEP2 - configuring the request 
+        // always pass the true as 3rd argument - makes the request async 
+        // False - sync - dont use this 
+        //xhr.open('GET', 'https://workshops-server.herokuapp.com/workshops/', false);
+        xhr.open('GET', 'https://workshops-server.herokuapp.com/workshops/', true);
+
+        // since this is async, The second method will initiate data fetch and return immediately
+        
+        // STEP3 - Making Ajax Request
+        xhr.send();
+
+        console.log('Hello'); // gets excuted only after it fetches the data (delay) (if we use false in open )
+        console.log(xhr.responseText); // available only if request in sync 
+
+        // Then how to get hold of that ?
+
+        //xhr can also fire events
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // methods to open up pop up window, resize child window, moving windows
+            // properties to find dimensions of the window (viewport, total size etc.)
+            console.log( window );
+            const childWindow = window.open( 'https://www.google.com' );
+
+            // window is the "global object"
+            // All global variable we create in the browser (not let and const global variables) are properties of the window object
+
+            var abc = 1;
+            console.log( window.abc ); // 1
+            
+            // alert() is window.alert()!
+            window.alert( 'hello' );
+            
+            console.log( window.document );
+            console.log( document );
+            
+            // gets the browser properties
+            console.log( window.navigator );
+            console.log( navigator );
+            
+            console.log( window.location );
+            console.log( location );
+
+            console.log( window.history );
+            console.log( history );
+        </script>
+    </body>
+</html>

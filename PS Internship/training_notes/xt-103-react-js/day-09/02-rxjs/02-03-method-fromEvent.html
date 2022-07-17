@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+            }
+            
+            #my-element {
+                position: relative;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100vh;
+                border: 1px solid crimson;
+            }
+
+            #forbidden {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 40px;
+                height: 40px;
+                background-color: crimson;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="my-element">
+            <div id="forbidden"></div>
+        </div>
+
+        <script src="rxjs-6.6.3.umd.js"></script>
+
+        <script>
+            const el = document.getElementById('my-element');
+            const mouseMoves$ = rxjs.fromEvent(el, 'mousemove');
+
+            const subscription = mouseMoves$.subscribe(evt => {
+                console.log(`Coords: ${evt.clientX} X ${evt.clientY}`);
+
+                if (evt.clientX < 40 && evt.clientY < 40) {
+                    subscription.unsubscribe();
+                }
+            });
+        </script>
+    </body>
+</html>

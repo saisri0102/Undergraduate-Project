@@ -1,0 +1,45 @@
+
+body{
+    font-size:20px;
+}
+.todo-app{
+    padding:10px;
+    width:300px;
+    margin-left:50px;
+    border: 1px solid crimson;
+    border-radius: 5px;
+}
+.todo-list{
+    width:250px;
+    margin:0 auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.todo-list li{
+    display: flex;
+    margin: 1em 0;
+    justify-content: space-between;
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.todo-input input, button{
+    padding:10px;
+    border-radius: 5px;
+}
+.todo-input button{
+    background-color: rgb(108, 199, 108);
+    border: 0;
+    color: white;
+}
+
+.todo-list li button{
+    background-color: crimson;
+    padding:10px;
+    color:white;
+    border: 0;
+    width:60px;
+    border-radius: 5px;
+}

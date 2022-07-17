@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="This is a workshops application. It helps find technical workshops happening in and around your place.">
+        <title>React - Workshop Details | Workshops App</title>
+        
+        <!-- reset stylesheet - removes default styling by browser -->
+        <link rel="stylesheet" href="/dist/css/common/external/reset.css">
+        <link rel="stylesheet" href="/libs/fontawesome-free-5.15.2-web/css/all.min.css">
+        <link rel="stylesheet" href="/libs/notifications-center/css/notifications.css">
+    </head>
+    <body>
+        <nav class="navbar-main">
+            <div class="container nav-wrapper">
+                <ul class="nav nav-desktop">
+                    <li>
+                        <a href="/src/index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="/src/workshops/workshops-list/workshops-list.html">Workshops List</a>
+                    </li>
+                    <li>
+                        <a href="/src/app/about/about.html">About</a>
+                    </li>
+                </ul>
+                <button class="btn-menu btn-icon">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav nav-mobile container hide">
+                <li>
+                    <a href="/src/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/src/workshops/workshops-list/workshops-list.html">Workshops List</a>
+                </li>
+                <li>
+                    <a href="/src/app/about/about.html">About</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <section class="container" id="workshop-details-wrapper"></section>
+            <section class="container" id="form-add-new-session-wrapper"></section>
+        </main>
+        <footer class="page-footer">
+            <nav class="navbar-footer">
+                <div class="container">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/src/index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="/src/workshops/workshops-list/workshops-list.html">Workshops List</a>
+                        </li>
+                        <li>
+                            <a href="/src/app/about/about.html">About</a>
+                        </li>
+                        <li>
+                            <a href="/src/app/sitemap/sitemap.html">Site map</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="text-center">&copy; <a href="http://www.digdeeper.in">www.digdeeper.in</a></div>
+        </footer>
+
+        <template id="workshop-details-tpl">
+            <header class="my-5">
+                <h1>{{workshop.name}}</h1>
+                <hr />
+            </header>
+            <div class="workshop-details row">
+                <div class="col-12 col-sm-4">
+                    <img src="{{workshop.imageUrl}}" alt="${workshop.name}" class="img-responsive" />
+                </div>
+                <div class="col-12 col-sm-8">
+                    <div class="row">
+                        <div class="col-6">
+                            <div>
+                                <small>
+                                    <time datetime="{{formatDate workshop.startDate}}">{{formatDate workshop.startDate 'display'}}</time> - <time datetime="{{formatDate workshop.endDate}}">{{formatDate workshop.endDate 'display'}}</time>
+                                </small>
+                            </div>
+                            <div>
+                                <small>
+                                    <time>{{workshop.time}}</time>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <small>
+                                    {{#if workshop.modes.inPerson}}
+                                        <i class="fas fa-check"></i>
+                                    {{else}}
+                                        <i class="fas fa-times"></i>
+                                    {{/if}}
+                                    In-person
+                                </small>
+                            </div>
+                            <div>
+                                <small>
+                                    {{#if workshop.modes.online}}
+                                        <i class="fas fa-check"></i>
+                                    {{else}}
+                                        <i class="fas fa-times"></i>
+                                    {{/if}}
+                                    Online
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    {{{workshop.description}}}
+                </div>
+            </div>
+        </template>
+
+        <template id="form-add-new-session-tpl">
+            <header>
+                <div class="d-flex justify-content-space-between my-5">
+                    <h2>Add a new session</h1>
+                </div>
+            </header>
+            <hr />
+            <form action="https://localhost:8001/sessions" method="post" id="form-add-new-session" novalidate>
+                <div>
+                    All fields marked with <span class="required-indicator">*</span> are required.
+                </div>
+                <div class="form-group my-3">
+                    <label for="sequenceId" class="control-label">
+                        Sequence ID
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <div class="form-control-container">
+                        <input type="number" name="sequenceId" id="sequenceId" class="form-control" aria-describedby="sequenceid-help" />
+                        <div id="sequenceid-help" class="form-control-help">
+                            Sequence ID is the serial number of the session in the workshop
+                        </div>
+                        <div class="form-control-error"></div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="name" class="control-label">
+                        Name
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <div class="form-control-container">
+                        <input type="text" name="name" id="name" class="form-control" aria-describedby="name-help" />
+                        <div id="name-help" class="form-control-help">
+                            Name of the session
+                        </div>
+                        <div class="form-control-error"></div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="speaker" class="control-label">
+                        Speaker
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <div class="form-control-container">
+                        <input type="text" name="speaker" id="speaker" class="form-control" aria-describedby="speaker-help" />
+                        <div id="speaker-help" class="form-control-help">
+                            Names of the speakers in this session. Separate multiple name by commas. Example: John Doe, Jane Doe
+                        </div>
+                        <div class="form-control-error"></div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="duration" class="control-label">
+                        Duration
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <div class="form-control-container">
+                        <input type="number" name="duration" id="duration" class="form-control" aria-describedby="duration-help" />
+                        <div id="duration-help" class="form-control-help">
+                            Duration of the session in hours. Example: 2.5
+                        </div>
+                        <div class="form-control-error"></div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="level" class="control-label">
+                        Level
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <div class="form-control-container">
+                        <select name="level" id="level" class="form-control" aria-describedby="level-help">
+                            <option value="">-- Select the level of the session --</option>
+                            <option value="Basic">Basic</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                        <div id="level-help" class="form-control-help">
+                            The level of the session
+                        </div>
+                        <div class="form-control-error"></div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label for="abstract" class="control-label">
+                        Abstract
+                        <span class="required-indicator">*</span>
+                    </label>
+                    <div class="form-control-container">
+                        <textarea name="abstract" id="abstract" class="form-control" aria-describedby="abstract-help"></textarea>
+                        <div id="abstract-help" class="form-control-help">
+                            A summary describing the topics covered
+                        </div>
+                        <div class="form-control-error"></div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <label>&nbsp;</label>
+                    <div class="form-control-container">
+                        <button class="btn btn-primary" id="add-new-session">Add session</button>
+                    </div>
+                </div>
+            </form>
+        </template>
+
+        <script src="/libs/handlebars-v4.7.7/handlebars.js"></script>
+        <script src="/libs/notifications-center/js/notifications.js"></script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .error {
+                text-decoration: underline;
+            }
+
+            .highlight {
+                color: navy;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="error"></div>
+        <div class="error"></div>
+        <div class="error"></div>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                const $paras = $( '.error' );
+                $paras.html( 'Some error occured' );
+                
+                $paras.addClass( 'highlight' );
+
+                $paras.eq(0).removeClass( 'error' );
+
+                // EXECISE: Explore other methods...
+                // hasClass()
+                // toggleClass()
+            });
+        </script>
+    </body>
+</html>

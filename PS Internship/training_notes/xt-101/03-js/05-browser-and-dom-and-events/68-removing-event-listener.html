@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head></head>
+    <body>
+        <button id="btn-click-1">click me</button>
+
+        <script>
+            function btnClickHandler() {
+                console.log( 'event handler 1' );
+            }
+
+            // addEventListener - most preferred way
+            document.querySelector( '#btn-click-1' ).addEventListener( 'click', btnClickHandler );
+
+            setTimeout(function() {
+                // removeEventListener
+                document.querySelector( '#btn-click-1' ).removeEventListener( 'click', btnClickHandler );
+            }, 5000);
+        </script>
+    </body>
+</html>

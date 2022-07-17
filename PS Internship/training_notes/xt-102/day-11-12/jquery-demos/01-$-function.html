@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p class="highlight">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel earum perferendis repellendus laudantium vero, ipsam harum perspiciatis consequatur hic totam pariatur ullam nobis alias laboriosam quaerat enim labore corrupti distinctio!
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error labore enim nemo beatae, sed quis voluptate perferendis fugiat cum! Soluta eum voluptas ipsam ad animi corrupti exercitationem esse pariatur impedit?
+        </p>
+        <p class="highlight">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita odit, laborum nam modi corrupti esse id. Incidunt nam fugit delectus, magnam aut at, quas nulla reprehenderit ipsa, dignissimos animi ab?
+        </p>
+
+        <script src="external/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // $() returns jQuery collection object is returned (array-like object)
+                // $() is just like document.querySelectorAll()
+                const $paras = $( 'p' );
+                const $highlightedParas = $( '.highlight' );
+
+                // jQuery collection object
+                console.log( $paras );
+                console.log( $paras.length );
+                
+                // DOM node
+                console.log( $paras[0] );
+
+                // $paras.each(function( domNode ) {
+                //     $( domNode ).html( 'inner html' )
+                // })
+
+                // you can pass existing DOM node to $() -> it returns a collection with that DOM node
+                const firstParaDOMNode = document.querySelector( 'p' );
+                // firstParaDOMNode.html( '' ); // not possible - it is a DOM node!!
+
+                const $firstPara = $( firstParaDOMNode );
+                console.log( $firstPara );
+                $firstPara.html( 'Some new text within first paragraph set using jQuery' );
+            });
+        </script>
+    </body>
+</html>

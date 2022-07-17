@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            async function printWorkshopNames( response ) {
+                if( response.ok ) { // 2xx status code
+                    try {
+                        // to convert response body we have following functions - pick one based on format of response - all these return promises
+                            // response.text() for plain text
+                            // response.json() for JSON response
+                            // response.xml() for XML response
+                        const workshops = await response.json();
+                        
+                        const workshopNames = workshops.map(function( workshop ) {
+                            return workshop.name;
+                        });
+
+                        // console.log( workshopNames );
+
+                        // wrapped in a promise that is resolved
+                        return workshopNames;
+                    } catch( err ) { // 4xx, 5xx etc.
+                        // wrapped in a promise that is rejected
+                        throw new Error( `Call to backend failed with response code ${response.status}` );
+                    }
+                } else { // network issues, server is down etc.
+                    // wrapped in a promise that is rejected
+                    throw new Error( `Call to backend failed with response code ${response.status}` );
+                }
+            }
+
+            // fetch() returns a promise
+            // success -> server returned something (200, 300, 404 included!) - promise resolves
+            // failure -> server did not return anything (network issues, server is down etc.) = promise rejects
+            fetch( 'https://workshops-server.herokuapp.com/workshops' )
+                .then( printWorkshopNames )
+                .then(( workshopNames ) => {
+                    console.log( workshopNames );
+                })
+                .catch(( error ) => {
+                    console.log( error.message );
+                });
+        </script>
+    </body>
+</html>

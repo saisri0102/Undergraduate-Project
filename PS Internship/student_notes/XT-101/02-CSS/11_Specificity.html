@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <style>
+        
+        /* class selector is more important than element or type selector
+          Specificity: (inline-1/(ext and int-0), id selectors, class selectors, type selectors)
+        */
+        
+        /* Specificity: (0,1,1,1)*/
+        main #section-1.y{
+            color:green
+        }
+        /* Specificity: (0,1,2,1)*/
+        body #section-1.x .y{
+            color:orange;
+        }
+        /* Specificity: (0,1,2,0)*/
+        .x #p-1.y{
+            color:brown;
+        }
+        /* Specificity: (0,1,1,0)*/
+        .x #p-1{
+            color:magenta;
+        }
+        /* Specificity: (0,1,0,1)*/
+        section #p-1{
+            color:blue;
+        }
+        /* Specificity: (0,0,0,2)*/
+        section p{
+            color:olive;
+        }
+        /* Specificity: (0,0,0,1)*/
+        p{
+            color:gold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <section id="section-1" class="x">
+        <p id="p-1" class="y">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <span class="y">I am span inside p</span> Tempora alias corrupti assumenda tenetur fugit necessitatibus, consequuntur est excepturi? Ex fuga at soluta? Quae nesciunt quaerat maiores neque fugiat sed debitis?
+        </p>
+        <span class="y" style="color:darkred">Hii, I am span</span>
+    </section>
+    </main> 
+     
+</body>
+</html>

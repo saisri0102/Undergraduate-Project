@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .hide{
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <button class="btn-click-me">Click me</button>
+    <button class="btn-click-me">Click me2</button>
+    <button class="btn-click-me">Click me3</button>
+    <p id="para">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi fugit deleniti dolor omnis nihil fuga eveniet assumenda itaque quae alias, dignissimos distinctio in nostrum labore, facilis numquam atque, minima velit!
+    </p>
+
+    <script src="./external/jquery-3.5.1.min.js"></script>
+    <script>
+           $(document).ready(function(){
+                $('.btn-click-me').on('click', function(){
+                    //$('#para').toggleClass('hide');
+
+                    // Exercise: Similarly there is hide() and show()
+                    $('#para').toggle();
+                } )
+           });
+    </script>
+</body>
+</html>

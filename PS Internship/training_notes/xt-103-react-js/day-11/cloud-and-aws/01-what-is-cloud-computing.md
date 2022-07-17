@@ -1,0 +1,20 @@
+# Cloud computing
+- Outsourcing resources, i.e. resources are given as a service
+    - computing - we want to run application
+    - storage - we want to store files / data
+    - network - we want the services that make up our application to communicate with each other
+- Upfront costs are very high
+    - Only big companies can maintain their own data centers
+        - It is a cost even for them
+- Variable costs will also come down
+    - Economies of scale - per unit cost of resource is lower in cloud
+- Cloud service providers
+    - Amazon Web Services
+    - Microsoft Azure
+    - Google Cloud Platform
+- No upfront cost
+    - We "pay as we use the resources"
+- Our application is up and running
+- The infrastructure is up and running
+- Maintenance is taken care (managed)
+- Scaling resources as per need

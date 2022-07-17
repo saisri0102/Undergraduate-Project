@@ -1,0 +1,17 @@
+# Amazon Web Services (AWS)
+- Region
+    - a geography where your data centers are
+    - 25+ locations
+    - US East 2 Region
+        - In India there is Mumbai Region
+- Availability Zone (AZ)
+    - consists of 1 or more data centers
+    - every region will have at least 2 AZs
+    - 70+ AZs in total
+- Edge location
+    - Have the Content Delivery Network (CDN) servers
+    - 200+
+    - Ensure that requests are processed by nearest data centers, thereby reducing latency
+- us-west-2a
+    - us-west-2 denotes region
+    - a is the availability zone label

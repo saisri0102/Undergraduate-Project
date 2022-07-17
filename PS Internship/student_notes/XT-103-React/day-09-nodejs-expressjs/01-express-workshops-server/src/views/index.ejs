@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('partials/header' , {title: title}) -%>
+    </head>
+    <body>
+        <%- include('partials/navbar' , {activeLink: '/'}); -%>
+        <div class="container my-4">
+            <div class="jumbotron">
+                <h1><%= appName %></h1>
+                <hr />
+                <p>
+                    Welcome to Workshops App. You will find details of technical workshops happening nearby.
+                </p>
+                <h2>Features</h2>
+                <ul class="list-group">
+                    <% features.forEach(feature => { %>
+                        <li class="list-group-item"><%= feature %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

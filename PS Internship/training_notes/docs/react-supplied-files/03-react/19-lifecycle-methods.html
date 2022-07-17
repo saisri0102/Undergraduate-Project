@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.4.2/umd/react.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.4.2/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+        <script type="text/babel">
+            /**
+             * Mounting: constructor, componentWillMount, render, componentDidMount
+             * Updating: (Re-render when state or props changes)
+             *  - componentWillReceiveProps( newProps )
+             *  - shouldComponentUpdate( newProps, newState ) -> supposed to return a boolean
+             *  - componentWillUpdate( newProps, newState )
+             *  - render()
+             *  - componentDidUpdate( oldProps, oldState )
+             * Unmounting: componentWillUnMount
+             */
+            class Parent extends React.Component  {
+                constructor( props ) {
+                    super( props );
+
+                    console.log( 'Parent::constructor' );
+                    
+                    this.state = {
+                        x: 1
+                    };
+                }
+
+                componentWillMount() {
+                    console.log( 'Parent::componentWillMount' );
+                }
+
+                render() {
+                    console.log( 'Parent::render' );
+                    return (
+                        <div>
+                            <h1>Parent</h1>
+                            {this.props.message}
+                            <br/>
+                            {this.props.x ? this.props.x : null}
+                        </div>
+                    );
+                }
+
+                // called after initial call to render
+                // can call setState, ajax calls, setTimeout etc.
+                componentDidMount() {
+                    console.log( 'Parent::componentDidMount' );
+                    setTimeout(() => {
+                        this.setState({
+                            x: 2
+                        });
+                    }, 5000);
+                }
+
+                componentWillReceiveProps( newProps ) {
+                    console.log( 'Parent::componentWillReceiveProps' );
+                    console.log( newProps );
+                }
+
+                shouldComponentUpdate( newProps, newState ) {
+                    console.log( 'Parent::shouldComponentUpdate' );
+                    console.log( newProps, newState );
+                    
+                    // returning false prevents render from getting called - use it to prevent rendering if it makes no difference to UI
+                    return true;
+                }
+
+                componentWillUpdate( newProps, newState ) {
+                    console.log( 'Parent::componentWillUpdate' );
+                    console.log( newProps, newState );
+                }
+
+                // can call setState, ajax calls, setTimeout etc.
+                componentDidUpdate( oldProps, oldState ) {
+                    console.log( 'Parent::componentDidUpdate' );
+                    console.log( oldProps, oldState );
+                }
+
+                componentWillUnmount() {
+                    console.log( 'Parent::componentWillUnmount' )
+                }
+            }
+
+            function render( message, x ) {
+                let parentInstance;
+                if( x ) {
+                    
+                } else {
+                    parentInstance = ReactDOM.render( <Parent message={message} />, document.getElementById( 'root' ) );
+                }
+
+                console.log( parentInstance );
+            }
+            
+            parentInstance = ReactDOM.render( 
+                <Parent message="Hello from Parent" />,
+                document.getElementById( 'root' )
+            );
+
+            setTimeout(function() {
+                parentInstance = ReactDOM.render( 
+                    <Parent message="How are you?" x="Bye" />,
+                    document.getElementById( 'root' )
+                );
+            }, 10000);
+        </script>
+    </body>
+</html>

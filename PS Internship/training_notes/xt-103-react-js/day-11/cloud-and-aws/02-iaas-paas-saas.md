@@ -1,0 +1,15 @@
+# Categories of cloud services
+- Software as a Service (SaaS): Office 365, Google Suite, Dropbox etc.
+    - no installation
+    - no maintenance
+    - we can use in any device
+- Platform as a Service (PaaS):
+    - we have an application and we want to deploy it
+    - we are given a machine with OS and all required software to run the application (eg. Node.js is setup on the machine)
+    - software tools will be available
+    - Heroku, GitLab, AWS Beanstalk
+        - run test. when test pass, move it to another environment (production)
+            - automate deployment
+- Infrastructure as a Service (IaaS)
+    - AWS EC2 machines (computing) + AWS EBS (storage)
+    - DigitalOcean

@@ -1,0 +1,11 @@
+Links for robotic arm
+https://youtu.be/6BdHAYlqlgE  -arduino
+
+https://youtu.be/8ZRiECRYXT0  -raspy
+
+
+goal:
+* give only one input to the model
+* move in the direction of the classified result ex:left,right etc. go there first and then call the object detection code.
+* object detection
+* pick and drop
