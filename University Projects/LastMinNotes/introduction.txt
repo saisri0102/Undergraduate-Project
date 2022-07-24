@@ -1,9 +1,0 @@
-i'm saisri i'm a 4th year undergraduate specialized in the department of electronics and communication with a overall cgpa of 8.9 in pes university.Along with my degree I completed minors in computer science and also recepient cnr rao scholarship for being in the "top 20%" of academic performers in all semesters...i like exploring new things everyday.
-playing badminton is my hobby.....
-
-acute infract->death of particular area due to lack of blood supply either by blockage or narrowing of arteries supplying the area.our aim was to find the location of acute infract in the brain.challenges->getting the proper accuracy and overfit.we overcame this problem using early stopping,dropout layers..
-
-
-
-
-quasars->star like celestial objects that contain massive black holes
