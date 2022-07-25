@@ -1,0 +1,82 @@
+/* button */
+@use "./partials/var";
+@import "./partials/reset.css";
+
+@import "./partials/button";
+@import "./partials/margin";
+@import "./partials/display";
+
+:root {
+    font-size: var.$base-font-size-mobile;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: var.$base-family;
+}
+
+.container {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.sr-only {
+    position: absolute !important;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.focusable:active,
+.focusable:focus {
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+}
+
+h1 {
+    font-size: var.$font-size-xl;
+    font-weight: bold;
+}
+h2 {
+    font-size: var.$font-size-large;
+}
+hr {
+    background-color: var.$color-lightgray;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+
+.hr{
+    border-bottom: 2px solid var.$color-lightgray;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+
+.text-bold {
+    font-weight: bold;
+}
+.text-center {
+    text-align: center;
+}
+.text-color-white {
+    color: var.$color-light;
+}
+
+@media all and (min-width: var.$tablet-min-width) {
+    :root {
+        font-size: var.$base-font-size-desktop;
+    }
+    .flex-display {
+        flex-direction: row;
+    }
+}

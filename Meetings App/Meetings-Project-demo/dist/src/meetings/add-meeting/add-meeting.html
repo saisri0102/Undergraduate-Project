@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="You can add your meeting and can select team members ">
+    <title>Meetings Application | Add Meeting</title>
+
+    <!-- <link rel="stylesheet" href="../../styles/css/reset.css"> -->
+    <link rel="stylesheet" href="../../../libs/Icons/fontawesome-free-5.15.2-web/css/all.min.css">
+    <!-- <link rel="stylesheet" href="../../styles/css/utils.css">
+    <link rel="stylesheet" href="../../styles/css/nav.css">
+    <link rel="stylesheet" href="../../styles/css/notification.css">
+    <link rel="stylesheet" href="../../styles/css/form.css">
+    <link rel="stylesheet" href="../../styles/css/meetings.css"> -->
+
+<script defer src="../../../addMeeting.bundle.js"></script></head>
+
+<body>
+    <nav class="navbar-main ">
+
+        <a href="#main-content2" class="sr-only focusable">
+            Skip to content
+        </a>
+
+           <!--Desktop View-->
+           <div class="container nav-wrapper nav-desktop">
+            <div >
+                <ul class=" nav-list ">
+                    <li>
+                        <a href="../../calendar/calendar.html" >Calendar</a>
+                    </li>
+                    <li>
+                        <a href="add-meeting.html" class="link-active">Meetings</a>
+                    </li>
+                    <li>
+                        <a href="../../teams/teams.html">Teams</a>
+                    </li>
+                </ul>
+            </div>
+        
+
+            <div class="nav-list ">
+                <ul>
+                    <li>Hello</li>
+                    <li class="doc-color text-bold nav-user-mail"> </li>
+                    <li><a href="../../user/login/login.html" class="logout">Logout</a></li>
+                </ul>
+            </div>
+           
+        </div>
+      
+        <!--End of Desktop View-->
+
+        <!--Nav Mobile view-->
+
+        <div class="container nav-wrapper nav-mobile">
+                <div class="d-flex justify-content-space-between ">
+                    <p>My Meetings</p>
+                    <button  class="hamburger open-nav" ><i class="fas fa-bars"></i></button>   
+                </div>
+                
+                <div  class="sidenav">
+                    <ul class="mobile-nav-list">
+                        <li>
+                            <a href="#" class=" close-nav-btn">&times;</a>
+                        </li>
+                        <li>
+                            <a href="../../calendar/calendar.html" >Calendar</a>
+                        </li>
+                        <li>
+                            <a href="add-meeting.html" class="link-active">Meetings</a>
+                        </li>
+                        <li>
+                            <a href="../../teams/teams.html">Teams</a>
+                        </li>
+                        <li>
+                            <a href="../../user/login/login.html" class="logout">Logout</a>
+                        </li>
+                    </ul>
+
+                </div>
+                
+        </div> 
+        <!--End of Mobile Nav-->
+    </nav>
+
+    <main class="container" id="main-content2">
+        <!-- Main Header -->
+        <div class="margin-bottom-1">
+            <div class="margin-top-2 margin-bottom-1 hr">
+                <h1>Meetings</h1>
+            </div>
+
+            <div class="margin-top-1 meeting-links-list">
+                <ul>
+                    <li>
+                        <a href="../search-meeting/search-meetings.html">Filter/Search meetings</a>
+                    </li>
+                    <li>
+                        <a href="add-meeting.html" class=" meeting-link-active">Add a meeting</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--End of header-->
+
+
+        <section class="form-group">
+            <div class="hr">
+                <h2 class="text-color-white text-bold">Add a new meeting</h2>
+            </div>
+            <p class="margin-top-1"> <span class="required-indicator">Note: All input fields must be filled</span> </p>
+
+            <div class="meeting-form-container">
+                <form method="post" action="https://mymeetingsapp.herokuapp.com/api/meetings" name="add-meeting-form"
+                    id="add-meeting-form" novalidate>
+
+                    <div class="margin-bottom-1 input-element">
+                        <label for="meeting-name" class="input-label">Name<span class="sr-only">of the
+                                Meeting</span></label>
+                        <input type="text" name="meeting-name" id="meeting-name" class="form-inputbox meeting-date "
+                            placeholder="Name of the Meeting" value="" />
+                        <div class="error-help" id="meeting-name-error"></div>
+                    </div>
+
+                    <div class="margin-bottom-1 input-element">
+                        <label for="meeting-date" class="input-label">Date<span class="sr-only">of the
+                                Meeting</span></label>
+                        <input type="date" name="meeting-date" id="meeting-date" class="form-inputbox meeting-date" />
+                        <div class="error-help" id="date-error"></div>
+                    </div>
+
+                    <div class="margin-bottom-1 input-element">
+                        <fieldset>
+                            <label for="start-time-hrs" class="input-label">Start time (hh:mm) </label>
+                            <select name="start-time-hrs" id="start-time-hrs" class="form-inputbox select-time">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+
+
+                            </select>
+
+                            <span>:</span>
+
+                            <label for="start-time-min" class="sr-only">Start-Time-Minutes </label>
+                            <select name="start-time-min" id="start-time-min" class="form-inputbox select-time">
+
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+
+                            </select>
+                        </fieldset>
+                        <div class="error-help" id="start-time-error"></div>
+                    </div>
+
+                    <div class="margin-bottom-1 input-element">
+                        <fieldset>
+                            <label for="end-time-hrs" class="input-label">End time (hh:mm)  </label>
+                            <select name="end-time-hrs" id="end-time-hrs" class="form-inputbox select-time">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+
+                            </select>
+
+                            <span>:</span>
+
+                            <label for="end-time-min" class="sr-only">End-time-minutes</label>
+                            <select name="end-time-min" id="end-time-min" class="form-inputbox select-time">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                                <option value="43">43</option>
+                                <option value="44">44</option>
+                                <option value="45">45</option>
+                                <option value="46">46</option>
+                                <option value="47">47</option>
+                                <option value="48">48</option>
+                                <option value="49">49</option>
+                                <option value="50">50</option>
+                                <option value="51">51</option>
+                                <option value="52">52</option>
+                                <option value="53">53</option>
+                                <option value="54">54</option>
+                                <option value="55">55</option>
+                                <option value="56">56</option>
+                                <option value="57">57</option>
+                                <option value="58">58</option>
+                                <option value="59">59</option>
+
+                            </select>
+                        </fieldset>
+                        <div class="error-help" id="end-time-error"></div>
+                    </div>
+
+                    <div class="margin-bottom-1 input-element">
+                        <label for="description" class="input-label">Description </label>
+                        <textarea name="description" id="description" placeholder="Describe the agenda of the meeting in more than 20 characters"
+                            class="form-inputbox description-textarea" value=""></textarea>
+                        <div class="error-help" id="meeting-desc-error"></div>
+                    </div>
+
+                    <div class="margin-bottom-1 input-element">
+                        <label for="participants" class="input-label">EmailIDs of attendees, or teams-short</label>
+                        <textarea name="Participants" id="participants"
+                            placeholder="john@example.com, @annual-day, mark@example.com"
+                            aria-describedby="participants-help" class="form-inputbox email-textarea"></textarea>
+                        <p class="participants-help" id="participants-help"><strong>Seperate emailids/ team short names
+                                by comma-team short names always begin with @</strong></p>
+                        <div class="error-help" id="meeting-members-error"></div>
+                    </div>
+
+                    <button type="submit" class=" btn-primary" id="add-meeting">Add meeting</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script src="../../../libs/notification/notification.js"></script>
+    <!-- <script src="../../js/nav.js" type="module"></script> -->
+    <!-- <script src="addMeeting.js" type="module"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Login form for Our meeting
+            application">
+    <title>Meetings Application | Login</title>
+
+    <!-- <link rel="stylesheet" href="../../styles/css/reset.css">
+    <link rel="stylesheet" href="../../styles/css/utils.css">
+    <link rel="stylesheet" href="../../styles/css/form.css">
+    <link rel="stylesheet" href="../../styles/css/notification.css">
+    <link rel="stylesheet" href="../../styles/css/user.css"> -->
+
+<script defer src="../../../login.bundle.js"></script></head>
+
+<body>
+
+    <main>
+        <form name="login-form" id="login-form" action="https://mymeetingsapp.herokuapp.com/api/auth/login"
+            method="post" autocomplete="on" class="user-details-form" novalidate>
+
+            <h1 class="text-center hr">Login</h1>
+
+
+            <div class="margin-bottom-2 input-element">
+                <label for="uemail" class="input-label">
+                    Email
+                </label>
+                <input type="text" id="uemail" name="uemail" class="form-inputbox" placeholder="Email Id" required />
+                <div id="login-email-error" class="error-help"></div>
+            </div>
+
+            <div class="margin-bottom-2 input-element">
+                <label for="login-pwd" class="input-label">
+                    Password
+                </label>
+                <input type="password" id="login-pwd" name="login-pwd" class="form-inputbox" placeholder="Password"
+                    required />
+                <div id="login-pwd-error" class="error-help"></div>
+            </div>
+
+            <button type="submit" id="loginbtn" class="btn-primary login-btn">Login
+            </button>
+
+            <div class="create-account">Don't have account? <a href="../register/register.html">Signup </a></div>
+
+        </form>
+
+    </main>
+
+    <script src="../../../libs/notification/notification.js"></script>
+    <!-- <script src="login.js" type="module"></script> -->
+
+</body>
+
+</html>

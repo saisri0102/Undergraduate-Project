@@ -1,0 +1,107 @@
+/** color variables */
+.user-details-form {
+  background-color: white;
+  padding: 2rem 4rem 2rem;
+  height: 640px;
+  width: 100%;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  border: 2px solid #b6b0b0; }
+
+.input-label {
+  padding-bottom: 1.25rem;
+  display: block; }
+
+.form-inputbox {
+  padding: 12px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid #b6b0b0;
+  width: 100%; }
+
+.form-inputbox:focus {
+  border: 2px solid #18a2b8; }
+
+.error-element:focus {
+  border: 2px solid #e21e45; }
+
+.members-select {
+  padding-top: 0;
+  height: 2.5rem;
+  padding-left: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  width: 9.5rem;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid #b6b0b0; }
+
+.cancel-btn {
+  width: 100%; }
+
+.login-btn,
+.signup-btn {
+  margin-bottom: 1rem;
+  width: 100%; }
+
+.error-help {
+  font-size: 12px;
+  color: #e21e45;
+  padding-left: 5px; }
+
+.required-indicator {
+  color: #e21e45; }
+
+.create-account {
+  display: block;
+  padding-top: 10px; }
+  .create-account a {
+    color: blue;
+    text-decoration: underline; }
+    .create-account a:hover {
+      text-decoration: none; }
+
+.pwd-help {
+  display: block;
+  padding: 5px 5px;
+  color: gray;
+  font-size: 12px; }
+
+/* for Teams form and addmeeting form*/
+.description-textarea {
+  height: 5rem; }
+
+.email-textarea {
+  padding-top: 10px;
+  height: 3.5rem;
+  width: 100%; }
+
+.participants-help {
+  padding-top: 10px;
+  font-size: 1rem;
+  color: white;
+  font-weight: 500; }
+
+@media screen and (min-width: 640px) {
+  .cancel-btn {
+    width: auto; }
+  .signup-btn {
+    width: auto;
+    margin-bottom: 0; }
+  .user-details-form {
+    margin: 50px auto 0;
+    max-width: 500px;
+    height: auto; }
+  .flex-display {
+    flex-direction: row; } }

@@ -1,0 +1,30 @@
+.btn {
+    color: var.$color-light;
+    border-radius: var.$radius;
+    padding: 8px 10px;
+    border: 0;
+    font-size: var.$font-size-small;
+    cursor: pointer;
+}
+
+.btn-primary {
+    @extend .btn;
+    background-color: var.$color-primary;
+    &:hover{
+        background-color: var.$color-dark-primary;
+    }
+}
+.btn-success {
+    @extend .btn;
+    background-color: var.$color-success;
+    &:hover{
+        background-color: var.$color-dark-success;
+    }
+}
+.btn-danger {
+    @extend .btn;
+    background-color: var.$color-danger;
+    &:hover{
+        background-color: var.$color-dark-danger;
+    }
+}

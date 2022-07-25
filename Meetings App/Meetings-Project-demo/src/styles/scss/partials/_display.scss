@@ -1,0 +1,28 @@
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.display-block {
+    display: block;
+}
+.display-none {
+    display: none;
+}
+.d-flex {
+    display: flex;
+}
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.flex-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

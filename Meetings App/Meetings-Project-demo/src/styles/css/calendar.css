@@ -1,0 +1,100 @@
+/** color variables */
+.cal-datepicker {
+  height: 2.5rem;
+  width: 8rem;
+  padding: 0 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  border: 1px solid #d1c6c6; }
+
+.day-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: gray; }
+
+.calendar-container {
+  position: relative;
+  width: 95%;
+  padding-left: 1.3%;
+  margin-right: 5%; }
+
+.calendar-align {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 5px; }
+
+.calendar-align > div:nth-child(1) {
+  font-size: 12px; }
+
+.calendar-align > div:nth-child(2) {
+  padding-left: 20px;
+  flex-basis: 95%;
+  background-color: #73cbd3;
+  padding: 30px 0; }
+
+.meeting-block {
+  position: absolute;
+  display: inline-block;
+  left: 8%;
+  width: 90%;
+  border: 1px solid #999999;
+  padding: 5px;
+  margin: auto;
+  font-size: 0.75rem;
+  background-color: #e3ebed; }
+
+.tooltip {
+  width: 100%;
+  background-color: #555;
+  color: white;
+  border-radius: 6px;
+  padding: 5px 50px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s; }
+
+.tooltip > div {
+  padding-bottom: 5px; }
+
+.tooltip span {
+  font-weight: bold;
+  padding-right: 5px; }
+
+.meeting-block:hover .tooltip {
+  visibility: visible;
+  opacity: 1; }
+
+@media print {
+  .navbar-main,
+  .cal-datepicker,
+  .calendar-align {
+    display: none; }
+  .calendar-meeting-container > div {
+    border: 0;
+    outline: 0; }
+  .tooltip {
+    border: 0;
+    outline: 0;
+    background-color: none;
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    color: black; }
+  hr {
+    width: 0; }
+  .meeting-block {
+    position: static;
+    top: 0px;
+    left: 0px; } }
+
+@media screen and (min-width: 640px) {
+  .cal-datepicker {
+    width: 17.35rem; }
+  .calendar-container {
+    padding-left: 3.25%; }
+  .calendar-align > div:nth-child(2) {
+    flex-basis: 98%; } }

@@ -1,0 +1,21 @@
+Distinct->not repeated
+%->replaces many characters
+_->replaces 1 character
+together with->union
+except->not in
+either->OR
+count->numberof
+
+The ORDER BY clause’s purpose is to sort the query result by specific columns.->ASC,DESC
+The GROUP BY clause’s purpose is summarize unique combinations of columns values.->MAX,MIN,AVG
+
+
+multiple tables:
+not equal:-<>
+	
+INNER JOIN->The INNER JOIN keyword selects all rows from both tables as long as there is a match between the columns. If there are records in the "Orders" table that do not have matches in "Customers", these orders will not be shown!
+NATURAL JOIN->The SQL NATURAL JOIN is a type of EQUI JOIN and is structured in such a way that, columns with the same name of associated tables will appear once only. Don’t use ON clause in a natural join.
+LEFT [OUTER] JOIN->The SQL LEFT JOIN (specified with the keywords LEFT JOIN and ON) joins two tables and fetches all matching rows of two tables for which the SQL-expression is true, plus rows from the frist table that do not match any row in the second table.
+FULL OUTER JOIN:-In SQL the FULL OUTER JOIN combines the results of both left and right outer joins and returns all (matched or unmatched) rows from the tables on both sides of the join clause.
+CROSS JOIN->Cartesian product
+

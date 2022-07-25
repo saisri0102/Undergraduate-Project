@@ -1,0 +1,7 @@
+/** color variables */
+body {
+  background-image: url("../../../libs/images/login.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}

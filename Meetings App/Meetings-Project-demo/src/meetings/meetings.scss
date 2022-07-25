@@ -1,0 +1,75 @@
+@import "../styles/scss/partials/var";
+@import "../styles/scss/partials/mixins";
+
+.meeting-links-list {
+
+    padding-top: 5px;
+    border-bottom: 2px solid $color-lightgray;
+
+    li {
+        display: inline-block;
+    }
+    a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: $font-size-xm;
+        color: $color-primary;
+        padding: $padding-xs $padding-medium;
+        font-weight: bold;
+        font-weight: normal;
+    }
+    .meeting-link-active {
+        color: initial;
+        border: 2px solid $color-lightgray;
+        border-bottom: 0;
+        @include border-radius(2px);
+    }
+}
+
+.form-group {
+    padding: $padding-medium $padding-large;
+    background-color: $color-staple;
+    @include border-radius(3px);
+}
+
+.meeting-form-container {
+    font-size: $font-size-xm;
+    padding-top: $padding-small;
+}
+
+.select-time {
+    height: 3.2rem;
+    width: 5.2rem;
+}
+
+.participants-help {
+    padding-top: 10px;
+    font-size: $font-size-small;
+    color: $color-light;
+    font-weight: 500;
+}
+
+.search-result-heading {
+    font-size: $font-size-xl;
+    font-weight: bold;
+}
+
+.search-result-wrapper {
+    border: 1px solid $color-lightgray;
+    @include border-radius;
+    padding: $padding-medium $padding-large;
+    padding-bottom: 0;
+
+    p {
+        padding-bottom: $padding-small;
+    }
+    div {
+        padding-bottom: $padding-small;
+        width: $width-full;
+    }
+}
+
+
+::placeholder {
+    white-space: nowrap;
+}

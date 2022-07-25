@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registration form for our meetings application">
+    <title>Signup | MeetingApp</title>
+
+
+    <!-- <link rel="stylesheet" href="../../styles/css/reset.css">
+    <link rel="stylesheet" href="../../styles/css/utils.css">
+    <link rel="stylesheet" href="../../styles/css/form.css">
+    <link rel="stylesheet" href="../../styles/css/notification.css">
+    <link rel="stylesheet" href="../../styles/css/user.css"> -->
+
+  </head>
+
+  <body>
+
+    <main>
+      <form name="signup-form" id="signup-form" action="https://mymeetingsapp.herokuapp.com/api/auth/register"
+        method="post" autocomplete="on" class="user-details-form" novalidate>
+
+        <div class="margin-bottom-2 input-element">
+          <h1 class="text-center hr">Sign Up</h1>
+          
+          <p class="margin-top-1">Note: All fields marked with <span class="required-indicator">*</span> are Required</p>
+        </div>
+
+        <div class="margin-bottom-2  input-element">
+          <label for="uname" class="input-label ">Name <span class="required-indicator">*</span></label>
+          <input type="text" id="uname" name="uname" class="form-inputbox" placeholder="User Name" required />
+          <div id="signup-name-error" class="error-help"></div>
+        </div>
+
+        <div class="margin-bottom-2  input-element">
+          <label for="uemail" class="input-label ">Email <span class="required-indicator">*</span></label>
+          <input id="uemail" name="uemail" type="text" class="form-inputbox" placeholder=" Email ID" required />
+          <div id="signup-email-error" class="error-help"></div>
+        </div>
+
+        <div class="margin-bottom-2  input-element">
+          <label for="signup-pwd" class="input-label ">Password <span class="required-indicator">*</span></label>
+          <input id="signup-pwd" name="signup-pwd" type="password" class="form-inputbox" placeholder="Password"
+            aria-describedby="pwd-help" required />
+          <div id="pwd-help" class="pwd-help">Password should be more than 8 characters with atleast 1 uppercase,
+            1 lowercase, 1 digit, 1 special character</div>
+          <div id="signup-pwd-error" class="error-help"></div>
+        </div>
+
+        <div class="margin-bottom-2  input-element">
+          <label for="confirm-pwd" class="input-label ">Confirm password <span
+              class="required-indicator">*</span></label>
+          <input id="confirm-pwd" name="confirm-pwd" type="password" class="form-inputbox" placeholder="Confirm Password"
+            required />
+          <div id="signup-confpwd-error" class="error-help"></div>
+        </div>
+
+        <div class=" flex-display">
+          <button class=" btn-primary signup-btn" type="submit">Create My Account</button>
+          <button type="button" class="btn-danger cancel-btn">Cancel</button>
+        </div>
+
+      </form>
+    </main>
+
+  </body>
+  <script src="../../../libs/notification/notification.js"></script>
+  <!-- <script src="register.js" type="module"></script> -->
+
+</html>

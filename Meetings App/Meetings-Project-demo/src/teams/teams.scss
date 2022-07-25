@@ -1,0 +1,79 @@
+@import "../styles/scss/partials/var";
+@import "../styles/scss/partials/mixins";
+
+.teams-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.team-wrapper {
+    position: relative;
+    flex-basis: 33%;
+    border: 1px solid $color-lightgray;
+    @include border-radius;
+    padding: $padding-large;
+    margin-right: 0.33%;
+}
+
+.team-title {
+    font-size: $font-size-medium;
+}
+.team-id {
+    font-size: $font-size-xm;
+}
+
+.team-description {
+    font-size: $font-size-small;
+    color: $color-gray;
+    line-height: 1.2;
+    margin-bottom: $margin-small;
+}
+.new-team-wrapper {
+    position: relative;
+    height: auto;
+    border: 1px solid $color-lightgray;
+    @include border-radius;
+    padding: $padding-large;
+    margin-right: 0.33%;
+    font-size: $font-size-xs;
+
+    input{
+        font-size: $font-size-xs;
+    }
+    textarea{
+        font-size: $font-size-xs;
+    }
+}
+.new-team-heading{
+    font-size: $font-size-small;
+    font-weight: bold;
+  }
+
+.add-symbol-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.add-team-link {
+    background-color: $color-light;
+    border: 0;
+    cursor: pointer;
+    padding: $padding-small;
+    font-size: 2rem;
+}
+
+
+@media all and (min-width: $tablet-min-width) {
+    .teams-container {
+        flex-direction: row;
+    }
+
+    .cancel-btn {
+        margin-left: 10px;
+    }
+    .new-team-wrapper {
+        flex-basis: 33%;
+    }
+}

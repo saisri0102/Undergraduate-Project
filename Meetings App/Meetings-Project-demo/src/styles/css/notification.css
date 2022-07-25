@@ -1,0 +1,50 @@
+/** color variables */
+.notifications-center {
+  position: fixed;
+  width: 40%;
+  max-width: 200px; }
+
+.notification {
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0.5em;
+  font-size: 0.75rem; }
+
+.notification-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: white;
+  cursor: pointer; }
+
+.notification-title,
+.notification-description {
+  padding: 0.75rem; }
+
+.notification-title {
+  font-weight: bold;
+  color: white; }
+
+.notification.notification-success {
+  border-color: #198754; }
+
+.notification.notification-success .notification-title {
+  background-color: #198754; }
+
+.notification.notification-info {
+  border-color: #18a2b8; }
+
+.notification.notification-info .notification-title {
+  background-color: #18a2b8; }
+
+.notification.notification-error {
+  border-color: #e21e45; }
+
+.notification.notification-error .notification-title {
+  background-color: #e21e45; }

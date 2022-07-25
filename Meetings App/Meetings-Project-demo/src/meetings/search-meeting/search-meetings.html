@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Search page in our meeting application. here you can search for the meetings that you want to see">
+        <title>Meetings Application | Search Meetings</title>
+
+        <!-- <link rel="stylesheet" href="../../styles/css/reset.css"> -->
+        <link rel="stylesheet" href="../../../libs/Icons/fontawesome-free-5.15.2-web/css/all.min.css">
+        <!-- <link rel="stylesheet" href="../../styles/css/utils.css">
+        <link rel="stylesheet" href="../../styles/css/nav.css">
+        <link rel="stylesheet" href="../../styles/css/notification.css">
+        <link rel="stylesheet" href="../../styles/css/form.css">
+        <link rel="stylesheet" href="../../styles/css/meetings.css"> -->
+        
+      
+    </head>
+
+    <body>
+        <nav class="navbar-main">
+            <a href="#main-content3" class="sr-only focusable">
+                Skip to content
+            </a>
+
+          <!--Desktop View-->
+          <div class="container nav-wrapper nav-desktop">
+            <div >
+                <ul class=" nav-list ">
+                    <li>
+                        <a href="../../calendar/calendar.html" >Calendar</a>
+                    </li>
+                    <li>
+                        <a href="../add-meeting/add-meeting.html" class="link-active">Meetings</a>
+                    </li>
+                    <li>
+                        <a href="../../teams/teams.html">Teams</a>
+                    </li>
+                </ul>
+            </div>
+        
+
+            <div class="nav-list ">
+                <ul>
+                    <li>Hello</li>
+                    <li class="doc-color text-bold nav-user-mail"> </li>
+                    <li><a href="../../user/login/login.html" class="logout">Logout</a></li>
+                </ul>
+            </div>
+           
+        </div>
+      
+        <!--End of Desktop View-->
+
+        <!--Nav Mobile view-->
+
+        <div class="container nav-wrapper nav-mobile">
+                <div class="d-flex justify-content-space-between ">
+                    <p>My Meetings</p>
+                    <button  class="hamburger open-nav" ><i class="fas fa-bars"></i></button>   
+                </div>
+                
+                <div  class="sidenav">
+                    <ul class="mobile-nav-list">
+                        <li>
+                            <a href="#" class=" close-nav-btn">&times;</a>
+                        </li>
+                        <li>
+                            <a href="../../calendar/calendar.html" >Calendar</a>
+                        </li>
+                        <li>
+                            <a href="../add-meeting/add-meeting.html" class="link-active">Meetings</a>
+                        </li>
+                        <li>
+                            <a href="../../teams/teams.html">Teams</a>
+                        </li>
+                        <li>
+                            <a href="../../user/login/login.html" class="logout">Logout</a>
+                        </li>
+                    </ul>
+
+                </div>
+                
+        </div> 
+        <!--End of Mobile Nav-->
+        </nav>
+
+        <main class="container" id="main-content3">
+            <div class="margin-bottom-1">
+
+                <div class="margin-top-2 margin-bottom-1 hr">
+                    <h1>Meetings</h1>
+                </div>
+               
+                <div class="margin-top-1 meeting-links-list" >
+                    <ul >
+                        <li>
+                            <a href="search-meetings.html" class=" meeting-link-active">Filter/Search meetings</a>
+                        </li>
+                        <li>
+                            <a href="../add-meeting/add-meeting.html" >Add a meeting</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <section class=" form-group">
+                        
+                <h2 class="text-color-white text-bold hr">Search for meeting</h2>
+
+                <div class="meeting-form-container">
+
+                    <form action="https://mymeetingsapp.herokuapp.com/api/meetings" method="get" id="search-form">
+                        <div class="margin-bottom-1">
+                            <label for="search-date" class="display-block margin-bottom-1">Date<span class="sr-only">of Meeting</span></label>
+                            <select name="search-date" id="search-date" class="form-inputbox ">
+                                <option value="all">ALL</option>
+                                <option value="past">PAST</option>
+                                <option value="present">PRESENT</option>
+                                <option value="future">FUTURE</option>
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="margin-bottom-1">
+                            <label for="search-keywords" class="display-block margin-bottom-1">Search for<span class="sr-only">Keywords which describes the meeting</span></label>
+                            <textarea name="search-keywords" id="search-keywords" placeholder="Search using keywords which describe the meeting" class="form-inputbox  description-textarea" value=""></textarea>
+                            <div class="error-help"></div>
+                        </div>
+                        
+                        <button type="submit"  class="btn-primary" id="search-btn">Search</button>
+                    </form>
+                </div>
+
+            </section>
+
+            <section>
+                <div class="margin-top-2 margin-bottom-1 hr">
+                    <h2 class="text-bold">Meetings matching search criteria</h2>
+                </div>
+               
+                <div class="margin-bottom-1" id="search-result"></div>
+            </section>
+
+        </main>
+      
+
+        <script src="../../../libs/notification/notification.js"></script>
+        <!-- <script src="../../js/nav.js" type="module"></script> -->
+        <!-- <script src="searchMeeting.js" type="module"></script> -->
+    </body>
+</html>

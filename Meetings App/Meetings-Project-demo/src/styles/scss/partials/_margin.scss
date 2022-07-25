@@ -1,0 +1,15 @@
+.margin {
+    margin: var.$margin-small;
+}
+.margin-top-1 {
+    margin-top: var.$margin-small;
+}
+.margin-bottom-1 {
+    margin-bottom: var.$margin-small;
+}
+.margin-top-2 {
+    margin-top: var.$margin-large; // 2rem
+}
+.margin-bottom-2 {
+    margin-bottom: var.$margin-large;
+}

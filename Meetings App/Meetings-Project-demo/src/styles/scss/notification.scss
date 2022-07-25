@@ -1,0 +1,59 @@
+@import "./partials/var.scss";
+@import "./partials/mixins.scss";
+
+.notifications-center {
+    position: fixed;
+    width: 40%;
+    max-width: 200px;
+}
+
+.notification {
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    @include border-radius;
+    margin: 0.5em;
+    font-size: $font-size-xs;
+}
+
+.notification-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: $color-light;
+    cursor: pointer;
+}
+
+.notification-title,
+.notification-description {
+    padding: $padding-xs;
+}
+
+.notification-title {
+    font-weight: bold;
+    color: $color-light;
+}
+
+.notification.notification-success {
+    border-color: $color-success;
+}
+
+.notification.notification-success .notification-title {
+    background-color: $color-success;
+}
+
+.notification.notification-info {
+    border-color: $color-primary;
+}
+
+.notification.notification-info .notification-title {
+    background-color: $color-primary;
+}
+
+.notification.notification-error {
+    border-color: $color-danger;
+}
+
+.notification.notification-error .notification-title {
+    background-color: $color-danger;
+}

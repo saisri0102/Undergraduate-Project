@@ -1,0 +1,8 @@
+@use "../styles/scss/partials/var";
+
+body {
+  background-image: url("../../libs/images/login.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: var.$width-full var.$width-full;
+}

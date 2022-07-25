@@ -1,0 +1,117 @@
+@use "./partials/var";
+@import "./partials/mixins";
+
+.user-details-form {
+  background-color: var.$color-light;
+  padding: 2rem 4rem 2rem;
+  height: 640px;
+  width: var.$width-full;
+  @include border-radius(2px);
+  border: 2px solid var.$color-lightgray;
+}
+
+.input-label {
+  padding-bottom: var.$padding-medium;
+  display: block;
+}
+
+.form-inputbox {
+  padding: 12px 10px;
+  @include border-radius;
+  font-size: var.$font-size-small;
+  font-family: var.$base-family;
+  border: 1px solid var.$color-lightgray;
+  width: var.$width-full;
+}
+.form-inputbox:focus {
+  border: 2px solid var.$color-primary;
+}
+.error-element:focus {
+  border: 2px solid var.$color-danger;
+}
+.members-select {
+  padding-top: 0;
+  height: 2.5rem;
+  padding-left: 10px;
+  @include border-radius;
+  width: 9.5rem;
+  font-size: var.$font-size-small;
+  font-family: var.$base-family;
+  border: 1px solid var.$color-lightgray;
+}
+
+.cancel-btn {
+  width: var.$width-full;
+}
+.login-btn,
+.signup-btn {
+  margin-bottom: var.$margin-small;
+  width: var.$width-full;
+}
+.error-help {
+  font-size: var.$base-font-size-mobile;
+  color: var.$color-danger;
+  padding-left: 5px;
+}
+.required-indicator {
+  color: var.$color-danger;
+}
+
+.create-account {
+  display: block;
+  padding-top: 10px;
+
+  a {
+    color: blue;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.pwd-help {
+  display: block;
+  padding: 5px 5px;
+  color: var.$color-gray;
+  font-size: var.$base-font-size-mobile;
+}
+
+/* for Teams form and addmeeting form*/
+
+.description-textarea {
+  height: 5rem;
+}
+.email-textarea {
+  padding-top: 10px;
+  height: 3.5rem;
+  width: var.$width-full;
+}
+
+.participants-help {
+  padding-top: 10px;
+  font-size: var.$font-size-small;
+  color: var.$color-light;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 640px) {
+  .cancel-btn {
+    width: auto;
+  }
+
+  .signup-btn {
+    width: auto;
+    margin-bottom: 0;
+  }
+  .user-details-form {
+    margin: 50px auto 0;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .flex-display {
+    flex-direction: row;
+  }
+}

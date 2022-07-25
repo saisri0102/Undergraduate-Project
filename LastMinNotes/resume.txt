@@ -1,0 +1,30 @@
+SUPERVISED AND UNSUPERVISED ALGORITHM
+
+->Supervised learning as the name indicates the presence of a supervisor as a teacher. Basically supervised learning is a learning in which we teach or train the machine using data which is well labeled that means some data is already tagged with the correct answer. After that, the machine is provided with a new set of examples(data) so that supervised learning algorithm analyses the training data(set of training examples) and produces a correct outcome from labeled data. 
+->Supervised learning classified into two categories of algorithms: 
+ Classification: A classification problem is when the output variable is a category, such as “Red” or “blue” or “disease” and “no disease”.It is continuous
+Regression: A regression problem is when the output variable is a real value, such as “dollars” or “weight”.It is discrete
+->Unsupervised learning is the training of machine using information that is neither classified nor labeled and allowing the algorithm to act on that information without guidance. Here the task of machine is to group unsorted information according to similarities, patterns and differences without any prior training of data. 
+
+
+K-Nearest Neighbors:
+The KNN algorithm assumes that similar things exist in close proximity. In other words, similar things are near to each other.
+choose odd value of K for 2 classes
+k must not be a multiple of the number of classes.
+drawback->complexity in searching the nearest neighbors for each sample
+
+Symmetric Key Encryption:
+Encryption is a process to change the form of any message in order to protect it from reading by anyone. In Symmetric-key encryption the message is encrypted by using a key and the same key is used to decrypt the message which makes it easy to use but less secure. It also requires a safe method to transfer the key from one party to another.
+
+Asymmetric Key Encryption:
+Asymmetric Key Encryption is based on public and private key encryption technique. It uses two different key to encrypt and decrypt the message. It is more secure than symmetric key encryption technique but is much slower.
+
+RSA Algorithm:
+(e,n)->public key
+d->private key
+n=p*q(2 large prime numbers)
+phi=(p-1)*(q-1)
+select e such that 1<e<phi and e is co-prime to n
+d=(e^-1)mod(phi) 
+encryption:c=(p^e)mod(n)
+decryption:p=(c^d)mod(n)
