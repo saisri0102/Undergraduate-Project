@@ -1,1 +1,0 @@
-// @todo Configure Enzyme Adapter for React 16

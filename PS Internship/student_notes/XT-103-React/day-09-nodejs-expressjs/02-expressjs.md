@@ -1,4 +1,0 @@
-- Templating libraries
-    - ejs, Mustache , HandlebarsJS, Underscore Templates
-- Middleware
-    -  When someone sends the request then next middleware won't be called bu the above middlewares will be called
